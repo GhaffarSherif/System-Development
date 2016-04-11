@@ -19,3 +19,5 @@ C:\Users\cstuser\Desktop\System-Development\WindowsFormsApplication1\WindowsForm
 C:\Users\cstuser\Desktop\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
 C:\Users\cstuser\Desktop\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 C:\Users\cstuser\Desktop\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\cstuser\Desktop\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\Risks.mdf
+C:\Users\cstuser\Desktop\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\Risks_log.ldf
