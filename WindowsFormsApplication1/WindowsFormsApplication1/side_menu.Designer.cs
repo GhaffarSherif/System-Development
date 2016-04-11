@@ -90,11 +90,15 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.Add.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel15.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -115,6 +119,7 @@
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -207,12 +212,13 @@
             // 
             // Add
             // 
+            this.Add.Controls.Add(this.panel4);
             this.Add.Location = new System.Drawing.Point(4, 22);
             this.Add.Name = "Add";
             this.Add.Padding = new System.Windows.Forms.Padding(3);
-            this.Add.Size = new System.Drawing.Size(592, 592);
+            this.Add.Size = new System.Drawing.Size(592, 639);
             this.Add.TabIndex = 0;
-            this.Add.Text = "tabPage1";
+            this.Add.Text = "Database";
             this.Add.UseVisualStyleBackColor = true;
             // 
             // tabPage2
@@ -231,7 +237,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(592, 592);
+            this.tabPage3.Size = new System.Drawing.Size(592, 639);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -241,7 +247,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(592, 592);
+            this.tabPage4.Size = new System.Drawing.Size(592, 639);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -687,6 +693,32 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Next Revision";
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(17, 30);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(548, 61);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.label5);
+            this.panel4.Controls.Add(this.richTextBox1);
+            this.panel4.Location = new System.Drawing.Point(7, 22);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(579, 100);
+            this.panel4.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(17, 11);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(29, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Filter";
+            // 
             // side_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -700,6 +732,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            this.Add.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
             this.panel15.PerformLayout();
@@ -735,6 +768,8 @@
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -803,5 +838,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label5;
     }
 }
