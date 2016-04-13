@@ -17,8 +17,10 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void side_menu_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'risksDataSet.Table' table. You can move, or remove it, as needed.
+            this.tableTableAdapter.Fill(this.risksDataSet.Table);
 
         }
     }
