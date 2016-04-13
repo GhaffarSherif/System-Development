@@ -21,3 +21,15 @@ C:\Users\cstuser\Desktop\System-Development\WindowsFormsApplication1\WindowsForm
 C:\Users\cstuser\Desktop\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
 C:\Users\cstuser\Desktop\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\Risks.mdf
 C:\Users\cstuser\Desktop\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\Risks_log.ldf
+F:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+F:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+F:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+F:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\Risks.mdf
+F:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\Risks_log.ldf
+F:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+F:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+F:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+F:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.login.resources
+F:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+F:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.side_menu.resources
+F:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
