@@ -47,3 +47,5 @@ C:\Users\cstuser\Documents\System-Development\WindowsFormsApplication1\WindowsFo
 C:\Users\cstuser\Documents\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Settings.resources
 C:\Users\cstuser\Documents\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.side_menu.resources
 C:\Users\cstuser\Documents\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+C:\Users\cstuser\Desktop\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\Users.mdf
+C:\Users\cstuser\Desktop\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\Users_log.ldf
