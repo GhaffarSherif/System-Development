@@ -37,9 +37,28 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Add = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nextRevisionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.probabilityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.consequenceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.evaluationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.controlMeasureDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.responseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.responsiblePersonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.probabilityAfterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.consequenceAfterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusAfterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.evaluationAfterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.risksDataSet = new WindowsFormsApplication1.RisksDataSet();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -97,25 +116,6 @@
             this.label26 = new System.Windows.Forms.Label();
             this.comboBox18 = new System.Windows.Forms.ComboBox();
             this.tableTableAdapter = new WindowsFormsApplication1.RisksDataSetTableAdapters.TableTableAdapter();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nextRevisionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.probabilityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.consequenceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.evaluationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.controlMeasureDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.responseDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.responsiblePersonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.probabilityAfterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.consequenceAfterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusAfterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.evaluationAfterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -178,12 +178,13 @@
             this.button2.TabIndex = 7;
             this.button2.Text = "Settings";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(51, 9);
+            this.label7.Location = new System.Drawing.Point(53, 9);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(47, 20);
             this.label7.TabIndex = 6;
@@ -197,6 +198,7 @@
             this.button6.TabIndex = 5;
             this.button6.Text = "Logout";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button4
             // 
@@ -262,6 +264,102 @@
             this.dataGridView1.Size = new System.Drawing.Size(557, 468);
             this.dataGridView1.TabIndex = 0;
             // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            // 
+            // nextRevisionDataGridViewTextBoxColumn
+            // 
+            this.nextRevisionDataGridViewTextBoxColumn.DataPropertyName = "Next Revision";
+            this.nextRevisionDataGridViewTextBoxColumn.HeaderText = "Next Revision";
+            this.nextRevisionDataGridViewTextBoxColumn.Name = "nextRevisionDataGridViewTextBoxColumn";
+            // 
+            // categoryDataGridViewTextBoxColumn
+            // 
+            this.categoryDataGridViewTextBoxColumn.DataPropertyName = "Category";
+            this.categoryDataGridViewTextBoxColumn.HeaderText = "Category";
+            this.categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            // 
+            // probabilityDataGridViewTextBoxColumn
+            // 
+            this.probabilityDataGridViewTextBoxColumn.DataPropertyName = "Probability";
+            this.probabilityDataGridViewTextBoxColumn.HeaderText = "Probability";
+            this.probabilityDataGridViewTextBoxColumn.Name = "probabilityDataGridViewTextBoxColumn";
+            // 
+            // consequenceDataGridViewTextBoxColumn
+            // 
+            this.consequenceDataGridViewTextBoxColumn.DataPropertyName = "Consequence";
+            this.consequenceDataGridViewTextBoxColumn.HeaderText = "Consequence";
+            this.consequenceDataGridViewTextBoxColumn.Name = "consequenceDataGridViewTextBoxColumn";
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            // 
+            // evaluationDataGridViewTextBoxColumn
+            // 
+            this.evaluationDataGridViewTextBoxColumn.DataPropertyName = "Evaluation";
+            this.evaluationDataGridViewTextBoxColumn.HeaderText = "Evaluation";
+            this.evaluationDataGridViewTextBoxColumn.Name = "evaluationDataGridViewTextBoxColumn";
+            // 
+            // controlMeasureDataGridViewTextBoxColumn
+            // 
+            this.controlMeasureDataGridViewTextBoxColumn.DataPropertyName = "Control Measure";
+            this.controlMeasureDataGridViewTextBoxColumn.HeaderText = "Control Measure";
+            this.controlMeasureDataGridViewTextBoxColumn.Name = "controlMeasureDataGridViewTextBoxColumn";
+            // 
+            // responseDataGridViewTextBoxColumn
+            // 
+            this.responseDataGridViewTextBoxColumn.DataPropertyName = "Response";
+            this.responseDataGridViewTextBoxColumn.HeaderText = "Response";
+            this.responseDataGridViewTextBoxColumn.Name = "responseDataGridViewTextBoxColumn";
+            // 
+            // responsiblePersonDataGridViewTextBoxColumn
+            // 
+            this.responsiblePersonDataGridViewTextBoxColumn.DataPropertyName = "Responsible Person";
+            this.responsiblePersonDataGridViewTextBoxColumn.HeaderText = "Responsible Person";
+            this.responsiblePersonDataGridViewTextBoxColumn.Name = "responsiblePersonDataGridViewTextBoxColumn";
+            // 
+            // probabilityAfterDataGridViewTextBoxColumn
+            // 
+            this.probabilityAfterDataGridViewTextBoxColumn.DataPropertyName = "Probability After";
+            this.probabilityAfterDataGridViewTextBoxColumn.HeaderText = "Probability After";
+            this.probabilityAfterDataGridViewTextBoxColumn.Name = "probabilityAfterDataGridViewTextBoxColumn";
+            // 
+            // consequenceAfterDataGridViewTextBoxColumn
+            // 
+            this.consequenceAfterDataGridViewTextBoxColumn.DataPropertyName = "Consequence After";
+            this.consequenceAfterDataGridViewTextBoxColumn.HeaderText = "Consequence After";
+            this.consequenceAfterDataGridViewTextBoxColumn.Name = "consequenceAfterDataGridViewTextBoxColumn";
+            // 
+            // statusAfterDataGridViewTextBoxColumn
+            // 
+            this.statusAfterDataGridViewTextBoxColumn.DataPropertyName = "Status After";
+            this.statusAfterDataGridViewTextBoxColumn.HeaderText = "Status After";
+            this.statusAfterDataGridViewTextBoxColumn.Name = "statusAfterDataGridViewTextBoxColumn";
+            // 
+            // evaluationAfterDataGridViewTextBoxColumn
+            // 
+            this.evaluationAfterDataGridViewTextBoxColumn.DataPropertyName = "Evaluation After";
+            this.evaluationAfterDataGridViewTextBoxColumn.HeaderText = "Evaluation After";
+            this.evaluationAfterDataGridViewTextBoxColumn.Name = "evaluationAfterDataGridViewTextBoxColumn";
+            // 
             // tableBindingSource
             // 
             this.tableBindingSource.DataMember = "Table";
@@ -285,6 +383,34 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(23, 87);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 6;
+            this.button5.Text = "View Filters";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(104, 87);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 5;
+            this.button3.Text = "Add Filter";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(464, 87);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Clear Filters";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // panel5
             // 
@@ -794,129 +920,6 @@
             // 
             this.tableTableAdapter.ClearBeforeFill = true;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(464, 87);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Clear Filters";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(104, 87);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Add Filter";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            // 
-            // dateDataGridViewTextBoxColumn
-            // 
-            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
-            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
-            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
-            // 
-            // nextRevisionDataGridViewTextBoxColumn
-            // 
-            this.nextRevisionDataGridViewTextBoxColumn.DataPropertyName = "Next Revision";
-            this.nextRevisionDataGridViewTextBoxColumn.HeaderText = "Next Revision";
-            this.nextRevisionDataGridViewTextBoxColumn.Name = "nextRevisionDataGridViewTextBoxColumn";
-            // 
-            // categoryDataGridViewTextBoxColumn
-            // 
-            this.categoryDataGridViewTextBoxColumn.DataPropertyName = "Category";
-            this.categoryDataGridViewTextBoxColumn.HeaderText = "Category";
-            this.categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            // 
-            // probabilityDataGridViewTextBoxColumn
-            // 
-            this.probabilityDataGridViewTextBoxColumn.DataPropertyName = "Probability";
-            this.probabilityDataGridViewTextBoxColumn.HeaderText = "Probability";
-            this.probabilityDataGridViewTextBoxColumn.Name = "probabilityDataGridViewTextBoxColumn";
-            // 
-            // consequenceDataGridViewTextBoxColumn
-            // 
-            this.consequenceDataGridViewTextBoxColumn.DataPropertyName = "Consequence";
-            this.consequenceDataGridViewTextBoxColumn.HeaderText = "Consequence";
-            this.consequenceDataGridViewTextBoxColumn.Name = "consequenceDataGridViewTextBoxColumn";
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            // 
-            // evaluationDataGridViewTextBoxColumn
-            // 
-            this.evaluationDataGridViewTextBoxColumn.DataPropertyName = "Evaluation";
-            this.evaluationDataGridViewTextBoxColumn.HeaderText = "Evaluation";
-            this.evaluationDataGridViewTextBoxColumn.Name = "evaluationDataGridViewTextBoxColumn";
-            // 
-            // controlMeasureDataGridViewTextBoxColumn
-            // 
-            this.controlMeasureDataGridViewTextBoxColumn.DataPropertyName = "Control Measure";
-            this.controlMeasureDataGridViewTextBoxColumn.HeaderText = "Control Measure";
-            this.controlMeasureDataGridViewTextBoxColumn.Name = "controlMeasureDataGridViewTextBoxColumn";
-            // 
-            // responseDataGridViewTextBoxColumn
-            // 
-            this.responseDataGridViewTextBoxColumn.DataPropertyName = "Response";
-            this.responseDataGridViewTextBoxColumn.HeaderText = "Response";
-            this.responseDataGridViewTextBoxColumn.Name = "responseDataGridViewTextBoxColumn";
-            // 
-            // responsiblePersonDataGridViewTextBoxColumn
-            // 
-            this.responsiblePersonDataGridViewTextBoxColumn.DataPropertyName = "Responsible Person";
-            this.responsiblePersonDataGridViewTextBoxColumn.HeaderText = "Responsible Person";
-            this.responsiblePersonDataGridViewTextBoxColumn.Name = "responsiblePersonDataGridViewTextBoxColumn";
-            // 
-            // probabilityAfterDataGridViewTextBoxColumn
-            // 
-            this.probabilityAfterDataGridViewTextBoxColumn.DataPropertyName = "Probability After";
-            this.probabilityAfterDataGridViewTextBoxColumn.HeaderText = "Probability After";
-            this.probabilityAfterDataGridViewTextBoxColumn.Name = "probabilityAfterDataGridViewTextBoxColumn";
-            // 
-            // consequenceAfterDataGridViewTextBoxColumn
-            // 
-            this.consequenceAfterDataGridViewTextBoxColumn.DataPropertyName = "Consequence After";
-            this.consequenceAfterDataGridViewTextBoxColumn.HeaderText = "Consequence After";
-            this.consequenceAfterDataGridViewTextBoxColumn.Name = "consequenceAfterDataGridViewTextBoxColumn";
-            // 
-            // statusAfterDataGridViewTextBoxColumn
-            // 
-            this.statusAfterDataGridViewTextBoxColumn.DataPropertyName = "Status After";
-            this.statusAfterDataGridViewTextBoxColumn.HeaderText = "Status After";
-            this.statusAfterDataGridViewTextBoxColumn.Name = "statusAfterDataGridViewTextBoxColumn";
-            // 
-            // evaluationAfterDataGridViewTextBoxColumn
-            // 
-            this.evaluationAfterDataGridViewTextBoxColumn.DataPropertyName = "Evaluation After";
-            this.evaluationAfterDataGridViewTextBoxColumn.HeaderText = "Evaluation After";
-            this.evaluationAfterDataGridViewTextBoxColumn.Name = "evaluationAfterDataGridViewTextBoxColumn";
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(23, 87);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "View Filters";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
             // side_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -925,6 +928,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "side_menu";
             this.Text = "Risk Register";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.side_menu_FormClosed);
             this.Load += new System.EventHandler(this.side_menu_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();

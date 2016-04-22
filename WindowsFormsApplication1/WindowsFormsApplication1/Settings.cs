@@ -23,5 +23,10 @@ namespace WindowsFormsApplication1
             this.tableTableAdapter.Fill(this.usersDataSet.Table);
 
         }
+
+        private void settings_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Dispose(true);
+        }
     }
 }

@@ -19,9 +19,10 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Hide();
-            side_menu sm = new side_menu();
-            sm.ShowDialog();
+            //Close();
+
+            side_menu s = new side_menu();
+            s.Show();
         }
     }
 }
