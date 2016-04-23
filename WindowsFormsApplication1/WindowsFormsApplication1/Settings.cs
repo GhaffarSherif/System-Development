@@ -15,6 +15,8 @@ namespace WindowsFormsApplication1
         public settings()
         {
             InitializeComponent();
+
+            userTypeComboBox.SelectedIndex = 1;
         }
 
         private void Settings_Load(object sender, EventArgs e)

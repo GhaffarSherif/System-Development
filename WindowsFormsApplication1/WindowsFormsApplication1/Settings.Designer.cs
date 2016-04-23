@@ -40,7 +40,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.userTypeComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -148,29 +148,33 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.comboBox1);
+            this.panel3.Controls.Add(this.userTypeComboBox);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Location = new System.Drawing.Point(6, 114);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(239, 48);
             this.panel3.TabIndex = 3;
             // 
-            // comboBox1
+            // userTypeComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(7, 21);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 2;
+            this.userTypeComboBox.FormattingEnabled = true;
+            this.userTypeComboBox.Items.AddRange(new object[] {
+            "Admin",
+            "Reader"});
+            this.userTypeComboBox.Location = new System.Drawing.Point(7, 21);
+            this.userTypeComboBox.Name = "userTypeComboBox";
+            this.userTypeComboBox.Size = new System.Drawing.Size(121, 21);
+            this.userTypeComboBox.Sorted = true;
+            this.userTypeComboBox.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(4, 4);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Usertype";
+            this.label3.Text = "User Type";
             // 
             // panel2
             // 
@@ -259,7 +263,7 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox userTypeComboBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;

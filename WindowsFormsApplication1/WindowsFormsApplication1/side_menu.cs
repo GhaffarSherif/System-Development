@@ -15,9 +15,19 @@ namespace WindowsFormsApplication1
         settings s;
         filterList f;
 
+        String username;
+        String userType;
+
         public side_menu()
         {
             InitializeComponent();
+
+            username = login.user.Split(':')[0];
+            userType = login.user.Split(':')[2];
+
+            userLabel.Text = username;
+            if (!userType.Equals("Admin"))
+                settingsButton.Visible = false;
         }
 
         private void side_menu_Load(object sender, EventArgs e)

@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.settingsButton = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
+            this.userLabel = new System.Windows.Forms.Label();
             this.logoutButton = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -159,7 +159,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.settingsButton);
-            this.splitContainer1.Panel1.Controls.Add(this.label7);
+            this.splitContainer1.Panel1.Controls.Add(this.userLabel);
             this.splitContainer1.Panel1.Controls.Add(this.logoutButton);
             this.splitContainer1.Panel1.Controls.Add(this.button4);
             // 
@@ -180,15 +180,15 @@
             this.settingsButton.UseVisualStyleBackColor = true;
             this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
-            // label7
+            // userLabel
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(53, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(47, 20);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "User";
+            this.userLabel.AutoSize = true;
+            this.userLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userLabel.Location = new System.Drawing.Point(53, 9);
+            this.userLabel.Name = "userLabel";
+            this.userLabel.Size = new System.Drawing.Size(47, 20);
+            this.userLabel.TabIndex = 6;
+            this.userLabel.Text = "User";
             // 
             // logoutButton
             // 
@@ -261,6 +261,7 @@
             this.dataGridView1.DataSource = this.tableBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(18, 156);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(557, 468);
             this.dataGridView1.TabIndex = 0;
             // 
@@ -1048,7 +1049,7 @@
         private System.Windows.Forms.Panel panel28;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.ComboBox comboBox18;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label userLabel;
         private System.Windows.Forms.DataGridView dataGridView1;
         private RisksDataSet risksDataSet;
         private System.Windows.Forms.BindingSource tableBindingSource;

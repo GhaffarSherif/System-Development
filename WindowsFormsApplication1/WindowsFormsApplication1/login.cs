@@ -79,5 +79,11 @@ namespace WindowsFormsApplication1
         {
             // To decide
         }
+
+        private void login_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                loginButton_Click(sender, e);
+        }
     }
 }
