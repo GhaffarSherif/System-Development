@@ -13,15 +13,13 @@ namespace WindowsFormsApplication1
 {
     public partial class login : Form
     {
-        String connectionString;
-        UsersDataSet usersDS;
-        DataTable usersDT;
+        public static String connectionString;
+
+        public static String user;
 
         public login()
         {
             connectionString = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=\"C:\\Users\\Graal\\Desktop\\Team Project\\System-Development\\WindowsFormsApplication1\\WindowsFormsApplication1\\Users.mdf\";Integrated Security=True";
-            usersDS = new UsersDataSet();
-            usersDT = usersDS.Tables[0];
             
             InitializeComponent();
         }
@@ -29,10 +27,18 @@ namespace WindowsFormsApplication1
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            if (!userAuthentication())
-                return;
-            
+            String sqlComm = ("SELECT * FROM [Table] " + 
+                              "WHERE Username = '" + usernameTextBox.Text + "'" +
+                              "AND Password = '" + passwordTextBox.Text + "'");
 
+            List<String> users = queryUserDatabase(sqlComm);
+            if (users.Count == 0)
+            {
+                invalidLoginCredentials();
+                return;
+            }
+
+            user = users[0];
             Dispose(true);
             Close();
 
@@ -48,19 +54,30 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private Boolean userAuthentication()
+        private List<String> queryUserDatabase(String sqlComm)
         {
-            DataRow[] users = usersDT.Select("Username = '" + usernameTextBox.Text +"'");
+            List<String> queryResults = new List<string>();
 
-            // Testing
-            //MessageBox.Show("" + users.Count());
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
 
-            if (users.Count() == 0)
-                return false;
-            else if (!users[1].Equals(passwordTextBox.Text))
-                return false;
+                using (SqlCommand command = new SqlCommand(sqlComm, connection))
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                         queryResults.Add(reader.GetString(0) + ":" + reader.GetString(1) + ":" + reader.GetString(2));
+                    }
+                }
+            }
 
-            return true;
+            return queryResults;
+        }
+
+        private void invalidLoginCredentials()
+        {
+            // To decide
         }
     }
 }
