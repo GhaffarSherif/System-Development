@@ -35,7 +35,7 @@
             this.logoutButton = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.Add = new System.Windows.Forms.TabPage();
+            this.databaseTabPage = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,7 +65,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.addRiskTabPage = new System.Windows.Forms.TabPage();
             this.panel15 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
@@ -121,14 +121,14 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.Add.SuspendLayout();
+            this.databaseTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.risksDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.addRiskTabPage.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -211,26 +211,26 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.Add);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.databaseTabPage);
+            this.tabControl1.Controls.Add(this.addRiskTabPage);
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(600, 665);
             this.tabControl1.TabIndex = 0;
             // 
-            // Add
+            // databaseTabPage
             // 
-            this.Add.Controls.Add(this.dataGridView1);
-            this.Add.Controls.Add(this.groupBox1);
-            this.Add.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.Add.Location = new System.Drawing.Point(4, 22);
-            this.Add.Name = "Add";
-            this.Add.Padding = new System.Windows.Forms.Padding(3);
-            this.Add.Size = new System.Drawing.Size(592, 639);
-            this.Add.TabIndex = 0;
-            this.Add.Text = "Database";
-            this.Add.UseVisualStyleBackColor = true;
+            this.databaseTabPage.Controls.Add(this.dataGridView1);
+            this.databaseTabPage.Controls.Add(this.groupBox1);
+            this.databaseTabPage.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.databaseTabPage.Location = new System.Drawing.Point(4, 22);
+            this.databaseTabPage.Name = "databaseTabPage";
+            this.databaseTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.databaseTabPage.Size = new System.Drawing.Size(592, 639);
+            this.databaseTabPage.TabIndex = 0;
+            this.databaseTabPage.Text = "Database";
+            this.databaseTabPage.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -270,96 +270,112 @@
             this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
             this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
             this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dateDataGridViewTextBoxColumn
             // 
             this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
             this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
             this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // nextRevisionDataGridViewTextBoxColumn
             // 
             this.nextRevisionDataGridViewTextBoxColumn.DataPropertyName = "Next Revision";
             this.nextRevisionDataGridViewTextBoxColumn.HeaderText = "Next Revision";
             this.nextRevisionDataGridViewTextBoxColumn.Name = "nextRevisionDataGridViewTextBoxColumn";
+            this.nextRevisionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // categoryDataGridViewTextBoxColumn
             // 
             this.categoryDataGridViewTextBoxColumn.DataPropertyName = "Category";
             this.categoryDataGridViewTextBoxColumn.HeaderText = "Category";
             this.categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
+            this.categoryDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // descriptionDataGridViewTextBoxColumn
             // 
             this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
             this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
             this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // probabilityDataGridViewTextBoxColumn
             // 
             this.probabilityDataGridViewTextBoxColumn.DataPropertyName = "Probability";
             this.probabilityDataGridViewTextBoxColumn.HeaderText = "Probability";
             this.probabilityDataGridViewTextBoxColumn.Name = "probabilityDataGridViewTextBoxColumn";
+            this.probabilityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // consequenceDataGridViewTextBoxColumn
             // 
             this.consequenceDataGridViewTextBoxColumn.DataPropertyName = "Consequence";
             this.consequenceDataGridViewTextBoxColumn.HeaderText = "Consequence";
             this.consequenceDataGridViewTextBoxColumn.Name = "consequenceDataGridViewTextBoxColumn";
+            this.consequenceDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // statusDataGridViewTextBoxColumn
             // 
             this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
             this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
             this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // evaluationDataGridViewTextBoxColumn
             // 
             this.evaluationDataGridViewTextBoxColumn.DataPropertyName = "Evaluation";
             this.evaluationDataGridViewTextBoxColumn.HeaderText = "Evaluation";
             this.evaluationDataGridViewTextBoxColumn.Name = "evaluationDataGridViewTextBoxColumn";
+            this.evaluationDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // controlMeasureDataGridViewTextBoxColumn
             // 
             this.controlMeasureDataGridViewTextBoxColumn.DataPropertyName = "Control Measure";
             this.controlMeasureDataGridViewTextBoxColumn.HeaderText = "Control Measure";
             this.controlMeasureDataGridViewTextBoxColumn.Name = "controlMeasureDataGridViewTextBoxColumn";
+            this.controlMeasureDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // responseDataGridViewTextBoxColumn
             // 
             this.responseDataGridViewTextBoxColumn.DataPropertyName = "Response";
             this.responseDataGridViewTextBoxColumn.HeaderText = "Response";
             this.responseDataGridViewTextBoxColumn.Name = "responseDataGridViewTextBoxColumn";
+            this.responseDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // responsiblePersonDataGridViewTextBoxColumn
             // 
             this.responsiblePersonDataGridViewTextBoxColumn.DataPropertyName = "Responsible Person";
             this.responsiblePersonDataGridViewTextBoxColumn.HeaderText = "Responsible Person";
             this.responsiblePersonDataGridViewTextBoxColumn.Name = "responsiblePersonDataGridViewTextBoxColumn";
+            this.responsiblePersonDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // probabilityAfterDataGridViewTextBoxColumn
             // 
             this.probabilityAfterDataGridViewTextBoxColumn.DataPropertyName = "Probability After";
             this.probabilityAfterDataGridViewTextBoxColumn.HeaderText = "Probability After";
             this.probabilityAfterDataGridViewTextBoxColumn.Name = "probabilityAfterDataGridViewTextBoxColumn";
+            this.probabilityAfterDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // consequenceAfterDataGridViewTextBoxColumn
             // 
             this.consequenceAfterDataGridViewTextBoxColumn.DataPropertyName = "Consequence After";
             this.consequenceAfterDataGridViewTextBoxColumn.HeaderText = "Consequence After";
             this.consequenceAfterDataGridViewTextBoxColumn.Name = "consequenceAfterDataGridViewTextBoxColumn";
+            this.consequenceAfterDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // statusAfterDataGridViewTextBoxColumn
             // 
             this.statusAfterDataGridViewTextBoxColumn.DataPropertyName = "Status After";
             this.statusAfterDataGridViewTextBoxColumn.HeaderText = "Status After";
             this.statusAfterDataGridViewTextBoxColumn.Name = "statusAfterDataGridViewTextBoxColumn";
+            this.statusAfterDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // evaluationAfterDataGridViewTextBoxColumn
             // 
             this.evaluationAfterDataGridViewTextBoxColumn.DataPropertyName = "Evaluation After";
             this.evaluationAfterDataGridViewTextBoxColumn.HeaderText = "Evaluation After";
             this.evaluationAfterDataGridViewTextBoxColumn.Name = "evaluationAfterDataGridViewTextBoxColumn";
+            this.evaluationAfterDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // tableBindingSource
             // 
@@ -464,16 +480,16 @@
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 0;
             // 
-            // tabPage2
+            // addRiskTabPage
             // 
-            this.tabPage2.Controls.Add(this.panel15);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(592, 639);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Add Risk";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.addRiskTabPage.Controls.Add(this.panel15);
+            this.addRiskTabPage.Location = new System.Drawing.Point(4, 22);
+            this.addRiskTabPage.Name = "addRiskTabPage";
+            this.addRiskTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.addRiskTabPage.Size = new System.Drawing.Size(592, 639);
+            this.addRiskTabPage.TabIndex = 1;
+            this.addRiskTabPage.Text = "Add Risk";
+            this.addRiskTabPage.UseVisualStyleBackColor = true;
             // 
             // panel15
             // 
@@ -937,7 +953,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.Add.ResumeLayout(false);
+            this.databaseTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.risksDataSet)).EndInit();
@@ -946,7 +962,7 @@
             this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
+            this.addRiskTabPage.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
             this.panel15.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -991,7 +1007,7 @@
         private System.Windows.Forms.Button logoutButton;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage Add;
+        private System.Windows.Forms.TabPage databaseTabPage;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label6;
@@ -999,7 +1015,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage addRiskTabPage;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;

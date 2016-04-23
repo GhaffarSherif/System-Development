@@ -54,7 +54,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private List<String> queryUserDatabase(String sqlComm)
+        public static List<String> queryUserDatabase(String sqlComm)
         {
             List<String> queryResults = new List<string>();
 
@@ -77,7 +77,7 @@ namespace WindowsFormsApplication1
 
         private void invalidLoginCredentials()
         {
-            // To decide
+            MessageBox.Show("Invalid Username or Password");
         }
 
         private void login_KeyDown(object sender, KeyEventArgs e)

@@ -15,8 +15,8 @@ namespace WindowsFormsApplication1
         settings s;
         filterList f;
 
-        String username;
-        String userType;
+        public static String username;
+        public static String userType;
 
         public side_menu()
         {
