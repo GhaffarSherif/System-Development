@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.loginButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.usernameTextBox = new System.Windows.Forms.TextBox();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -41,26 +41,27 @@
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(118, 27);
             this.loginButton.TabIndex = 0;
+            this.loginButton.TabStop = false;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = true;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
-            // textBox1
+            // usernameTextBox
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textBox1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBox1.Location = new System.Drawing.Point(28, 32);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(173, 20);
-            this.textBox1.TabIndex = 1;
+            this.usernameTextBox.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.usernameTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.usernameTextBox.Location = new System.Drawing.Point(28, 32);
+            this.usernameTextBox.Name = "usernameTextBox";
+            this.usernameTextBox.Size = new System.Drawing.Size(173, 20);
+            this.usernameTextBox.TabIndex = 1;
             // 
-            // textBox2
+            // passwordTextBox
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textBox2.Location = new System.Drawing.Point(28, 93);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(173, 20);
-            this.textBox2.TabIndex = 2;
+            this.passwordTextBox.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.passwordTextBox.Location = new System.Drawing.Point(28, 93);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Size = new System.Drawing.Size(173, 20);
+            this.passwordTextBox.TabIndex = 2;
             // 
             // label1
             // 
@@ -87,9 +88,10 @@
             this.ClientSize = new System.Drawing.Size(228, 221);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.passwordTextBox);
+            this.Controls.Add(this.usernameTextBox);
             this.Controls.Add(this.loginButton);
+            this.KeyPreview = true;
             this.Name = "login";
             this.Text = "Login";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.login_FormClosed);
@@ -101,8 +103,8 @@
         #endregion
 
         private System.Windows.Forms.Button loginButton;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox usernameTextBox;
+        private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
     }
