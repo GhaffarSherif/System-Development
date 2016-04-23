@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.button2 = new System.Windows.Forms.Button();
+            this.settingsButton = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.logoutButton = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Add = new System.Windows.Forms.TabPage();
@@ -56,7 +56,7 @@
             this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.risksDataSet = new WindowsFormsApplication1.RisksDataSet();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
+            this.viewFiltersButton = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -158,9 +158,9 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.button2);
+            this.splitContainer1.Panel1.Controls.Add(this.settingsButton);
             this.splitContainer1.Panel1.Controls.Add(this.label7);
-            this.splitContainer1.Panel1.Controls.Add(this.button6);
+            this.splitContainer1.Panel1.Controls.Add(this.logoutButton);
             this.splitContainer1.Panel1.Controls.Add(this.button4);
             // 
             // splitContainer1.Panel2
@@ -170,15 +170,15 @@
             this.splitContainer1.SplitterDistance = 161;
             this.splitContainer1.TabIndex = 0;
             // 
-            // button2
+            // settingsButton
             // 
-            this.button2.Location = new System.Drawing.Point(14, 86);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(129, 37);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Settings";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.settingsButton.Location = new System.Drawing.Point(14, 86);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(129, 37);
+            this.settingsButton.TabIndex = 7;
+            this.settingsButton.Text = "Settings";
+            this.settingsButton.UseVisualStyleBackColor = true;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
             // label7
             // 
@@ -190,15 +190,15 @@
             this.label7.TabIndex = 6;
             this.label7.Text = "User";
             // 
-            // button6
+            // logoutButton
             // 
-            this.button6.Location = new System.Drawing.Point(13, 622);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(129, 37);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "Logout";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.logoutButton.Location = new System.Drawing.Point(13, 622);
+            this.logoutButton.Name = "logoutButton";
+            this.logoutButton.Size = new System.Drawing.Size(129, 37);
+            this.logoutButton.TabIndex = 5;
+            this.logoutButton.Text = "Logout";
+            this.logoutButton.UseVisualStyleBackColor = true;
+            this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
             // 
             // button4
             // 
@@ -372,7 +372,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button5);
+            this.groupBox1.Controls.Add(this.viewFiltersButton);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.panel5);
@@ -384,15 +384,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter";
             // 
-            // button5
+            // viewFiltersButton
             // 
-            this.button5.Location = new System.Drawing.Point(23, 87);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "View Filters";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.viewFiltersButton.Location = new System.Drawing.Point(23, 87);
+            this.viewFiltersButton.Name = "viewFiltersButton";
+            this.viewFiltersButton.Size = new System.Drawing.Size(75, 23);
+            this.viewFiltersButton.TabIndex = 6;
+            this.viewFiltersButton.Text = "View Filters";
+            this.viewFiltersButton.UseVisualStyleBackColor = true;
+            this.viewFiltersButton.Click += new System.EventHandler(this.viewFiltersButton_Click);
             // 
             // button3
             // 
@@ -987,7 +987,7 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button logoutButton;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage Add;
@@ -1053,7 +1053,7 @@
         private RisksDataSet risksDataSet;
         private System.Windows.Forms.BindingSource tableBindingSource;
         private RisksDataSetTableAdapters.TableTableAdapter tableTableAdapter;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button settingsButton;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
@@ -1072,6 +1072,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn consequenceAfterDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusAfterDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn evaluationAfterDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button viewFiltersButton;
     }
 }

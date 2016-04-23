@@ -58,6 +58,7 @@
             this.Controls.Add(this.listView1);
             this.Name = "filterList";
             this.Text = "Filter List";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.filterList_FormClosed);
             this.ResumeLayout(false);
 
         }

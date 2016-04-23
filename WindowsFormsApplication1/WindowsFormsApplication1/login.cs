@@ -17,12 +17,22 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //Close();
 
-            side_menu s = new side_menu();
-            s.Show();
+        private void loginButton_Click(object sender, EventArgs e)
+        {
+            Dispose(true);
+            Close();
+
+            new side_menu().Show();
+        }
+
+        private void login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(e.CloseReason == CloseReason.UserClosing)
+            {
+                Dispose(true);
+                Application.Exit();
+            }
         }
     }
 }

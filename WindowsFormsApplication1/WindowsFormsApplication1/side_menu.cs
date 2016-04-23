@@ -12,6 +12,9 @@ namespace WindowsFormsApplication1
 {
     public partial class side_menu : Form
     {
+        settings s;
+        filterList f;
+
         public side_menu()
         {
             InitializeComponent();
@@ -22,28 +25,43 @@ namespace WindowsFormsApplication1
             // TODO: This line of code loads data into the 'risksDataSet.Table' table. You can move, or remove it, as needed.
             this.tableTableAdapter.Fill(this.risksDataSet.Table);
 
+            s = new settings();
+            f = new filterList();
         }
 
         private void side_menu_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Dispose(true);
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Dispose(true);
+                Application.Exit();
+            }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void settingsButton_Click(object sender, EventArgs e)
         {
-            filterList f = new filterList();
-            f.Show();
-        }
+            if (Application.OpenForms["settings"] != null)
+                s.Close();
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            settings s = new settings();
+            s = new settings();
             s.Show();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void viewFiltersButton_Click(object sender, EventArgs e)
         {
+            if (Application.OpenForms["filterList"] != null)
+                f.Close();
+
+            f = new filterList();
+            f.Show();
+        }
+
+        private void logoutButton_Click(object sender, EventArgs e)
+        {
+            Dispose(true);
             Close();
+
+            new login().Show();
         }
     }
 }
