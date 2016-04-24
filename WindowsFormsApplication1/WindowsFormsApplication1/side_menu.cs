@@ -22,8 +22,8 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
 
-            username = Program.userInfo.Split(':')[0];
-            userType = Program.userInfo.Split(':')[2];
+            username = Program.userInfo.Split(',')[0];
+            userType = Program.userInfo.Split(',')[2];
 
             userLabel.Text = username;
             if (!userType.Equals("Admin"))
@@ -34,6 +34,8 @@ namespace WindowsFormsApplication1
         {
             // TODO: This line of code loads data into the 'risksDataSet.Table' table. You can move, or remove it, as needed.
             this.tableTableAdapter.Fill(this.risksDataSet.Table);
+
+            Program.updateDataGridView(Program.risksConnectionString, risksDataGridView);
         }
 
         private void side_menu_FormClosed(object sender, FormClosedEventArgs e)
@@ -56,8 +58,15 @@ namespace WindowsFormsApplication1
 
         private void viewFiltersButton_Click(object sender, EventArgs e)
         {
-            if (Application.OpenForms["filterList"] != null)
-                f.Close();
+            List<String> temp = Program.queryDatabase(Program.usersConnectionString, "select * from INFORMATION_SCHEMA.COLUMNS where TABLE_Name='Table' order by ORDINAL_POSITION");
+
+            String sTemp = "";
+            foreach (String str in temp)
+                sTemp += str + ",";
+
+            MessageBox.Show(sTemp);
+
+            
 
             f = new filterList();
             f.Show();
@@ -65,6 +74,11 @@ namespace WindowsFormsApplication1
 
         private void logoutButton_Click(object sender, EventArgs e)
         {
+            if (Application.OpenForms["settings"] != null)
+                s.Close();
+            if (Application.OpenForms["filterList"] != null)
+                f.Close();
+
             Dispose(true);
             Close();
 

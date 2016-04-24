@@ -24,6 +24,9 @@ namespace WindowsFormsApplication1
         {
             // TODO: This line of code loads data into the 'usersDataSet.Table' table. You can move, or remove it, as needed.
             this.tableTableAdapter.Fill(this.usersDataSet.Table);
+
+            Program.updateDataGridView(Program.usersConnectionString, usersDataGridView);
+            Program.updateComboBox(Program.usersConnectionString, editUsernameComboBox);
         }
 
         private void settings_FormClosed(object sender, FormClosedEventArgs e)
@@ -66,7 +69,7 @@ namespace WindowsFormsApplication1
 
         private void editUsernameComboBox_SelectionChangeCommited(object sender, EventArgs e)
         {
-            String[] selectedUserInfo = Program.queryDatabase(Program.usersConnectionString, "SELECT * FROM [Table] WHERE Username = '" + editUsernameComboBox.Text + "'")[0].Split(':');
+            String[] selectedUserInfo = Program.queryDatabase(Program.usersConnectionString, "SELECT * FROM [Table] WHERE Username = '" + editUsernameComboBox.Text + "'")[0].Split(',');
 
             editPasswordTextBox.Text = selectedUserInfo[1];
             editUserTypeComboBox.Text = selectedUserInfo[2];

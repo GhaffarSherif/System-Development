@@ -24,6 +24,7 @@ namespace WindowsFormsApplication1
         }
 
         public static String usersConnectionString = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=\"C:\\Users\\Graal\\Desktop\\Team Project\\System-Development\\WindowsFormsApplication1\\WindowsFormsApplication1\\Users.mdf\";Integrated Security=True";
+        public static String risksConnectionString = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=\"C:\\Users\\Graal\\Desktop\\Team Project\\System-Development\\WindowsFormsApplication1\\WindowsFormsApplication1\\Risks.mdf\";Integrated Security=True";
         public static String userInfo;
 
         public static List<String> queryDatabase(String connectionString, String sqlComm)
@@ -42,7 +43,7 @@ namespace WindowsFormsApplication1
                         String currentRow = "";
 
                         for (int index = 0; index < reader.FieldCount; index++)
-                            currentRow += reader.GetString(index) + ":";
+                            currentRow += reader.GetValue(index) + ",";
 
                         queryResults.Add(currentRow);
                     }

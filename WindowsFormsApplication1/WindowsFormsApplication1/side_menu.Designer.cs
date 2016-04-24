@@ -36,7 +36,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.databaseTabPage = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.risksDataGridView = new System.Windows.Forms.DataGridView();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nextRevisionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -122,7 +122,7 @@
             this.splitContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.databaseTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.risksDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.risksDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -221,7 +221,7 @@
             // 
             // databaseTabPage
             // 
-            this.databaseTabPage.Controls.Add(this.dataGridView1);
+            this.databaseTabPage.Controls.Add(this.risksDataGridView);
             this.databaseTabPage.Controls.Add(this.groupBox1);
             this.databaseTabPage.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.databaseTabPage.Location = new System.Drawing.Point(4, 22);
@@ -232,16 +232,16 @@
             this.databaseTabPage.Text = "Database";
             this.databaseTabPage.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // risksDataGridView
             // 
-            this.dataGridView1.AllowDrop = true;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.risksDataGridView.AllowDrop = true;
+            this.risksDataGridView.AllowUserToOrderColumns = true;
+            this.risksDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.risksDataGridView.AutoGenerateColumns = false;
+            this.risksDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.risksDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.iDDataGridViewTextBoxColumn,
             this.dateDataGridViewTextBoxColumn,
             this.nextRevisionDataGridViewTextBoxColumn,
@@ -258,12 +258,12 @@
             this.consequenceAfterDataGridViewTextBoxColumn,
             this.statusAfterDataGridViewTextBoxColumn,
             this.evaluationAfterDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.tableBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(18, 156);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(557, 468);
-            this.dataGridView1.TabIndex = 0;
+            this.risksDataGridView.DataSource = this.tableBindingSource;
+            this.risksDataGridView.Location = new System.Drawing.Point(18, 156);
+            this.risksDataGridView.Name = "risksDataGridView";
+            this.risksDataGridView.ReadOnly = true;
+            this.risksDataGridView.Size = new System.Drawing.Size(557, 468);
+            this.risksDataGridView.TabIndex = 0;
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -954,7 +954,7 @@
             this.splitContainer1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.databaseTabPage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.risksDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.risksDataSet)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -1066,7 +1066,7 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.ComboBox comboBox18;
         private System.Windows.Forms.Label userLabel;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView risksDataGridView;
         private RisksDataSet risksDataSet;
         private System.Windows.Forms.BindingSource tableBindingSource;
         private RisksDataSetTableAdapters.TableTableAdapter tableTableAdapter;
