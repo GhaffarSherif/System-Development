@@ -22,8 +22,8 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
 
-            username = login.user.Split(':')[0];
-            userType = login.user.Split(':')[2];
+            username = Program.userInfo.Split(':')[0];
+            userType = Program.userInfo.Split(':')[2];
 
             userLabel.Text = username;
             if (!userType.Equals("Admin"))
@@ -34,9 +34,6 @@ namespace WindowsFormsApplication1
         {
             // TODO: This line of code loads data into the 'risksDataSet.Table' table. You can move, or remove it, as needed.
             this.tableTableAdapter.Fill(this.risksDataSet.Table);
-
-            s = new settings();
-            f = new filterList();
         }
 
         private void side_menu_FormClosed(object sender, FormClosedEventArgs e)

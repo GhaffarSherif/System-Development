@@ -49,6 +49,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.editUserTabPage = new System.Windows.Forms.TabPage();
+            this.deleteUserButton = new System.Windows.Forms.Button();
             this.editUserButton = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.editUserTypeComboBox = new System.Windows.Forms.ComboBox();
@@ -57,10 +58,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.editPasswordTextBox = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.editUsernameComboBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tableTableAdapter = new WindowsFormsApplication1.UsersDataSetTableAdapters.TableTableAdapter();
-            this.editUsernameComboBox = new System.Windows.Forms.ComboBox();
-            this.deleteUserButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.usersListTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersDataGridView)).BeginInit();
@@ -101,6 +101,10 @@
             // 
             // usersDataGridView
             // 
+            this.usersDataGridView.AllowUserToAddRows = false;
+            this.usersDataGridView.AllowUserToDeleteRows = false;
+            this.usersDataGridView.AllowUserToResizeColumns = false;
+            this.usersDataGridView.AllowUserToResizeRows = false;
             this.usersDataGridView.AutoGenerateColumns = false;
             this.usersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.usersDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -109,6 +113,7 @@
             this.userTypeDataGridViewTextBoxColumn});
             this.usersDataGridView.DataSource = this.tableBindingSource;
             this.usersDataGridView.Location = new System.Drawing.Point(3, 3);
+            this.usersDataGridView.MultiSelect = false;
             this.usersDataGridView.Name = "usersDataGridView";
             this.usersDataGridView.ReadOnly = true;
             this.usersDataGridView.Size = new System.Drawing.Size(245, 205);
@@ -265,6 +270,16 @@
             this.editUserTabPage.Text = "Edit Users";
             this.editUserTabPage.UseVisualStyleBackColor = true;
             // 
+            // deleteUserButton
+            // 
+            this.deleteUserButton.Location = new System.Drawing.Point(13, 175);
+            this.deleteUserButton.Name = "deleteUserButton";
+            this.deleteUserButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteUserButton.TabIndex = 9;
+            this.deleteUserButton.Text = "Delete User";
+            this.deleteUserButton.UseVisualStyleBackColor = true;
+            this.deleteUserButton.Click += new System.EventHandler(this.deleteUserButton_Click);
+            // 
             // editUserButton
             // 
             this.editUserButton.Location = new System.Drawing.Point(94, 175);
@@ -341,6 +356,18 @@
             this.panel6.Size = new System.Drawing.Size(239, 48);
             this.panel6.TabIndex = 5;
             // 
+            // editUsernameComboBox
+            // 
+            this.editUsernameComboBox.DataSource = this.tableBindingSource;
+            this.editUsernameComboBox.DisplayMember = "Username";
+            this.editUsernameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.editUsernameComboBox.FormattingEnabled = true;
+            this.editUsernameComboBox.Location = new System.Drawing.Point(7, 21);
+            this.editUsernameComboBox.Name = "editUsernameComboBox";
+            this.editUsernameComboBox.Size = new System.Drawing.Size(226, 21);
+            this.editUsernameComboBox.TabIndex = 2;
+            this.editUsernameComboBox.SelectionChangeCommitted += new System.EventHandler(this.editUsernameComboBox_SelectionChangeCommited);
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -353,27 +380,6 @@
             // tableTableAdapter
             // 
             this.tableTableAdapter.ClearBeforeFill = true;
-            // 
-            // editUsernameComboBox
-            // 
-            this.editUsernameComboBox.DataSource = this.tableBindingSource;
-            this.editUsernameComboBox.DisplayMember = "Username";
-            this.editUsernameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.editUsernameComboBox.FormattingEnabled = true;
-            this.editUsernameComboBox.Location = new System.Drawing.Point(7, 21);
-            this.editUsernameComboBox.Name = "editUsernameComboBox";
-            this.editUsernameComboBox.Size = new System.Drawing.Size(226, 21);
-            this.editUsernameComboBox.TabIndex = 2;
-            // 
-            // deleteUserButton
-            // 
-            this.deleteUserButton.Location = new System.Drawing.Point(13, 175);
-            this.deleteUserButton.Name = "deleteUserButton";
-            this.deleteUserButton.Size = new System.Drawing.Size(75, 23);
-            this.deleteUserButton.TabIndex = 9;
-            this.deleteUserButton.Text = "Delete User";
-            this.deleteUserButton.UseVisualStyleBackColor = true;
-            this.deleteUserButton.Click += new System.EventHandler(this.deleteUserButton_Click);
             // 
             // settings
             // 

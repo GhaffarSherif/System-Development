@@ -13,14 +13,8 @@ namespace WindowsFormsApplication1
 {
     public partial class login : Form
     {
-        public static String connectionString;
-
-        public static String user;
-
         public login()
         {
-            connectionString = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=\"C:\\Users\\Graal\\Desktop\\Team Project\\System-Development\\WindowsFormsApplication1\\WindowsFormsApplication1\\Users.mdf\";Integrated Security=True";
-            
             InitializeComponent();
         }
 
@@ -31,14 +25,14 @@ namespace WindowsFormsApplication1
                               "WHERE Username = '" + usernameTextBox.Text + "'" +
                               "AND Password = '" + passwordTextBox.Text + "'");
 
-            List<String> users = queryUserDatabase(sqlComm);
+            List<String> users = Program.queryDatabase(Program.usersConnectionString, sqlComm);
             if (users.Count == 0)
             {
                 invalidLoginCredentials();
                 return;
             }
 
-            user = users[0];
+            Program.userInfo = users[0];
             Dispose(true);
             Close();
 
@@ -54,36 +48,15 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public static List<String> queryUserDatabase(String sqlComm)
+        private void login_KeyDown(object sender, KeyEventArgs e)
         {
-            List<String> queryResults = new List<string>();
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand(sqlComm, connection))
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                         queryResults.Add(reader.GetString(0) + ":" + reader.GetString(1) + ":" + reader.GetString(2));
-                    }
-                }
-            }
-
-            return queryResults;
+            if (e.KeyCode == Keys.Enter)
+                loginButton_Click(sender, e);
         }
 
         private void invalidLoginCredentials()
         {
             MessageBox.Show("Invalid Username or Password");
-        }
-
-        private void login_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                loginButton_Click(sender, e);
         }
     }
 }
