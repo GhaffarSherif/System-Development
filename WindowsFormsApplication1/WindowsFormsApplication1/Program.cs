@@ -53,7 +53,7 @@ namespace WindowsFormsApplication1
             return queryResults;
         }
 
-        public static void editUsersDatabase(String connectionString, String sqlComm)
+        public static void editDatabase(String connectionString, String sqlComm)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

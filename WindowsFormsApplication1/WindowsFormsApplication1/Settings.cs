@@ -47,7 +47,7 @@ namespace WindowsFormsApplication1
                 return;
             }
 
-            Program.editUsersDatabase(Program.usersConnectionString, 
+            Program.editDatabase(Program.usersConnectionString, 
                                       "INSERT INTO [Table] ([Username], [Password], [User Type]) " + 
                                       "VALUES ('" + usernameTextBox.Text + "', '" + passwordTextBox.Text + "', '" + userTypeComboBox.Text + "')");
 
@@ -88,7 +88,7 @@ namespace WindowsFormsApplication1
                 return;
             }
 
-            Program.editUsersDatabase(Program.usersConnectionString,
+            Program.editDatabase(Program.usersConnectionString,
                                       "UPDATE [Table] SET Password = '" + editPasswordTextBox.Text + "', [User Type] = '" + editUserTypeComboBox.Text + "'" +
                                       "WHERE Username = '" + editUsernameComboBox.Text + "'");
 
@@ -108,7 +108,7 @@ namespace WindowsFormsApplication1
                 return;
             }
 
-            Program.editUsersDatabase(Program.usersConnectionString,
+            Program.editDatabase(Program.usersConnectionString,
                                       "DELETE FROM [Table] WHERE Username = '" + editUsernameComboBox.Text + "'");
 
             MessageBox.Show("User deleted");

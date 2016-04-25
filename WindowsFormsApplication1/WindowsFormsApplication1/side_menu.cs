@@ -36,6 +36,7 @@ namespace WindowsFormsApplication1
             this.tableTableAdapter.Fill(this.risksDataSet.Table);
 
             Program.updateDataGridView(Program.risksConnectionString, risksDataGridView);
+            updateRiskID();
         }
 
         private void side_menu_FormClosed(object sender, FormClosedEventArgs e)
@@ -58,16 +59,6 @@ namespace WindowsFormsApplication1
 
         private void viewFiltersButton_Click(object sender, EventArgs e)
         {
-            List<String> temp = Program.queryDatabase(Program.usersConnectionString, "select * from INFORMATION_SCHEMA.COLUMNS where TABLE_Name='Table' order by ORDINAL_POSITION");
-
-            String sTemp = "";
-            foreach (String str in temp)
-                sTemp += str + ",";
-
-            MessageBox.Show(sTemp);
-
-            
-
             f = new filterList();
             f.Show();
         }
@@ -83,6 +74,36 @@ namespace WindowsFormsApplication1
             Close();
 
             new login().Show();
+        }
+
+        private void viewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            viewFiltersButton_Click(sender, e);
+        }
+
+        private void addRiskButton_Click(object sender, EventArgs e)
+        {
+            if (!validateFields())
+            {
+                MessageBox.Show("Not all fields are filled");
+                return;
+            }
+
+            //Program.editDatabase(Program.risksConnectionString, 
+                //"INSERT INTO [Table] ([Date], [Next Revision], [Category], [Description], [Probability], [Consequence], [Status], [Evaluation], [Control Measure], [Response], [Responsible Person], [Probability After], [Consequence After], [Status After], [Evaluation After]) " +
+                //"VALUES ('" + Convert.ToDateTime("04/24/2016") + "', '" + Convert.ToDateTime("04/24/2016") + "', 'Test Category', 'Test Description', '1', '2', 'WAIT', '4', 'Test CM', 'Test Response', 'Person', '5', '6', 'OK', '7')");
+                //"INSERT INTO [Table] ([Date], [Next Revision], [Category], [Description]) " + 
+                //"VALUES ('" + dateTimePicker.Text + "', '" + nextRevisionDateTimePicker.Text + "', '" + riskCategoryComboBox.Text + "', '" + descriptionTextBox.Text + "')");
+        }
+
+        private bool validateFields()
+        {
+            return true;
+        }
+
+        private void updateRiskID()
+        {
+            riskIDTextBox.Text = Program.queryDatabase(Program.risksConnectionString, "SELECT IDENT_CURRENT('Table')")[0].Split(',')[0];
         }
     }
 }
