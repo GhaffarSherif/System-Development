@@ -23,8 +23,8 @@ namespace WindowsFormsApplication1
             Application.Run();
         }
 
-        public static String usersConnectionString = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=\"C:\\Users\\Graal\\Desktop\\Team Project\\System-Development\\WindowsFormsApplication1\\WindowsFormsApplication1\\Users.mdf\";Integrated Security=True";
-        public static String risksConnectionString = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=\"C:\\Users\\Graal\\Desktop\\Team Project\\System-Development\\WindowsFormsApplication1\\WindowsFormsApplication1\\Risks.mdf\";Integrated Security=True";
+        public static String usersConnectionString = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=\"C:\\Users\\cstuser\\Desktop\\System-Development-master\\WindowsFormsApplication1\\WindowsFormsApplication1\\Users.mdf\";Integrated Security=True";
+        public static String risksConnectionString = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=\"C:\\Users\\cstuser\\Desktop\\System-Development-master\\WindowsFormsApplication1\\WindowsFormsApplication1\\Risks.mdf\";Integrated Security=True";
         public static String userInfo;
 
         public static char fieldSeparationCharacter = ',';

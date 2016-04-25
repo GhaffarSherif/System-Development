@@ -14,6 +14,7 @@ namespace WindowsFormsApplication1
     {
         settings s;
         filterList f;
+        editRisks v;
 
         public static String username;
         public static String userType;
@@ -59,6 +60,9 @@ namespace WindowsFormsApplication1
 
         private void viewFiltersButton_Click(object sender, EventArgs e)
         {
+            if (Application.OpenForms["filterList"] != null)
+                f.Close();
+
             f = new filterList();
             f.Show();
         }
@@ -89,11 +93,27 @@ namespace WindowsFormsApplication1
                 return;
             }
 
-            //Program.editDatabase(Program.risksConnectionString, 
-                //"INSERT INTO [Table] ([Date], [Next Revision], [Category], [Description], [Probability], [Consequence], [Status], [Evaluation], [Control Measure], [Response], [Responsible Person], [Probability After], [Consequence After], [Status After], [Evaluation After]) " +
-                //"VALUES ('" + Convert.ToDateTime("04/24/2016") + "', '" + Convert.ToDateTime("04/24/2016") + "', 'Test Category', 'Test Description', '1', '2', 'WAIT', '4', 'Test CM', 'Test Response', 'Person', '5', '6', 'OK', '7')");
-                //"INSERT INTO [Table] ([Date], [Next Revision], [Category], [Description]) " + 
-                //"VALUES ('" + dateTimePicker.Text + "', '" + nextRevisionDateTimePicker.Text + "', '" + riskCategoryComboBox.Text + "', '" + descriptionTextBox.Text + "')");
+            Program.editDatabase(Program.risksConnectionString, 
+            "INSERT INTO [Table] ([Date], [Next Revision], [Category], [Description], [Probability], [Consequence], [Status], [Evaluation], [Control Measure], [Response], [Responsible Person], [Probability After], [Consequence After], [Status After], [Evaluation After]) " +
+            "VALUES ('" + dateTimePicker.Value.ToShortDateString() + "', '" 
+            + nextRevisionDateTimePicker.Value.ToShortDateString() + "', '" 
+            + riskCategoryComboBox.Text + "', '"
+            + descriptionTextBox.Text + "', '"
+            + probabilityComboBox.Text + "', '"
+            + consequenceComboBox.Text + "', '"
+            + statusComboBox.Text + "', '"
+            + (Convert.ToInt32(probabilityComboBox.Text) * Convert.ToInt32(consequenceComboBox.Text)) + "', '"
+            + controlMeasuresTextBox.Text + "', '"
+            + riskResponseTextBox.Text + "', '"
+            + responsiblePersonTextBox.Text + "', '"
+            + probabilityAfterComboBox.Text + "', '"
+            + consequenceAfterComboBox.Text + "', '" 
+            + statusAfterComboBox.Text + "', '"
+            + (Convert.ToInt32(probabilityAfterComboBox.Text) * Convert.ToInt32(consequenceAfterComboBox.Text)) 
+            +"')");
+
+            Program.updateDataGridView(Program.risksConnectionString, risksDataGridView);
+            updateRiskID();
         }
 
         private bool validateFields()
@@ -103,7 +123,16 @@ namespace WindowsFormsApplication1
 
         private void updateRiskID()
         {
-            riskIDTextBox.Text = Program.queryDatabase(Program.risksConnectionString, "SELECT IDENT_CURRENT('Table')")[0].Split(Program.fieldSeparationCharacter)[0];
+            riskIDTextBox.Text = "" + (Convert.ToInt32(Program.queryDatabase(Program.risksConnectionString, "SELECT IDENT_CURRENT('Table')")[0].Split(Program.fieldSeparationCharacter)[0]) + 1);
+        }
+
+        private void editRiskToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms["editRisks"] != null)
+                v.Close();
+
+            v = new editRisks();
+            v.Show();
         }
     }
 }

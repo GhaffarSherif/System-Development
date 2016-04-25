@@ -65,6 +65,10 @@
     <Compile Include="filterList.Designer.cs">
       <DependentUpon>filterList.cs</DependentUpon>
     </Compile>
+    <Compile Include="RisksDataSet.cs">
+      <DependentUpon>RisksDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +99,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UsersDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="editRisks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editRisks.Designer.cs">
+      <DependentUpon>editRisks.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="filterList.resx">
       <DependentUpon>filterList.cs</DependentUpon>
     </EmbeddedResource>
@@ -115,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="side_menu.resx">
       <DependentUpon>side_menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editRisks.resx">
+      <DependentUpon>editRisks.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

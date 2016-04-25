@@ -53,6 +53,12 @@
             this.consequenceAfterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusAfterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.evaluationAfterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.filterMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.filtersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addFIlterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.risksDataSet = new WindowsFormsApplication1.RisksDataSet();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -76,7 +82,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.riskIDTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.addRiskButton = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.panel16 = new System.Windows.Forms.Panel();
@@ -116,12 +121,7 @@
             this.label26 = new System.Windows.Forms.Label();
             this.riskCategoryComboBox = new System.Windows.Forms.ComboBox();
             this.tableTableAdapter = new WindowsFormsApplication1.RisksDataSetTableAdapters.TableTableAdapter();
-            this.filterMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.filtersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addFIlterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editRiskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -129,6 +129,7 @@
             this.tabControl1.SuspendLayout();
             this.databaseTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.risksDataGridView)).BeginInit();
+            this.filterMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.risksDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -154,7 +155,6 @@
             this.groupBox8.SuspendLayout();
             this.panel27.SuspendLayout();
             this.panel28.SuspendLayout();
-            this.filterMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -267,7 +267,7 @@
             this.evaluationAfterDataGridViewTextBoxColumn});
             this.risksDataGridView.ContextMenuStrip = this.filterMenuStrip;
             this.risksDataGridView.DataSource = this.tableBindingSource;
-            this.risksDataGridView.Location = new System.Drawing.Point(18, 156);
+            this.risksDataGridView.Location = new System.Drawing.Point(29, 154);
             this.risksDataGridView.Name = "risksDataGridView";
             this.risksDataGridView.ReadOnly = true;
             this.risksDataGridView.Size = new System.Drawing.Size(557, 468);
@@ -384,6 +384,49 @@
             this.evaluationAfterDataGridViewTextBoxColumn.HeaderText = "Evaluation After";
             this.evaluationAfterDataGridViewTextBoxColumn.Name = "evaluationAfterDataGridViewTextBoxColumn";
             this.evaluationAfterDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // filterMenuStrip
+            // 
+            this.filterMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.filtersToolStripMenuItem,
+            this.editRiskToolStripMenuItem});
+            this.filterMenuStrip.Name = "filterMenuStrip";
+            this.filterMenuStrip.Size = new System.Drawing.Size(119, 48);
+            // 
+            // filtersToolStripMenuItem
+            // 
+            this.filtersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addFIlterToolStripMenuItem,
+            this.viewToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.clearToolStripMenuItem});
+            this.filtersToolStripMenuItem.Name = "filtersToolStripMenuItem";
+            this.filtersToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.filtersToolStripMenuItem.Text = "Filters";
+            // 
+            // addFIlterToolStripMenuItem
+            // 
+            this.addFIlterToolStripMenuItem.Name = "addFIlterToolStripMenuItem";
+            this.addFIlterToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.addFIlterToolStripMenuItem.Text = "Add";
+            // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.viewToolStripMenuItem.Text = "View";
+            this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(98, 6);
+            // 
+            // clearToolStripMenuItem
+            // 
+            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.clearToolStripMenuItem.Text = "Clear";
             // 
             // tableBindingSource
             // 
@@ -504,7 +547,6 @@
             this.panel15.Controls.Add(this.panel2);
             this.panel15.Controls.Add(this.panel3);
             this.panel15.Controls.Add(this.panel1);
-            this.panel15.Controls.Add(this.label1);
             this.panel15.Controls.Add(this.addRiskButton);
             this.panel15.Controls.Add(this.groupBox5);
             this.panel15.Controls.Add(this.groupBox7);
@@ -590,15 +632,6 @@
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 7;
             this.label2.Text = "Risk ID";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(403, 600);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(163, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Last modified by USER on DATE";
             // 
             // addRiskButton
             // 
@@ -949,47 +982,12 @@
             // 
             this.tableTableAdapter.ClearBeforeFill = true;
             // 
-            // filterMenuStrip
+            // editRiskToolStripMenuItem
             // 
-            this.filterMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.filtersToolStripMenuItem});
-            this.filterMenuStrip.Name = "filterMenuStrip";
-            this.filterMenuStrip.Size = new System.Drawing.Size(106, 26);
-            // 
-            // filtersToolStripMenuItem
-            // 
-            this.filtersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addFIlterToolStripMenuItem,
-            this.viewToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.clearToolStripMenuItem});
-            this.filtersToolStripMenuItem.Name = "filtersToolStripMenuItem";
-            this.filtersToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
-            this.filtersToolStripMenuItem.Text = "Filters";
-            // 
-            // addFIlterToolStripMenuItem
-            // 
-            this.addFIlterToolStripMenuItem.Name = "addFIlterToolStripMenuItem";
-            this.addFIlterToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.addFIlterToolStripMenuItem.Text = "Add";
-            // 
-            // viewToolStripMenuItem
-            // 
-            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.viewToolStripMenuItem.Text = "View";
-            this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
-            // 
-            // clearToolStripMenuItem
-            // 
-            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.clearToolStripMenuItem.Text = "Clear";
+            this.editRiskToolStripMenuItem.Name = "editRiskToolStripMenuItem";
+            this.editRiskToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editRiskToolStripMenuItem.Text = "Edit Risk";
+            this.editRiskToolStripMenuItem.Click += new System.EventHandler(this.editRiskToolStripMenuItem_Click);
             // 
             // side_menu
             // 
@@ -1009,6 +1007,7 @@
             this.tabControl1.ResumeLayout(false);
             this.databaseTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.risksDataGridView)).EndInit();
+            this.filterMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.risksDataSet)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -1018,7 +1017,6 @@
             this.panel4.PerformLayout();
             this.addRiskTabPage.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
-            this.panel15.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -1051,7 +1049,6 @@
             this.panel27.PerformLayout();
             this.panel28.ResumeLayout(false);
             this.panel28.PerformLayout();
-            this.filterMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1081,7 +1078,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox riskIDTextBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button addRiskButton;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Panel panel16;
@@ -1151,5 +1147,6 @@
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editRiskToolStripMenuItem;
     }
 }
