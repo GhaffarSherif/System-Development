@@ -22,8 +22,8 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
 
-            username = Program.userInfo.Split(',')[0];
-            userType = Program.userInfo.Split(',')[2];
+            username = Program.userInfo.Split(Program.fieldSeparationCharacter)[0];
+            userType = Program.userInfo.Split(Program.fieldSeparationCharacter)[2];
 
             userLabel.Text = username;
             if (!userType.Equals("Admin"))
@@ -103,7 +103,7 @@ namespace WindowsFormsApplication1
 
         private void updateRiskID()
         {
-            riskIDTextBox.Text = Program.queryDatabase(Program.risksConnectionString, "SELECT IDENT_CURRENT('Table')")[0].Split(',')[0];
+            riskIDTextBox.Text = Program.queryDatabase(Program.risksConnectionString, "SELECT IDENT_CURRENT('Table')")[0].Split(Program.fieldSeparationCharacter)[0];
         }
     }
 }

@@ -69,7 +69,7 @@ namespace WindowsFormsApplication1
 
         private void editUsernameComboBox_SelectionChangeCommited(object sender, EventArgs e)
         {
-            String[] selectedUserInfo = Program.queryDatabase(Program.usersConnectionString, "SELECT * FROM [Table] WHERE Username = '" + editUsernameComboBox.Text + "'")[0].Split(',');
+            String[] selectedUserInfo = Program.queryDatabase(Program.usersConnectionString, "SELECT * FROM [Table] WHERE Username = '" + editUsernameComboBox.Text + "'")[0].Split(Program.fieldSeparationCharacter);
 
             editPasswordTextBox.Text = selectedUserInfo[1];
             editUserTypeComboBox.Text = selectedUserInfo[2];
