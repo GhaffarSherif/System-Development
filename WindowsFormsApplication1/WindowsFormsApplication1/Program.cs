@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -19,12 +20,15 @@ namespace WindowsFormsApplication1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            usersConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["WindowsFormsApplication1.Properties.Settings.UsersConnectionString"].ConnectionString;
+            risksConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["WindowsFormsApplication1.Properties.Settings.RisksConnectionString"].ConnectionString;
+
             new login().Show();
             Application.Run();
         }
 
-        public static String usersConnectionString = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=\"C:\\Users\\cstuser\\Desktop\\System-Development-master\\WindowsFormsApplication1\\WindowsFormsApplication1\\Users.mdf\";Integrated Security=True";
-        public static String risksConnectionString = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=\"C:\\Users\\cstuser\\Desktop\\System-Development-master\\WindowsFormsApplication1\\WindowsFormsApplication1\\Risks.mdf\";Integrated Security=True";
+        public static String usersConnectionString;
+        public static String risksConnectionString;
         public static String userInfo;
 
         public static char fieldSeparationCharacter = ',';
