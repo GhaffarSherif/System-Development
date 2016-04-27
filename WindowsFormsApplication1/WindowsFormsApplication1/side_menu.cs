@@ -38,6 +38,8 @@ namespace WindowsFormsApplication1
 
             Program.updateDataGridView(Program.risksConnectionString, risksDataGridView);
             updateRiskID();
+
+            //nextRevisionDateTimePicker.Value
         }
 
         private void side_menu_FormClosed(object sender, FormClosedEventArgs e)
@@ -112,8 +114,25 @@ namespace WindowsFormsApplication1
             + (Convert.ToInt32(probabilityAfterComboBox.Text) * Convert.ToInt32(consequenceAfterComboBox.Text)) 
             +"')");
 
+            MessageBox.Show("Risk added");
+            descriptionTextBox.Clear();
+            probabilityComboBox.ResetText();
+            consequenceComboBox.ResetText();
+            statusComboBox.ResetText();
+            probabilityComboBox.ResetText();
+            consequenceComboBox.ResetText();
+            controlMeasuresTextBox.Clear();
+            riskResponseTextBox.Clear();
+            responsiblePersonTextBox.Clear();
+            probabilityAfterComboBox.ResetText();
+            consequenceAfterComboBox.ResetText();
+            statusAfterComboBox.ResetText();
+            probabilityAfterComboBox.ResetText();
+            consequenceAfterComboBox.ResetText();
+
             Program.updateDataGridView(Program.risksConnectionString, risksDataGridView);
             updateRiskID();
+
         }
 
         private bool validateFields()
@@ -133,6 +152,8 @@ namespace WindowsFormsApplication1
 
             v = new editRisks();
             v.Show();
+
+            //v
         }
     }
 }

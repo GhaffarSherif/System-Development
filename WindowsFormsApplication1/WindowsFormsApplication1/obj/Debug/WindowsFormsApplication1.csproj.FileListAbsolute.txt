@@ -83,3 +83,5 @@ C:\Users\cstuser\Desktop\System-Development-master\WindowsFormsApplication1\Wind
 C:\Users\cstuser\Desktop\System-Development-master\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
 C:\Users\cstuser\Desktop\System-Development-master\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.editRisks.resources
 C:\Users\Graal\Desktop\Team Project\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.editRisks.resources
+C:\Users\cstuser\Desktop\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.filterList.resources
+C:\Users\cstuser\Desktop\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.editRisks.resources

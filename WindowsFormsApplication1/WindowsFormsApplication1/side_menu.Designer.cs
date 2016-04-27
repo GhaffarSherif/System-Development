@@ -59,6 +59,7 @@
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editRiskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.risksDataSet = new WindowsFormsApplication1.RisksDataSet();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -121,7 +122,6 @@
             this.label26 = new System.Windows.Forms.Label();
             this.riskCategoryComboBox = new System.Windows.Forms.ComboBox();
             this.tableTableAdapter = new WindowsFormsApplication1.RisksDataSetTableAdapters.TableTableAdapter();
-            this.editRiskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -401,7 +401,7 @@
             this.toolStripSeparator1,
             this.clearToolStripMenuItem});
             this.filtersToolStripMenuItem.Name = "filtersToolStripMenuItem";
-            this.filtersToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.filtersToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.filtersToolStripMenuItem.Text = "Filters";
             // 
             // addFIlterToolStripMenuItem
@@ -427,6 +427,13 @@
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
             this.clearToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
             this.clearToolStripMenuItem.Text = "Clear";
+            // 
+            // editRiskToolStripMenuItem
+            // 
+            this.editRiskToolStripMenuItem.Name = "editRiskToolStripMenuItem";
+            this.editRiskToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.editRiskToolStripMenuItem.Text = "Edit Risk";
+            this.editRiskToolStripMenuItem.Click += new System.EventHandler(this.editRiskToolStripMenuItem_Click);
             // 
             // tableBindingSource
             // 
@@ -981,13 +988,6 @@
             // tableTableAdapter
             // 
             this.tableTableAdapter.ClearBeforeFill = true;
-            // 
-            // editRiskToolStripMenuItem
-            // 
-            this.editRiskToolStripMenuItem.Name = "editRiskToolStripMenuItem";
-            this.editRiskToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.editRiskToolStripMenuItem.Text = "Edit Risk";
-            this.editRiskToolStripMenuItem.Click += new System.EventHandler(this.editRiskToolStripMenuItem_Click);
             // 
             // side_menu
             // 
