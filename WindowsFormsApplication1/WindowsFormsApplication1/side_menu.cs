@@ -39,7 +39,7 @@ namespace WindowsFormsApplication1
             Program.updateDataGridView(Program.risksConnectionString, risksDataGridView);
             updateRiskID();
 
-            //nextRevisionDateTimePicker.Value
+            nextRevisionDateTimePicker.Value = dateTimePicker.Value.AddYears(3);
         }
 
         private void side_menu_FormClosed(object sender, FormClosedEventArgs e)
@@ -119,16 +119,12 @@ namespace WindowsFormsApplication1
             probabilityComboBox.ResetText();
             consequenceComboBox.ResetText();
             statusComboBox.ResetText();
-            probabilityComboBox.ResetText();
-            consequenceComboBox.ResetText();
             controlMeasuresTextBox.Clear();
             riskResponseTextBox.Clear();
             responsiblePersonTextBox.Clear();
             probabilityAfterComboBox.ResetText();
             consequenceAfterComboBox.ResetText();
             statusAfterComboBox.ResetText();
-            probabilityAfterComboBox.ResetText();
-            consequenceAfterComboBox.ResetText();
 
             Program.updateDataGridView(Program.risksConnectionString, risksDataGridView);
             updateRiskID();
@@ -137,6 +133,29 @@ namespace WindowsFormsApplication1
 
         private bool validateFields()
         {
+            if (riskCategoryComboBox.Text.Equals(""))
+                return false;
+            else if (descriptionTextBox.Text.Equals(""))
+                return false;
+            else if(probabilityAfterComboBox.Text.Equals(""))
+                return false;
+            else if(consequenceComboBox.Text.Equals(""))
+                return false;
+            else if (statusComboBox.Text.Equals(""))
+                return false;
+            else if(controlMeasuresTextBox.Text.Equals(""))
+                return false;
+            else if(riskResponseTextBox.Text.Equals(""))
+                return false;
+            else if(responsiblePersonTextBox.Text.Equals(""))
+                return false;
+            else if(probabilityAfterComboBox.Text.Equals(""))
+                return false;
+            else if(consequenceAfterComboBox.Text.Equals(""))
+                return false;
+            else if(statusAfterComboBox.Text.Equals(""))
+                return false;
+
             return true;
         }
 
@@ -152,26 +171,11 @@ namespace WindowsFormsApplication1
 
             v = new editRisks();
             v.Show();
-
-            //v
         }
 
-        
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        private void dateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            Graphics g = e.Graphics;
-            g.PageUnit = GraphicsUnit.Inch;
-            
-        
-            String message = "Summary Report";
-            Font messageFont = new Font("Arial",
-                     24, System.Drawing.GraphicsUnit.Point);
-            g.DrawString(message, messageFont, Brushes.Black, 100, 100);
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            printPreviewDialog1.ShowDialog();
+            nextRevisionDateTimePicker.Value = dateTimePicker.Value.AddYears(3);
         }
     }
 }
