@@ -155,5 +155,23 @@ namespace WindowsFormsApplication1
 
             //v
         }
+
+        
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.PageUnit = GraphicsUnit.Inch;
+            
+        
+            String message = "Summary Report";
+            Font messageFont = new Font("Arial",
+                     24, System.Drawing.GraphicsUnit.Point);
+            g.DrawString(message, messageFont, Brushes.Black, 100, 100);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            printPreviewDialog1.ShowDialog();
+        }
     }
 }

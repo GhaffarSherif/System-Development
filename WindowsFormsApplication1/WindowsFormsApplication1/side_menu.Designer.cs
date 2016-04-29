@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(side_menu));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.settingsButton = new System.Windows.Forms.Button();
             this.userLabel = new System.Windows.Forms.Label();
@@ -122,6 +123,9 @@
             this.label26 = new System.Windows.Forms.Label();
             this.riskCategoryComboBox = new System.Windows.Forms.ComboBox();
             this.tableTableAdapter = new WindowsFormsApplication1.RisksDataSetTableAdapters.TableTableAdapter();
+            this.button2 = new System.Windows.Forms.Button();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -447,6 +451,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.viewFiltersButton);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button1);
@@ -989,6 +994,31 @@
             // 
             this.tableTableAdapter.ClearBeforeFill = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(286, 87);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Print";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Document = this.printDocument1;
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
             // side_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1148,5 +1178,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editRiskToolStripMenuItem;
+        private System.Windows.Forms.Button button2;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }

@@ -85,3 +85,20 @@ C:\Users\cstuser\Desktop\System-Development-master\WindowsFormsApplication1\Wind
 C:\Users\Graal\Desktop\Team Project\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.editRisks.resources
 C:\Users\cstuser\Desktop\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.filterList.resources
 C:\Users\cstuser\Desktop\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.editRisks.resources
+H:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+H:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+H:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+H:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\Risks.mdf
+H:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\Risks_log.ldf
+H:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\Users.mdf
+H:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\Users_log.ldf
+H:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+H:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+H:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+H:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.filterList.resources
+H:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.login.resources
+H:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+H:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.settings.resources
+H:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.side_menu.resources
+H:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.editRisks.resources
+H:\Semester 4\Sys Dev\System-Development\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
