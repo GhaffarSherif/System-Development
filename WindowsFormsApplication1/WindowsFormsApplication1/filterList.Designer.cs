@@ -28,47 +28,63 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.filterListView = new System.Windows.Forms.ListView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.filterTypeColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.filterValueColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.removeFilterButton = new System.Windows.Forms.Button();
+            this.filterListBox = new System.Windows.Forms.ListBox();
+            this.groupAndButton = new System.Windows.Forms.Button();
+            this.groupOrButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // filterListView
+            // removeFilterButton
             // 
-            this.filterListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.filterTypeColumn,
-            this.filterValueColumn});
-            this.filterListView.Location = new System.Drawing.Point(12, 12);
-            this.filterListView.Name = "filterListView";
-            this.filterListView.Size = new System.Drawing.Size(260, 208);
-            this.filterListView.TabIndex = 0;
-            this.filterListView.UseCompatibleStateImageBehavior = false;
+            this.removeFilterButton.Location = new System.Drawing.Point(12, 226);
+            this.removeFilterButton.Name = "removeFilterButton";
+            this.removeFilterButton.Size = new System.Drawing.Size(80, 23);
+            this.removeFilterButton.TabIndex = 1;
+            this.removeFilterButton.Text = "Remove Filter";
+            this.removeFilterButton.UseVisualStyleBackColor = true;
+            this.removeFilterButton.Click += new System.EventHandler(this.removeFilterButton_Click);
             // 
-            // button1
+            // filterListBox
             // 
-            this.button1.Location = new System.Drawing.Point(90, 226);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Remove Filter";
-            this.button1.UseVisualStyleBackColor = true;
+            this.filterListBox.FormattingEnabled = true;
+            this.filterListBox.HorizontalScrollbar = true;
+            this.filterListBox.Location = new System.Drawing.Point(12, 9);
+            this.filterListBox.Name = "filterListBox";
+            this.filterListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.filterListBox.Size = new System.Drawing.Size(256, 212);
+            this.filterListBox.TabIndex = 2;
             // 
-            // filterTypeColumn
+            // groupAndButton
             // 
-            this.filterTypeColumn.Text = "Filter Type";
+            this.groupAndButton.Location = new System.Drawing.Point(124, 226);
+            this.groupAndButton.Name = "groupAndButton";
+            this.groupAndButton.Size = new System.Drawing.Size(72, 23);
+            this.groupAndButton.TabIndex = 3;
+            this.groupAndButton.Tag = "";
+            this.groupAndButton.Text = "Group AND";
+            this.groupAndButton.UseVisualStyleBackColor = true;
+            this.groupAndButton.Click += new System.EventHandler(this.groupAndButton_Click);
             // 
-            // filterValueColumn
+            // groupOrButton
             // 
-            this.filterValueColumn.Text = "Filter Value";
+            this.groupOrButton.Location = new System.Drawing.Point(202, 226);
+            this.groupOrButton.Name = "groupOrButton";
+            this.groupOrButton.Size = new System.Drawing.Size(66, 23);
+            this.groupOrButton.TabIndex = 4;
+            this.groupOrButton.Tag = "";
+            this.groupOrButton.Text = "Group OR";
+            this.groupOrButton.UseVisualStyleBackColor = true;
+            this.groupOrButton.Click += new System.EventHandler(this.groupOrButton_Click);
             // 
             // filterList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.filterListView);
+            this.Controls.Add(this.groupOrButton);
+            this.Controls.Add(this.groupAndButton);
+            this.Controls.Add(this.filterListBox);
+            this.Controls.Add(this.removeFilterButton);
             this.Name = "filterList";
             this.Text = "Filter List";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.filterList_FormClosed);
@@ -78,9 +94,9 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView filterListView;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ColumnHeader filterTypeColumn;
-        private System.Windows.Forms.ColumnHeader filterValueColumn;
+        private System.Windows.Forms.Button removeFilterButton;
+        private System.Windows.Forms.ListBox filterListBox;
+        private System.Windows.Forms.Button groupAndButton;
+        private System.Windows.Forms.Button groupOrButton;
     }
 }
