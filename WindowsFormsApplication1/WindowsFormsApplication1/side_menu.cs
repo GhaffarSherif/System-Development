@@ -44,6 +44,7 @@ namespace WindowsFormsApplication1
             if (!userType.Equals("Admin"))
             {
                 tabControl1.TabPages.Remove(addRiskTabPage);
+                filterMenuStrip.Items.Remove(editRiskToolStripMenuItem);
                 settingsButton.Visible = false;
             }
 
