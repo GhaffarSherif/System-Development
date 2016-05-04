@@ -37,14 +37,20 @@
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.riskIDComboBox = new System.Windows.Forms.ComboBox();
+            this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.risksDataSet = new WindowsFormsApplication1.RisksDataSet();
             this.label2 = new System.Windows.Forms.Label();
             this.lastModifiedByLabel = new System.Windows.Forms.Label();
-            this.addRiskButton = new System.Windows.Forms.Button();
+            this.editRiskButton = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.panel16 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
             this.controlMeasuresTextBox = new System.Windows.Forms.RichTextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.evaluationAfterComboBox = new System.Windows.Forms.ComboBox();
             this.panel18 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
             this.statusAfterComboBox = new System.Windows.Forms.ComboBox();
@@ -61,6 +67,9 @@
             this.label20 = new System.Windows.Forms.Label();
             this.riskResponseTextBox = new System.Windows.Forms.RichTextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.evaluationComboBox = new System.Windows.Forms.ComboBox();
             this.panel24 = new System.Windows.Forms.Panel();
             this.label22 = new System.Windows.Forms.Label();
             this.statusComboBox = new System.Windows.Forms.ComboBox();
@@ -77,39 +86,30 @@
             this.panel28 = new System.Windows.Forms.Panel();
             this.label26 = new System.Windows.Forms.Label();
             this.riskCategoryComboBox = new System.Windows.Forms.ComboBox();
-            this.riskIDComboBox = new System.Windows.Forms.ComboBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.risksDataSet = new WindowsFormsApplication1.RisksDataSet();
-            this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableTableAdapter = new WindowsFormsApplication1.RisksDataSetTableAdapters.TableTableAdapter();
             this.panel15.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.risksDataSet)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.panel16.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel18.SuspendLayout();
             this.panel19.SuspendLayout();
             this.panel20.SuspendLayout();
             this.panel21.SuspendLayout();
             this.panel22.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel24.SuspendLayout();
             this.panel25.SuspendLayout();
             this.panel26.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.panel27.SuspendLayout();
             this.panel28.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.risksDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel15
@@ -118,7 +118,7 @@
             this.panel15.Controls.Add(this.panel3);
             this.panel15.Controls.Add(this.panel1);
             this.panel15.Controls.Add(this.lastModifiedByLabel);
-            this.panel15.Controls.Add(this.addRiskButton);
+            this.panel15.Controls.Add(this.editRiskButton);
             this.panel15.Controls.Add(this.groupBox5);
             this.panel15.Controls.Add(this.groupBox7);
             this.panel15.Controls.Add(this.groupBox8);
@@ -186,6 +186,28 @@
             this.panel1.Size = new System.Drawing.Size(126, 41);
             this.panel1.TabIndex = 8;
             // 
+            // riskIDComboBox
+            // 
+            this.riskIDComboBox.DataSource = this.tableBindingSource;
+            this.riskIDComboBox.DisplayMember = "ID";
+            this.riskIDComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.riskIDComboBox.FormattingEnabled = true;
+            this.riskIDComboBox.Location = new System.Drawing.Point(12, 14);
+            this.riskIDComboBox.Name = "riskIDComboBox";
+            this.riskIDComboBox.Size = new System.Drawing.Size(107, 21);
+            this.riskIDComboBox.TabIndex = 8;
+            this.riskIDComboBox.SelectionChangeCommitted += new System.EventHandler(this.riskIDComboBox_SelectionChangeCommitted);
+            // 
+            // tableBindingSource
+            // 
+            this.tableBindingSource.DataMember = "Table";
+            this.tableBindingSource.DataSource = this.risksDataSet;
+            // 
+            // risksDataSet
+            // 
+            this.risksDataSet.DataSetName = "RisksDataSet";
+            this.risksDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -204,14 +226,15 @@
             this.lastModifiedByLabel.TabIndex = 5;
             this.lastModifiedByLabel.Text = "Last modified by USER on DATE";
             // 
-            // addRiskButton
+            // editRiskButton
             // 
-            this.addRiskButton.Location = new System.Drawing.Point(239, 603);
-            this.addRiskButton.Name = "addRiskButton";
-            this.addRiskButton.Size = new System.Drawing.Size(75, 23);
-            this.addRiskButton.TabIndex = 4;
-            this.addRiskButton.Text = "Edit Risk";
-            this.addRiskButton.UseVisualStyleBackColor = true;
+            this.editRiskButton.Location = new System.Drawing.Point(239, 603);
+            this.editRiskButton.Name = "editRiskButton";
+            this.editRiskButton.Size = new System.Drawing.Size(75, 23);
+            this.editRiskButton.TabIndex = 4;
+            this.editRiskButton.Text = "Edit Risk";
+            this.editRiskButton.UseVisualStyleBackColor = true;
+            this.editRiskButton.Click += new System.EventHandler(this.editRiskButton_Click);
             // 
             // groupBox5
             // 
@@ -264,6 +287,32 @@
             this.groupBox6.TabIndex = 4;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "After Control";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.label6);
+            this.panel5.Controls.Add(this.evaluationAfterComboBox);
+            this.panel5.Location = new System.Drawing.Point(286, 63);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(200, 31);
+            this.panel5.TabIndex = 3;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 8);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(57, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Evaluation";
+            // 
+            // evaluationAfterComboBox
+            // 
+            this.evaluationAfterComboBox.FormattingEnabled = true;
+            this.evaluationAfterComboBox.Location = new System.Drawing.Point(76, 3);
+            this.evaluationAfterComboBox.Name = "evaluationAfterComboBox";
+            this.evaluationAfterComboBox.Size = new System.Drawing.Size(121, 21);
+            this.evaluationAfterComboBox.TabIndex = 0;
             // 
             // panel18
             // 
@@ -407,6 +456,32 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Priority";
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.label5);
+            this.panel4.Controls.Add(this.evaluationComboBox);
+            this.panel4.Location = new System.Drawing.Point(305, 61);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(200, 31);
+            this.panel4.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 8);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Evaluation";
+            // 
+            // evaluationComboBox
+            // 
+            this.evaluationComboBox.FormattingEnabled = true;
+            this.evaluationComboBox.Location = new System.Drawing.Point(76, 3);
+            this.evaluationComboBox.Name = "evaluationComboBox";
+            this.evaluationComboBox.Size = new System.Drawing.Size(121, 21);
+            this.evaluationComboBox.TabIndex = 0;
+            // 
             // panel24
             // 
             this.panel24.Controls.Add(this.label22);
@@ -542,85 +617,11 @@
             // 
             // riskCategoryComboBox
             // 
-            this.riskCategoryComboBox.DataSource = this.tableBindingSource;
-            this.riskCategoryComboBox.DisplayMember = "Category";
             this.riskCategoryComboBox.FormattingEnabled = true;
             this.riskCategoryComboBox.Location = new System.Drawing.Point(76, 3);
             this.riskCategoryComboBox.Name = "riskCategoryComboBox";
             this.riskCategoryComboBox.Size = new System.Drawing.Size(121, 21);
             this.riskCategoryComboBox.TabIndex = 0;
-            // 
-            // riskIDComboBox
-            // 
-            this.riskIDComboBox.DataSource = this.tableBindingSource;
-            this.riskIDComboBox.DisplayMember = "ID";
-            this.riskIDComboBox.FormattingEnabled = true;
-            this.riskIDComboBox.Location = new System.Drawing.Point(12, 14);
-            this.riskIDComboBox.Name = "riskIDComboBox";
-            this.riskIDComboBox.Size = new System.Drawing.Size(107, 21);
-            this.riskIDComboBox.TabIndex = 8;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.label5);
-            this.panel4.Controls.Add(this.comboBox1);
-            this.panel4.Location = new System.Drawing.Point(305, 61);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(200, 31);
-            this.panel4.TabIndex = 3;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 8);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Evaluation";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(76, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 0;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.label6);
-            this.panel5.Controls.Add(this.comboBox2);
-            this.panel5.Location = new System.Drawing.Point(286, 63);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(200, 31);
-            this.panel5.TabIndex = 3;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 8);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 13);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Evaluation";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(76, 3);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 0;
-            // 
-            // risksDataSet
-            // 
-            this.risksDataSet.DataSetName = "RisksDataSet";
-            this.risksDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tableBindingSource
-            // 
-            this.tableBindingSource.DataMember = "Table";
-            this.tableBindingSource.DataSource = this.risksDataSet;
             // 
             // tableTableAdapter
             // 
@@ -643,10 +644,14 @@
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.risksDataSet)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
             this.panel16.PerformLayout();
             this.groupBox6.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.panel18.ResumeLayout(false);
             this.panel18.PerformLayout();
             this.panel19.ResumeLayout(false);
@@ -658,6 +663,8 @@
             this.panel22.ResumeLayout(false);
             this.panel22.PerformLayout();
             this.groupBox7.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel24.ResumeLayout(false);
             this.panel24.PerformLayout();
             this.panel25.ResumeLayout(false);
@@ -669,12 +676,6 @@
             this.panel27.PerformLayout();
             this.panel28.ResumeLayout(false);
             this.panel28.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.risksDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -691,7 +692,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lastModifiedByLabel;
-        private System.Windows.Forms.Button addRiskButton;
+        private System.Windows.Forms.Button editRiskButton;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Label label14;
@@ -732,10 +733,10 @@
         private System.Windows.Forms.ComboBox riskIDComboBox;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox evaluationAfterComboBox;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox evaluationComboBox;
         private RisksDataSet risksDataSet;
         private System.Windows.Forms.BindingSource tableBindingSource;
         private RisksDataSetTableAdapters.TableTableAdapter tableTableAdapter;

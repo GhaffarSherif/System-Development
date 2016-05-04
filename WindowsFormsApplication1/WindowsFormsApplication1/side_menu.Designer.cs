@@ -145,6 +145,7 @@
             this.label26 = new System.Windows.Forms.Label();
             this.riskCategoryComboBox = new System.Windows.Forms.ComboBox();
             this.tableTableAdapter = new WindowsFormsApplication1.RisksDataSetTableAdapters.TableTableAdapter();
+            this.deleteRiskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -243,6 +244,9 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.databaseTabPage);
             this.tabControl1.Controls.Add(this.addRiskTabPage);
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
@@ -295,8 +299,11 @@
             this.risksDataGridView.Location = new System.Drawing.Point(29, 154);
             this.risksDataGridView.Name = "risksDataGridView";
             this.risksDataGridView.ReadOnly = true;
+            this.risksDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.risksDataGridView.Size = new System.Drawing.Size(557, 468);
             this.risksDataGridView.TabIndex = 0;
+            this.risksDataGridView.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.risksDataGridView_CellMouseDown);
+            this.risksDataGridView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.risksDataGridView_KeyDown);
             // 
             // ID
             // 
@@ -413,11 +420,12 @@
             // filterMenuStrip
             // 
             this.filterMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.columnsToolStripMenuItem,
             this.filtersToolStripMenuItem,
             this.editRiskToolStripMenuItem,
-            this.columnsToolStripMenuItem});
+            this.deleteRiskToolStripMenuItem});
             this.filterMenuStrip.Name = "filterMenuStrip";
-            this.filterMenuStrip.Size = new System.Drawing.Size(123, 70);
+            this.filterMenuStrip.Size = new System.Drawing.Size(132, 92);
             // 
             // filtersToolStripMenuItem
             // 
@@ -1308,6 +1316,13 @@
             // 
             this.tableTableAdapter.ClearBeforeFill = true;
             // 
+            // deleteRiskToolStripMenuItem
+            // 
+            this.deleteRiskToolStripMenuItem.Name = "deleteRiskToolStripMenuItem";
+            this.deleteRiskToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteRiskToolStripMenuItem.Text = "Delete Risk";
+            this.deleteRiskToolStripMenuItem.Click += new System.EventHandler(this.deleteRiskToolStripMenuItem_Click);
+            // 
             // side_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1494,5 +1509,6 @@
         private System.Windows.Forms.ToolStripMenuItem statusAfterToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem deleteRiskToolStripMenuItem;
     }
 }

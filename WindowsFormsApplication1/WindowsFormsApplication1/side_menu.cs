@@ -335,5 +335,84 @@ namespace WindowsFormsApplication1
                     exportMethods.exportExcel(fileName);
             }
         }
+
+        private void risksDataGridView_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                int rowSelected = e.RowIndex;
+                if (e.RowIndex != -1)
+                {
+                    rdgv.ClearSelection();
+                    rdgv.Rows[rowSelected].Selected = true;
+                }
+            }
+        }
+
+        private void deleteRiskToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Int32 rowToDelete = risksDataGridView.Rows.GetFirstRow(DataGridViewElementStates.Selected);
+
+            if (!risksDataGridView.Rows[rowToDelete].IsNewRow)
+            {
+                string rowToDeleteId = risksDataGridView.SelectedRows[0].Cells[0].Value.ToString();
+
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete Risk " + rowToDeleteId + " ?", "Deleting Entry", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Program.editDatabase(Program.risksConnectionString,
+                                          "DELETE FROM [Table] WHERE ID = '" + rowToDeleteId + "'");
+
+                    Program.updateDataGridView(Program.risksConnectionString, risksDataGridView);
+                    risksDataGridView.ClearSelection();
+
+                    return;
+                }
+
+                else
+                {
+                    return;
+                }
+            }
+
+            MessageBox.Show("No entry selected.");
+        }
+
+        private void risksDataGridView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                if (risksDataGridView.SelectedRows.Count > 0)
+                {
+                    DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete the selected risks?", "Deleting Entry", MessageBoxButtons.YesNo);
+
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        foreach (DataGridViewRow risk in risksDataGridView.SelectedRows)
+                        {
+                            if (!risk.IsNewRow)
+                            {
+                                string rowToDeleteId = risk.Cells[0].Value.ToString();
+
+                                Program.editDatabase(Program.risksConnectionString,
+                                                        "DELETE FROM [Table] WHERE ID = '" + rowToDeleteId + "'");
+                            }
+                        }
+
+                        Program.updateDataGridView(Program.risksConnectionString, risksDataGridView);
+                        risksDataGridView.ClearSelection();
+
+                        return;
+                    }
+
+                    else
+                    {
+                        return;
+                    }
+                }
+
+                MessageBox.Show("No entries selected.");
+            }
+        }
     }
 }
