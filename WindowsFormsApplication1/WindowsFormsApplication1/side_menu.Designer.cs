@@ -1014,7 +1014,20 @@
             // 
             // consequenceAfterComboBox
             // 
+            this.consequenceAfterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.consequenceAfterComboBox.FormattingEnabled = true;
+            this.consequenceAfterComboBox.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
             this.consequenceAfterComboBox.Location = new System.Drawing.Point(76, 3);
             this.consequenceAfterComboBox.Name = "consequenceAfterComboBox";
             this.consequenceAfterComboBox.Size = new System.Drawing.Size(121, 21);
@@ -1040,7 +1053,20 @@
             // 
             // probabilityAfterComboBox
             // 
+            this.probabilityAfterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.probabilityAfterComboBox.FormattingEnabled = true;
+            this.probabilityAfterComboBox.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
             this.probabilityAfterComboBox.Location = new System.Drawing.Point(76, 3);
             this.probabilityAfterComboBox.Name = "probabilityAfterComboBox";
             this.probabilityAfterComboBox.Size = new System.Drawing.Size(121, 21);
@@ -1155,7 +1181,20 @@
             // 
             // consequenceComboBox
             // 
+            this.consequenceComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.consequenceComboBox.FormattingEnabled = true;
+            this.consequenceComboBox.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
             this.consequenceComboBox.Location = new System.Drawing.Point(76, 3);
             this.consequenceComboBox.Name = "consequenceComboBox";
             this.consequenceComboBox.Size = new System.Drawing.Size(121, 21);
@@ -1181,7 +1220,20 @@
             // 
             // probabilityComboBox
             // 
+            this.probabilityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.probabilityComboBox.FormattingEnabled = true;
+            this.probabilityComboBox.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
             this.probabilityComboBox.Location = new System.Drawing.Point(76, 3);
             this.probabilityComboBox.Name = "probabilityComboBox";
             this.probabilityComboBox.Size = new System.Drawing.Size(121, 21);
