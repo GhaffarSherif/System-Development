@@ -26,7 +26,7 @@ namespace WindowsFormsApplication1
                               "AND Password = '" + passwordTextBox.Text + "'");
 
             List<String> users = Program.queryDatabase(Program.usersConnectionString, sqlComm);
-            if (users.Count == 0)
+            if (users == null || users.Count == 0)
             {
                 invalidLoginCredentials();
                 return;
@@ -56,7 +56,7 @@ namespace WindowsFormsApplication1
 
         private void invalidLoginCredentials()
         {
-            MessageBox.Show("Invalid Username or Password");
+            MessageBox.Show("Invalid Username or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

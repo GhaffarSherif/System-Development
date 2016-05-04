@@ -37,40 +37,56 @@ namespace WindowsFormsApplication1
 
         public static List<String> queryDatabase(String connectionString, String sqlComm)
         {
-            List<String> queryResults = new List<string>();
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                connection.Open();
+                List<String> queryResults = new List<string>();
 
-                using (SqlCommand command = new SqlCommand(sqlComm, connection))
-                using (SqlDataReader reader = command.ExecuteReader())
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    while (reader.Read())
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(sqlComm, connection))
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        String currentRow = "";
+                        while (reader.Read())
+                        {
+                            String currentRow = "";
 
-                        for (int index = 0; index < reader.FieldCount; index++)
-                            currentRow += "" + reader.GetValue(index) + fieldSeparationCharacter;
+                            for (int index = 0; index < reader.FieldCount; index++)
+                                currentRow += "" + reader.GetValue(index) + fieldSeparationCharacter;
 
-                        queryResults.Add(currentRow);
+                            queryResults.Add(currentRow);
+                        }
                     }
                 }
-            }
 
-            return queryResults;
+                return queryResults;
+            }
+            catch(System.Data.SqlClient.SqlException)
+            {
+                return null;
+            }
         }
 
-        public static void editDatabase(String connectionString, String sqlComm)
+        public static bool editDatabase(String connectionString, String sqlComm)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand(sqlComm, connection))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    command.ExecuteNonQuery();
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(sqlComm, connection))
+                    {
+                        command.ExecuteNonQuery();
+                    }
                 }
+
+                return true;
+            }
+            catch (System.Data.SqlClient.SqlException)
+            {
+                return false;
             }
         }
 
@@ -82,14 +98,14 @@ namespace WindowsFormsApplication1
             dataGridView.DataSource = dataTable;
         }
 
-        public static void updateComboBox(String connectionString, ComboBox comboBox)
+        public static void updateComboBox(String connectionString, ComboBox comboBox, String displayMember)
         {
             SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM [Table]", connectionString);
             DataTable dataTable = new DataTable();
             dataAdapter.Fill(dataTable);
 
             comboBox.DataSource = dataTable;
-            comboBox.DisplayMember = "Username";
+            comboBox.DisplayMember = displayMember;
         }
     }
 }

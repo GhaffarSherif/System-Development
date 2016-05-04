@@ -43,7 +43,7 @@ namespace WindowsFormsApplication1
             userLabel.Text = username;
             if (!userType.Equals("Admin"))
             {
-                //addRiskTabPage.Visible = false;
+                tabControl1.TabPages.Remove(addRiskTabPage);
                 settingsButton.Visible = false;
             }
 
@@ -119,11 +119,11 @@ namespace WindowsFormsApplication1
         {
             if (!validateFields())
             {
-                MessageBox.Show("Not all fields are filled");
+                MessageBox.Show("Not all fields are filled", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            Program.editDatabase(Program.risksConnectionString, 
+            bool isEdited = Program.editDatabase(Program.risksConnectionString, 
             "INSERT INTO [Table] ([Date], [Next Revision], [Category], [Description], [Probability], [Consequence], [Status], [Evaluation], [Control Measure], [Response], [Responsible Person], [Probability After], [Consequence After], [Status After], [Evaluation After]) " +
             "VALUES ('" + dateTimePicker.Value.ToShortDateString() + "', '" 
             + nextRevisionDateTimePicker.Value.ToShortDateString() + "', '" 
@@ -142,7 +142,13 @@ namespace WindowsFormsApplication1
             + (Convert.ToInt32(probabilityAfterComboBox.Text) * Convert.ToInt32(consequenceAfterComboBox.Text)) 
             +"')");
 
-            MessageBox.Show("Risk added");
+            if(!isEdited)
+            {
+                MessageBox.Show("Incorrect field format", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            MessageBox.Show("Risk added", "Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
             descriptionTextBox.Clear();
             probabilityComboBox.ResetText();
             consequenceComboBox.ResetText();
@@ -156,7 +162,6 @@ namespace WindowsFormsApplication1
 
             Program.updateDataGridView(Program.risksConnectionString, risksDataGridView);
             updateRiskID();
-
         }
 
         private bool validateFields()
@@ -210,7 +215,7 @@ namespace WindowsFormsApplication1
         {
             if(filterTypeComboBox.Text.Equals("") || filterValueComboBox.Text.Equals(""))
             {
-                MessageBox.Show("Not all fields are filled");
+                MessageBox.Show("Not all fields are filled", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -239,7 +244,7 @@ namespace WindowsFormsApplication1
             catch (System.Data.EvaluateException)
             {
                 filters.RemoveAt(filters.Count - 1);
-                MessageBox.Show("Inappropriate filter value formatting");
+                MessageBox.Show("Inappropriate filter value formatting", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -326,9 +331,7 @@ namespace WindowsFormsApplication1
                 if (fileName == string.Empty)
                     MessageBox.Show("Invalid File Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
-                {
                     exportMethods.exportExcel(fileName);
-                }
             }
         }
     }
