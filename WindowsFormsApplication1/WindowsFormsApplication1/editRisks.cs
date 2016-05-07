@@ -22,7 +22,16 @@ namespace WindowsFormsApplication1
             // TODO: This line of code loads data into the 'risksDataSet.Table' table. You can move, or remove it, as needed.
             this.tableTableAdapter.Fill(this.risksDataSet.Table);
 
-            riskIDComboBox.Text = side_menu.rdgv.SelectedRows[0].Cells[0].Value.ToString();
+            try
+            {
+                riskIDComboBox.Text = side_menu.rdgv.SelectedRows[0].Cells[0].Value.ToString();
+            }
+            catch (System.NullReferenceException)
+            {
+                MessageBox.Show("No entry selected");
+                this.Close();
+                return;
+            }
 
             updateEditComboBoxes();
             fillControls();
@@ -33,12 +42,12 @@ namespace WindowsFormsApplication1
             riskCategoryComboBox.DataSource = Program.queryDatabase(Program.risksConnectionString, "SELECT DISTINCT [Category] FROM [Table]");
             statusComboBox.DataSource = Program.queryDatabase(Program.risksConnectionString, "SELECT DISTINCT [Status] FROM [Table]");
             responsiblePersonComboBox.DataSource = Program.queryDatabase(Program.risksConnectionString, "SELECT DISTINCT [Responsible Person] FROM [Table]");
-            statusAfterComboBox.DataSource = Program.queryDatabase(Program.risksConnectionString, "SELECT DISTINCT [Status After] FROM [Table]");
+            statusAfterTextBox.DataSource = Program.queryDatabase(Program.risksConnectionString, "SELECT DISTINCT [Status After] FROM [Table]");
 
             riskCategoryComboBox.SelectedItem = null;
             statusComboBox.SelectedItem = null;
             responsiblePersonComboBox.SelectedItem = null;
-            statusAfterComboBox.SelectedItem = null;
+            statusAfterTextBox.SelectedItem = null;
         }
 
         private void fillControls()
@@ -52,14 +61,14 @@ namespace WindowsFormsApplication1
             probabilityComboBox.Text = selectedRiskInfo[5];
             consequenceComboBox.Text = selectedRiskInfo[6];
             statusComboBox.Text = selectedRiskInfo[7];
-            evaluationComboBox.Text = selectedRiskInfo[8];
+            evaluationTextBox.Text = selectedRiskInfo[8];
             controlMeasureTextBox.Text = selectedRiskInfo[9];
             riskResponseTextBox.Text = selectedRiskInfo[10];
             responsiblePersonComboBox.Text = selectedRiskInfo[11];
             probabilityAfterComboBox.Text = selectedRiskInfo[12];
             consequenceAfterComboBox.Text = selectedRiskInfo[13];
-            statusAfterComboBox.Text = selectedRiskInfo[14];
-            evaluationAfterComboBox.Text = selectedRiskInfo[15];
+            statusAfterTextBox.Text = selectedRiskInfo[14];
+            evaluationAfterTextBox.Text = selectedRiskInfo[15];
             lastModifiedByLabel.Text = "Last modified by " + selectedRiskInfo[16] + " on " + Convert.ToDateTime(selectedRiskInfo[17]).ToString("dd/MM/yyyy");
         }
 
@@ -79,8 +88,8 @@ namespace WindowsFormsApplication1
             }
 
             if (!int.TryParse(probabilityComboBox.Text, out value) || !int.TryParse(consequenceComboBox.Text, out value) ||
-                !int.TryParse(evaluationComboBox.Text, out value) || !int.TryParse(probabilityAfterComboBox.Text, out value) ||
-                !int.TryParse(consequenceAfterComboBox.Text, out value) || !int.TryParse(evaluationAfterComboBox.Text, out value))
+                !int.TryParse(evaluationTextBox.Text, out value) || !int.TryParse(probabilityAfterComboBox.Text, out value) ||
+                !int.TryParse(consequenceAfterComboBox.Text, out value) || !int.TryParse(evaluationAfterTextBox.Text, out value))
             {
                 MessageBox.Show("The values of probability, consequence and evaluation can only be numbers.");
                 return;
@@ -99,12 +108,12 @@ namespace WindowsFormsApplication1
             descriptionTextBox.Clear();
             probabilityComboBox.SelectedItem = null;
             consequenceComboBox.SelectedItem = null;
-            evaluationComboBox.SelectedItem = null;
+            evaluationTextBox.Clear();
             controlMeasureTextBox.Clear();
             riskResponseTextBox.Clear();
             probabilityAfterComboBox.SelectedItem = null;
             consequenceAfterComboBox.SelectedItem = null;
-            evaluationAfterComboBox.SelectedItem = null;
+            evaluationAfterTextBox.Clear();
             riskIDComboBox.ResetText();
             lastModifiedByLabel.Text = null;
 
@@ -155,14 +164,22 @@ namespace WindowsFormsApplication1
                 sqlComm += ", [Consequence After] = '" + consequenceAfterComboBox.Text + "'";
             if (!probabilityAfterComboBox.Text.Equals("") && !consequenceAfterComboBox.Text.Equals(""))
                 sqlComm += ", [Evaluation After] = '" + (Convert.ToInt32(probabilityAfterComboBox.Text) * Convert.ToInt32(consequenceAfterComboBox.Text)) + "'";
-            if (!statusAfterComboBox.Text.Equals(""))
-                sqlComm += ", [Status] = '" + statusAfterComboBox.Text + "'";
+            if (!statusAfterTextBox.Text.Equals(""))
+                sqlComm += ", [Status] = '" + statusAfterTextBox.Text + "'";
 
             sqlComm += ", [Last Modified By] = '" + side_menu.username + "'" + 
                        ", [Last Modified Date] = '" + DateTime.Now.ToShortDateString() + "'" +
                        " WHERE ID = '" + riskIDComboBox.Text + "'";
 
             return sqlComm;
+        }
+
+        private void computeEvaluationFields(object sender, EventArgs e)
+        {
+            if (!probabilityComboBox.Text.Equals("") && !consequenceComboBox.Text.Equals(""))
+                evaluationTextBox.Text = "" + (Convert.ToInt32(probabilityComboBox.Text) * Convert.ToInt32(consequenceComboBox.Text));
+            if (!probabilityAfterComboBox.Text.Equals("") && !consequenceAfterComboBox.Text.Equals(""))
+                evaluationAfterTextBox.Text = "" + (Convert.ToInt32(probabilityAfterComboBox.Text) * Convert.ToInt32(consequenceAfterComboBox.Text));
         }
     }
 }

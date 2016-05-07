@@ -50,10 +50,9 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.evaluationAfterComboBox = new System.Windows.Forms.ComboBox();
             this.panel18 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
-            this.statusAfterComboBox = new System.Windows.Forms.ComboBox();
+            this.statusAfterTextBox = new System.Windows.Forms.ComboBox();
             this.panel19 = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
             this.consequenceAfterComboBox = new System.Windows.Forms.ComboBox();
@@ -68,7 +67,6 @@
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
-            this.evaluationComboBox = new System.Windows.Forms.ComboBox();
             this.panel24 = new System.Windows.Forms.Panel();
             this.label22 = new System.Windows.Forms.Label();
             this.statusComboBox = new System.Windows.Forms.ComboBox();
@@ -87,6 +85,8 @@
             this.riskCategoryComboBox = new System.Windows.Forms.ComboBox();
             this.tableTableAdapter = new WindowsFormsApplication1.RisksDataSetTableAdapters.TableTableAdapter();
             this.responsiblePersonComboBox = new System.Windows.Forms.ComboBox();
+            this.evaluationTextBox = new System.Windows.Forms.RichTextBox();
+            this.evaluationAfterTextBox = new System.Windows.Forms.RichTextBox();
             this.panel15.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -290,8 +290,8 @@
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.evaluationAfterTextBox);
             this.panel5.Controls.Add(this.label6);
-            this.panel5.Controls.Add(this.evaluationAfterComboBox);
             this.panel5.Location = new System.Drawing.Point(286, 63);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(200, 31);
@@ -306,18 +306,10 @@
             this.label6.TabIndex = 1;
             this.label6.Text = "Evaluation";
             // 
-            // evaluationAfterComboBox
-            // 
-            this.evaluationAfterComboBox.FormattingEnabled = true;
-            this.evaluationAfterComboBox.Location = new System.Drawing.Point(76, 3);
-            this.evaluationAfterComboBox.Name = "evaluationAfterComboBox";
-            this.evaluationAfterComboBox.Size = new System.Drawing.Size(121, 21);
-            this.evaluationAfterComboBox.TabIndex = 0;
-            // 
             // panel18
             // 
             this.panel18.Controls.Add(this.label16);
-            this.panel18.Controls.Add(this.statusAfterComboBox);
+            this.panel18.Controls.Add(this.statusAfterTextBox);
             this.panel18.Location = new System.Drawing.Point(286, 19);
             this.panel18.Name = "panel18";
             this.panel18.Size = new System.Drawing.Size(200, 31);
@@ -332,13 +324,13 @@
             this.label16.TabIndex = 1;
             this.label16.Text = "Status";
             // 
-            // statusAfterComboBox
+            // statusAfterTextBox
             // 
-            this.statusAfterComboBox.FormattingEnabled = true;
-            this.statusAfterComboBox.Location = new System.Drawing.Point(76, 3);
-            this.statusAfterComboBox.Name = "statusAfterComboBox";
-            this.statusAfterComboBox.Size = new System.Drawing.Size(121, 21);
-            this.statusAfterComboBox.TabIndex = 0;
+            this.statusAfterTextBox.FormattingEnabled = true;
+            this.statusAfterTextBox.Location = new System.Drawing.Point(76, 3);
+            this.statusAfterTextBox.Name = "statusAfterTextBox";
+            this.statusAfterTextBox.Size = new System.Drawing.Size(121, 21);
+            this.statusAfterTextBox.TabIndex = 0;
             // 
             // panel19
             // 
@@ -361,10 +353,23 @@
             // consequenceAfterComboBox
             // 
             this.consequenceAfterComboBox.FormattingEnabled = true;
+            this.consequenceAfterComboBox.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
             this.consequenceAfterComboBox.Location = new System.Drawing.Point(76, 3);
             this.consequenceAfterComboBox.Name = "consequenceAfterComboBox";
             this.consequenceAfterComboBox.Size = new System.Drawing.Size(121, 21);
             this.consequenceAfterComboBox.TabIndex = 0;
+            this.consequenceAfterComboBox.SelectedIndexChanged += new System.EventHandler(this.computeEvaluationFields);
             // 
             // panel20
             // 
@@ -387,10 +392,23 @@
             // probabilityAfterComboBox
             // 
             this.probabilityAfterComboBox.FormattingEnabled = true;
+            this.probabilityAfterComboBox.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
             this.probabilityAfterComboBox.Location = new System.Drawing.Point(76, 3);
             this.probabilityAfterComboBox.Name = "probabilityAfterComboBox";
             this.probabilityAfterComboBox.Size = new System.Drawing.Size(121, 21);
             this.probabilityAfterComboBox.TabIndex = 0;
+            this.probabilityAfterComboBox.SelectedIndexChanged += new System.EventHandler(this.computeEvaluationFields);
             // 
             // panel21
             // 
@@ -451,8 +469,8 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.evaluationTextBox);
             this.panel4.Controls.Add(this.label5);
-            this.panel4.Controls.Add(this.evaluationComboBox);
             this.panel4.Location = new System.Drawing.Point(305, 61);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(200, 31);
@@ -466,14 +484,6 @@
             this.label5.Size = new System.Drawing.Size(57, 13);
             this.label5.TabIndex = 1;
             this.label5.Text = "Evaluation";
-            // 
-            // evaluationComboBox
-            // 
-            this.evaluationComboBox.FormattingEnabled = true;
-            this.evaluationComboBox.Location = new System.Drawing.Point(76, 3);
-            this.evaluationComboBox.Name = "evaluationComboBox";
-            this.evaluationComboBox.Size = new System.Drawing.Size(121, 21);
-            this.evaluationComboBox.TabIndex = 0;
             // 
             // panel24
             // 
@@ -522,10 +532,23 @@
             // consequenceComboBox
             // 
             this.consequenceComboBox.FormattingEnabled = true;
+            this.consequenceComboBox.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
             this.consequenceComboBox.Location = new System.Drawing.Point(76, 3);
             this.consequenceComboBox.Name = "consequenceComboBox";
             this.consequenceComboBox.Size = new System.Drawing.Size(121, 21);
             this.consequenceComboBox.TabIndex = 0;
+            this.consequenceComboBox.SelectedIndexChanged += new System.EventHandler(this.computeEvaluationFields);
             // 
             // panel26
             // 
@@ -548,10 +571,23 @@
             // probabilityComboBox
             // 
             this.probabilityComboBox.FormattingEnabled = true;
+            this.probabilityComboBox.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
             this.probabilityComboBox.Location = new System.Drawing.Point(76, 3);
             this.probabilityComboBox.Name = "probabilityComboBox";
             this.probabilityComboBox.Size = new System.Drawing.Size(121, 21);
             this.probabilityComboBox.TabIndex = 0;
+            this.probabilityComboBox.SelectedIndexChanged += new System.EventHandler(this.computeEvaluationFields);
             // 
             // groupBox8
             // 
@@ -628,6 +664,24 @@
             this.responsiblePersonComboBox.Size = new System.Drawing.Size(165, 21);
             this.responsiblePersonComboBox.TabIndex = 2;
             // 
+            // evaluationTextBox
+            // 
+            this.evaluationTextBox.Enabled = false;
+            this.evaluationTextBox.Location = new System.Drawing.Point(76, 3);
+            this.evaluationTextBox.Name = "evaluationTextBox";
+            this.evaluationTextBox.Size = new System.Drawing.Size(121, 20);
+            this.evaluationTextBox.TabIndex = 2;
+            this.evaluationTextBox.Text = "";
+            // 
+            // evaluationAfterTextBox
+            // 
+            this.evaluationAfterTextBox.Enabled = false;
+            this.evaluationAfterTextBox.Location = new System.Drawing.Point(75, 4);
+            this.evaluationAfterTextBox.Name = "evaluationAfterTextBox";
+            this.evaluationAfterTextBox.Size = new System.Drawing.Size(121, 20);
+            this.evaluationAfterTextBox.TabIndex = 3;
+            this.evaluationAfterTextBox.Text = "";
+            // 
             // editRisks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -701,7 +755,7 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.ComboBox statusAfterComboBox;
+        private System.Windows.Forms.ComboBox statusAfterTextBox;
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ComboBox consequenceAfterComboBox;
@@ -733,14 +787,14 @@
         private System.Windows.Forms.ComboBox riskIDComboBox;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox evaluationAfterComboBox;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox evaluationComboBox;
         private RisksDataSet risksDataSet;
         private System.Windows.Forms.BindingSource tableBindingSource;
         private RisksDataSetTableAdapters.TableTableAdapter tableTableAdapter;
         private System.Windows.Forms.ComboBox responsiblePersonComboBox;
+        private System.Windows.Forms.RichTextBox evaluationAfterTextBox;
+        private System.Windows.Forms.RichTextBox evaluationTextBox;
 
     }
 }
