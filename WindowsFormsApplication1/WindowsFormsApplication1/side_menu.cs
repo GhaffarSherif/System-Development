@@ -211,7 +211,7 @@ namespace WindowsFormsApplication1
             if (!statusAfterComboBox.Text.Equals(""))
                 sqlComm += ", [Status After]";
 
-            sqlComm += ") ";
+            sqlComm += ", [Last Modified By], [Last Modified Date]) ";
 
 
             sqlComm += "VALUES ('" + dateTimePicker.Value.ToShortDateString() + "', '" 
@@ -240,7 +240,7 @@ namespace WindowsFormsApplication1
             if (!statusAfterComboBox.Text.Equals(""))
                 sqlComm += "', '" + statusAfterComboBox.Text;
 
-            sqlComm += "')";
+            sqlComm += "', '" + username + "', '" + DateTime.Now.ToShortDateString() + "')";
 
             return sqlComm;
         }

@@ -46,6 +46,7 @@ namespace WindowsFormsApplication1
             consequenceAfterComboBox.Text = selectedRiskInfo[13];
             statusAfterComboBox.Text = selectedRiskInfo[14];
             evaluationAfterComboBox.Text = selectedRiskInfo[15];
+            lastModifiedByLabel.Text = "Last modified by " + selectedRiskInfo[16] + " on " + Convert.ToDateTime(selectedRiskInfo[17]).ToString("dd/MM/yyyy");
         }
 
         private void riskIDComboBox_SelectionChangeCommitted(object sender, EventArgs e)

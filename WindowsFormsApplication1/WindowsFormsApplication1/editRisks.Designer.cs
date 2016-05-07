@@ -220,7 +220,7 @@
             // lastModifiedByLabel
             // 
             this.lastModifiedByLabel.AutoSize = true;
-            this.lastModifiedByLabel.Location = new System.Drawing.Point(403, 600);
+            this.lastModifiedByLabel.Location = new System.Drawing.Point(346, 596);
             this.lastModifiedByLabel.Name = "lastModifiedByLabel";
             this.lastModifiedByLabel.Size = new System.Drawing.Size(163, 13);
             this.lastModifiedByLabel.TabIndex = 5;
@@ -232,7 +232,7 @@
             this.editRiskButton.Name = "editRiskButton";
             this.editRiskButton.Size = new System.Drawing.Size(75, 23);
             this.editRiskButton.TabIndex = 4;
-            this.editRiskButton.Text = "Edit Risk";
+            this.editRiskButton.Text = "Apply";
             this.editRiskButton.UseVisualStyleBackColor = true;
             this.editRiskButton.Click += new System.EventHandler(this.editRiskButton_Click);
             // 
