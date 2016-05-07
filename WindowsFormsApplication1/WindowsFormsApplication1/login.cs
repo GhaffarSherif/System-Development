@@ -56,7 +56,7 @@ namespace WindowsFormsApplication1
 
         private void invalidLoginCredentials()
         {
-            MessageBox.Show("Invalid Username or Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("Invalid Username or Password", "Invalid login credentials", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

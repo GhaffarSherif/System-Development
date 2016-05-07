@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.settingsButton = new System.Windows.Forms.Button();
             this.userLabel = new System.Windows.Forms.Label();
@@ -37,28 +38,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.databaseTabPage = new System.Windows.Forms.TabPage();
             this.risksDataGridView = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NextRevision = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Probability = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Consequence = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Evaluation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ControlMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Response = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResponsiblePerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProbabilityAfter = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ConsequenceAfter = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StatusAfter = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EvaluationAfter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.filterMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.filtersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editRiskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.columnsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.basicInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.iDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,6 +60,12 @@
             this.consequenceAfterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusAfterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.evaluationAfterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.filtersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editRiskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteRiskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.risksDataSet = new WindowsFormsApplication1.RisksDataSet();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -145,7 +131,22 @@
             this.label26 = new System.Windows.Forms.Label();
             this.riskCategoryComboBox = new System.Windows.Forms.ComboBox();
             this.tableTableAdapter = new WindowsFormsApplication1.RisksDataSetTableAdapters.TableTableAdapter();
-            this.deleteRiskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NextRevision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Probability = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Consequence = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Evaluation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ControlMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Response = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResponsiblePerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProbabilityAfter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ConsequenceAfter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StatusAfter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EvaluationAfter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -272,6 +273,8 @@
             // 
             this.risksDataGridView.AllowDrop = true;
             this.risksDataGridView.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.risksDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.risksDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -305,118 +308,6 @@
             this.risksDataGridView.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.risksDataGridView_CellMouseDown);
             this.risksDataGridView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.risksDataGridView_KeyDown);
             // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // Date
-            // 
-            this.Date.DataPropertyName = "Date";
-            this.Date.HeaderText = "Date";
-            this.Date.Name = "Date";
-            this.Date.ReadOnly = true;
-            // 
-            // NextRevision
-            // 
-            this.NextRevision.DataPropertyName = "Next Revision";
-            this.NextRevision.HeaderText = "Next Revision";
-            this.NextRevision.Name = "NextRevision";
-            this.NextRevision.ReadOnly = true;
-            // 
-            // Category
-            // 
-            this.Category.DataPropertyName = "Category";
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
-            this.Category.ReadOnly = true;
-            // 
-            // Description
-            // 
-            this.Description.DataPropertyName = "Description";
-            this.Description.HeaderText = "Description";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            // 
-            // Probability
-            // 
-            this.Probability.DataPropertyName = "Probability";
-            this.Probability.HeaderText = "Probability";
-            this.Probability.Name = "Probability";
-            this.Probability.ReadOnly = true;
-            // 
-            // Consequence
-            // 
-            this.Consequence.DataPropertyName = "Consequence";
-            this.Consequence.HeaderText = "Consequence";
-            this.Consequence.Name = "Consequence";
-            this.Consequence.ReadOnly = true;
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "Status";
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            // 
-            // Evaluation
-            // 
-            this.Evaluation.DataPropertyName = "Evaluation";
-            this.Evaluation.HeaderText = "Evaluation";
-            this.Evaluation.Name = "Evaluation";
-            this.Evaluation.ReadOnly = true;
-            // 
-            // ControlMeasure
-            // 
-            this.ControlMeasure.DataPropertyName = "Control Measure";
-            this.ControlMeasure.HeaderText = "Control Measure";
-            this.ControlMeasure.Name = "ControlMeasure";
-            this.ControlMeasure.ReadOnly = true;
-            // 
-            // Response
-            // 
-            this.Response.DataPropertyName = "Response";
-            this.Response.HeaderText = "Response";
-            this.Response.Name = "Response";
-            this.Response.ReadOnly = true;
-            // 
-            // ResponsiblePerson
-            // 
-            this.ResponsiblePerson.DataPropertyName = "Responsible Person";
-            this.ResponsiblePerson.HeaderText = "Responsible Person";
-            this.ResponsiblePerson.Name = "ResponsiblePerson";
-            this.ResponsiblePerson.ReadOnly = true;
-            // 
-            // ProbabilityAfter
-            // 
-            this.ProbabilityAfter.DataPropertyName = "Probability After";
-            this.ProbabilityAfter.HeaderText = "Probability After";
-            this.ProbabilityAfter.Name = "ProbabilityAfter";
-            this.ProbabilityAfter.ReadOnly = true;
-            // 
-            // ConsequenceAfter
-            // 
-            this.ConsequenceAfter.DataPropertyName = "Consequence After";
-            this.ConsequenceAfter.HeaderText = "Consequence After";
-            this.ConsequenceAfter.Name = "ConsequenceAfter";
-            this.ConsequenceAfter.ReadOnly = true;
-            // 
-            // StatusAfter
-            // 
-            this.StatusAfter.DataPropertyName = "Status After";
-            this.StatusAfter.HeaderText = "Status After";
-            this.StatusAfter.Name = "StatusAfter";
-            this.StatusAfter.ReadOnly = true;
-            // 
-            // EvaluationAfter
-            // 
-            this.EvaluationAfter.DataPropertyName = "Evaluation After";
-            this.EvaluationAfter.HeaderText = "Evaluation After";
-            this.EvaluationAfter.Name = "EvaluationAfter";
-            this.EvaluationAfter.ReadOnly = true;
-            // 
             // filterMenuStrip
             // 
             this.filterMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -427,41 +318,6 @@
             this.filterMenuStrip.Name = "filterMenuStrip";
             this.filterMenuStrip.Size = new System.Drawing.Size(132, 92);
             // 
-            // filtersToolStripMenuItem
-            // 
-            this.filtersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.viewToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.clearToolStripMenuItem});
-            this.filtersToolStripMenuItem.Name = "filtersToolStripMenuItem";
-            this.filtersToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.filtersToolStripMenuItem.Text = "Filters";
-            // 
-            // viewToolStripMenuItem
-            // 
-            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
-            this.viewToolStripMenuItem.Text = "View";
-            this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(98, 6);
-            // 
-            // clearToolStripMenuItem
-            // 
-            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
-            this.clearToolStripMenuItem.Text = "Clear";
-            // 
-            // editRiskToolStripMenuItem
-            // 
-            this.editRiskToolStripMenuItem.Name = "editRiskToolStripMenuItem";
-            this.editRiskToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.editRiskToolStripMenuItem.Text = "Edit Risk";
-            this.editRiskToolStripMenuItem.Click += new System.EventHandler(this.editRiskToolStripMenuItem_Click);
-            // 
             // columnsToolStripMenuItem
             // 
             this.columnsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -469,7 +325,7 @@
             this.priorityToolStripMenuItem,
             this.controlToolStripMenuItem});
             this.columnsToolStripMenuItem.Name = "columnsToolStripMenuItem";
-            this.columnsToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.columnsToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.columnsToolStripMenuItem.Text = "Columns";
             // 
             // basicInformationToolStripMenuItem
@@ -674,6 +530,48 @@
             this.evaluationAfterToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.evaluationAfterToolStripMenuItem.Text = "EvaluationAfter";
             this.evaluationAfterToolStripMenuItem.Click += new System.EventHandler(this.columnsToolMenuStrip_Click);
+            // 
+            // filtersToolStripMenuItem
+            // 
+            this.filtersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.clearToolStripMenuItem});
+            this.filtersToolStripMenuItem.Name = "filtersToolStripMenuItem";
+            this.filtersToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.filtersToolStripMenuItem.Text = "Filters";
+            // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.viewToolStripMenuItem.Text = "View";
+            this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(98, 6);
+            // 
+            // clearToolStripMenuItem
+            // 
+            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.clearToolStripMenuItem.Text = "Clear";
+            // 
+            // editRiskToolStripMenuItem
+            // 
+            this.editRiskToolStripMenuItem.Name = "editRiskToolStripMenuItem";
+            this.editRiskToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.editRiskToolStripMenuItem.Text = "Edit Risk";
+            this.editRiskToolStripMenuItem.Click += new System.EventHandler(this.editRiskToolStripMenuItem_Click);
+            // 
+            // deleteRiskToolStripMenuItem
+            // 
+            this.deleteRiskToolStripMenuItem.Name = "deleteRiskToolStripMenuItem";
+            this.deleteRiskToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.deleteRiskToolStripMenuItem.Text = "Delete Risk";
+            this.deleteRiskToolStripMenuItem.Click += new System.EventHandler(this.deleteRiskToolStripMenuItem_Click);
             // 
             // tableBindingSource
             // 
@@ -1316,12 +1214,117 @@
             // 
             this.tableTableAdapter.ClearBeforeFill = true;
             // 
-            // deleteRiskToolStripMenuItem
+            // ID
             // 
-            this.deleteRiskToolStripMenuItem.Name = "deleteRiskToolStripMenuItem";
-            this.deleteRiskToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.deleteRiskToolStripMenuItem.Text = "Delete Risk";
-            this.deleteRiskToolStripMenuItem.Click += new System.EventHandler(this.deleteRiskToolStripMenuItem_Click);
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Date
+            // 
+            this.Date.DataPropertyName = "Date";
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            // 
+            // NextRevision
+            // 
+            this.NextRevision.DataPropertyName = "Next Revision";
+            this.NextRevision.HeaderText = "Next Revision";
+            this.NextRevision.Name = "NextRevision";
+            this.NextRevision.ReadOnly = true;
+            // 
+            // Category
+            // 
+            this.Category.DataPropertyName = "Category";
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
+            // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            // 
+            // Probability
+            // 
+            this.Probability.DataPropertyName = "Probability";
+            this.Probability.HeaderText = "Probability";
+            this.Probability.Name = "Probability";
+            this.Probability.ReadOnly = true;
+            // 
+            // Consequence
+            // 
+            this.Consequence.DataPropertyName = "Consequence";
+            this.Consequence.HeaderText = "Consequence";
+            this.Consequence.Name = "Consequence";
+            this.Consequence.ReadOnly = true;
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            // 
+            // Evaluation
+            // 
+            this.Evaluation.DataPropertyName = "Evaluation";
+            this.Evaluation.HeaderText = "Evaluation";
+            this.Evaluation.Name = "Evaluation";
+            this.Evaluation.ReadOnly = true;
+            // 
+            // ControlMeasure
+            // 
+            this.ControlMeasure.DataPropertyName = "Control Measure";
+            this.ControlMeasure.HeaderText = "Control Measure";
+            this.ControlMeasure.Name = "ControlMeasure";
+            this.ControlMeasure.ReadOnly = true;
+            // 
+            // Response
+            // 
+            this.Response.DataPropertyName = "Response";
+            this.Response.HeaderText = "Response";
+            this.Response.Name = "Response";
+            this.Response.ReadOnly = true;
+            // 
+            // ResponsiblePerson
+            // 
+            this.ResponsiblePerson.DataPropertyName = "Responsible Person";
+            this.ResponsiblePerson.HeaderText = "Responsible Person";
+            this.ResponsiblePerson.Name = "ResponsiblePerson";
+            this.ResponsiblePerson.ReadOnly = true;
+            // 
+            // ProbabilityAfter
+            // 
+            this.ProbabilityAfter.DataPropertyName = "Probability After";
+            this.ProbabilityAfter.HeaderText = "Probability After";
+            this.ProbabilityAfter.Name = "ProbabilityAfter";
+            this.ProbabilityAfter.ReadOnly = true;
+            // 
+            // ConsequenceAfter
+            // 
+            this.ConsequenceAfter.DataPropertyName = "Consequence After";
+            this.ConsequenceAfter.HeaderText = "Consequence After";
+            this.ConsequenceAfter.Name = "ConsequenceAfter";
+            this.ConsequenceAfter.ReadOnly = true;
+            // 
+            // StatusAfter
+            // 
+            this.StatusAfter.DataPropertyName = "Status After";
+            this.StatusAfter.HeaderText = "Status After";
+            this.StatusAfter.Name = "StatusAfter";
+            this.StatusAfter.ReadOnly = true;
+            // 
+            // EvaluationAfter
+            // 
+            this.EvaluationAfter.DataPropertyName = "Evaluation After";
+            this.EvaluationAfter.HeaderText = "Evaluation After";
+            this.EvaluationAfter.Name = "EvaluationAfter";
+            this.EvaluationAfter.ReadOnly = true;
             // 
             // side_menu
             // 
@@ -1472,22 +1475,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox filterComparisonComboBox;
         private System.Windows.Forms.ToolStripMenuItem columnsToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NextRevision;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Probability;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Consequence;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Evaluation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ControlMeasure;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Response;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ResponsiblePerson;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProbabilityAfter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ConsequenceAfter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StatusAfter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EvaluationAfter;
         private System.Windows.Forms.ToolStripMenuItem basicInformationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem iDToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dateToolStripMenuItem;
@@ -1510,5 +1497,21 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem deleteRiskToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NextRevision;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Probability;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Consequence;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Evaluation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ControlMeasure;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Response;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResponsiblePerson;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProbabilityAfter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ConsequenceAfter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StatusAfter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EvaluationAfter;
     }
 }

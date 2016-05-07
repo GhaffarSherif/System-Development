@@ -45,6 +45,7 @@ namespace WindowsFormsApplication1
             {
                 tabControl1.TabPages.Remove(addRiskTabPage);
                 filterMenuStrip.Items.Remove(editRiskToolStripMenuItem);
+                filterMenuStrip.Items.Remove(deleteRiskToolStripMenuItem);
                 settingsButton.Visible = false;
             }
 
@@ -64,11 +65,24 @@ namespace WindowsFormsApplication1
             // TODO: This line of code loads data into the 'risksDataSet.Table' table. You can move, or remove it, as needed.
             this.tableTableAdapter.Fill(this.risksDataSet.Table);
 
-            Program.updateDataGridView(Program.risksConnectionString, risksDataGridView);
+            Program.updateDataGridView(Program.risksConnectionString, risksDataGridView, tableBindingSource);
             updateRiskID();
 
             nextRevisionDateTimePicker.Value = dateTimePicker.Value.AddYears(3);
             filterValueComboBox.ResetText();
+
+            risksDataGridView.Columns["Probability"].HeaderCell.Style.BackColor = Program.customColors[0];
+            risksDataGridView.Columns["Consequence"].HeaderCell.Style.BackColor = Program.customColors[0];
+            risksDataGridView.Columns["Status"].HeaderCell.Style.BackColor = Program.customColors[0];
+            risksDataGridView.Columns["Evaluation"].HeaderCell.Style.BackColor = Program.customColors[0];
+            risksDataGridView.Columns["ControlMeasure"].HeaderCell.Style.BackColor = Program.customColors[1];
+            risksDataGridView.Columns["Response"].HeaderCell.Style.BackColor = Program.customColors[1];
+            risksDataGridView.Columns["ResponsiblePerson"].HeaderCell.Style.BackColor = Program.customColors[1];
+            risksDataGridView.Columns["ProbabilityAfter"].HeaderCell.Style.BackColor = Program.customColors[2];
+            risksDataGridView.Columns["ConsequenceAfter"].HeaderCell.Style.BackColor = Program.customColors[2];
+            risksDataGridView.Columns["StatusAfter"].HeaderCell.Style.BackColor = Program.customColors[2];
+            risksDataGridView.Columns["EvaluationAfter"].HeaderCell.Style.BackColor = Program.customColors[2];
+            risksDataGridView.EnableHeadersVisualStyles = false;
         }
 
         private void side_menu_FormClosed(object sender, FormClosedEventArgs e)
@@ -120,7 +134,7 @@ namespace WindowsFormsApplication1
         {
             if (!validateFields())
             {
-                MessageBox.Show("Not all fields are filled", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Basic risk information not completed", "Risk could not be added", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -145,11 +159,11 @@ namespace WindowsFormsApplication1
 
             if(!isEdited)
             {
-                MessageBox.Show("Incorrect field format", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid input format", "Risk could not be added", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            MessageBox.Show("Risk added", "Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Risk added successfully", "Risk added", MessageBoxButtons.OK, MessageBoxIcon.Information);
             descriptionTextBox.Clear();
             probabilityComboBox.ResetText();
             consequenceComboBox.ResetText();
@@ -161,7 +175,7 @@ namespace WindowsFormsApplication1
             consequenceAfterComboBox.ResetText();
             statusAfterComboBox.ResetText();
 
-            Program.updateDataGridView(Program.risksConnectionString, risksDataGridView);
+            Program.updateDataGridView(Program.risksConnectionString, risksDataGridView, tableBindingSource);
             updateRiskID();
         }
 
@@ -216,20 +230,14 @@ namespace WindowsFormsApplication1
         {
             if(filterTypeComboBox.Text.Equals("") || filterValueComboBox.Text.Equals(""))
             {
-                MessageBox.Show("Not all fields are filled", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Filter value not specified", "Could not filter", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (filterTypeComboBox.Text.Equals("Date") || filterTypeComboBox.Text.Equals("Next Revision"))
-            {
-                MessageBox.Show("[" + filterTypeComboBox.Text.Trim(Program.fieldSeparationCharacter) + "] " + filterComparisonComboBox.Text + Convert.ToDateTime(filterValueComboBox.Text));
                 filters.Add("[" + filterTypeComboBox.Text.Trim(Program.fieldSeparationCharacter) + "] " + filterComparisonComboBox.Text + Convert.ToDateTime(filterValueComboBox.Text));
-            }
             else
-            {
-                MessageBox.Show("[" + filterTypeComboBox.Text.Trim(Program.fieldSeparationCharacter) + "] " + filterComparisonComboBox.Text + "'" + filterValueComboBox.Text + "'");
                 filters.Add("[" + filterTypeComboBox.Text.Trim(Program.fieldSeparationCharacter) + "] " + filterComparisonComboBox.Text + "'" + filterValueComboBox.Text + "'");
-            }
             
             if (Application.OpenForms["filterList"] != null)
             {
@@ -245,7 +253,7 @@ namespace WindowsFormsApplication1
             catch (System.Data.EvaluateException)
             {
                 filters.RemoveAt(filters.Count - 1);
-                MessageBox.Show("Inappropriate filter value formatting", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid filter value", "Could not filter", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -363,7 +371,7 @@ namespace WindowsFormsApplication1
                     Program.editDatabase(Program.risksConnectionString,
                                           "DELETE FROM [Table] WHERE ID = '" + rowToDeleteId + "'");
 
-                    Program.updateDataGridView(Program.risksConnectionString, risksDataGridView);
+                    Program.updateDataGridView(Program.risksConnectionString, risksDataGridView, tableBindingSource);
                     risksDataGridView.ClearSelection();
 
                     return;
@@ -399,7 +407,7 @@ namespace WindowsFormsApplication1
                             }
                         }
 
-                        Program.updateDataGridView(Program.risksConnectionString, risksDataGridView);
+                        Program.updateDataGridView(Program.risksConnectionString, risksDataGridView, tableBindingSource);
                         risksDataGridView.ClearSelection();
 
                         return;

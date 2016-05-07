@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -25,6 +26,8 @@ namespace WindowsFormsApplication1
             usersConnectionString = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=" + Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Users.mdf;Integrated Security=True";
             risksConnectionString = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=" + Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Risks.mdf;Integrated Security=True";
 
+            customColors = new Color[] { Color.FromArgb(125, 255, 125), Color.FromArgb(255, 200, 75), Color.FromArgb(255, 255, 125) };
+
             new login().Show();
             Application.Run();
         }
@@ -34,6 +37,8 @@ namespace WindowsFormsApplication1
         public static String userInfo;
 
         public static char fieldSeparationCharacter = ',';
+
+        public static Color[] customColors;
 
         public static List<String> queryDatabase(String connectionString, String sqlComm)
         {
@@ -90,11 +95,12 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public static void updateDataGridView(String connectionString, DataGridView dataGridView)
+        public static void updateDataGridView(String connectionString, DataGridView dataGridView, BindingSource bindingSource)
         {
             SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM [Table]", connectionString);
             DataTable dataTable = new DataTable();
             dataAdapter.Fill(dataTable);
+            bindingSource.DataSource = dataTable;
             dataGridView.DataSource = dataTable;
         }
 

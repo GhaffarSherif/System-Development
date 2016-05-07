@@ -40,7 +40,7 @@ namespace WindowsFormsApplication1
         {
             if (filters.SelectedIndex == -1 || filters.SelectedItems.Count < 2)
             {
-                MessageBox.Show("Select two or more filters to group");
+                MessageBox.Show("Select two or more filters to group", "Could not group filters", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -64,7 +64,7 @@ namespace WindowsFormsApplication1
         {
             if (filters.SelectedIndex == -1)
             {
-                MessageBox.Show("Select a filter to remove");
+                MessageBox.Show("Select a filter to remove", "Could not remove filter", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

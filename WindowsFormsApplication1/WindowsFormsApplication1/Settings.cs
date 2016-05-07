@@ -25,7 +25,7 @@ namespace WindowsFormsApplication1
             // TODO: This line of code loads data into the 'usersDataSet.Table' table. You can move, or remove it, as needed.
             this.tableTableAdapter.Fill(this.usersDataSet.Table);
 
-            Program.updateDataGridView(Program.usersConnectionString, usersDataGridView);
+            Program.updateDataGridView(Program.usersConnectionString, usersDataGridView, tableBindingSource);
             Program.updateComboBox(Program.usersConnectionString, editUsernameComboBox, "Username");
         }
 
@@ -38,7 +38,7 @@ namespace WindowsFormsApplication1
         {
             if (usernameTextBox.Text.Trim().Equals("") || passwordTextBox.Text.Trim().Equals(""))
             {
-                MessageBox.Show("Username or Password not entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Username or Password not entered", "Could not create user", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -48,15 +48,15 @@ namespace WindowsFormsApplication1
 
             if(!isEdited)
             {
-                MessageBox.Show("Incorrect Username/Password format or Username already in use", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid Username/Password", "Could not create user", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            MessageBox.Show("User created", "Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("User created successfully", "User created", MessageBoxButtons.OK, MessageBoxIcon.Information);
             usernameTextBox.Clear();
             passwordTextBox.Clear();
 
-            Program.updateDataGridView(Program.usersConnectionString, usersDataGridView);
+            Program.updateDataGridView(Program.usersConnectionString, usersDataGridView, tableBindingSource);
             Program.updateComboBox(Program.usersConnectionString, editUsernameComboBox, "Username");
         }
 
@@ -80,12 +80,12 @@ namespace WindowsFormsApplication1
         {
             if(editUsernameComboBox.Text.Equals(side_menu.username) && editUserTypeComboBox.Text.Equals("Reader"))
             {
-                MessageBox.Show("Cannot change self to a Reader", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Cannot change self to a Reader", "Could not edit user", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else if (editPasswordTextBox.Text.Trim().Equals("") || editUserTypeComboBox.Text.Trim().Equals(""))
             {
-                MessageBox.Show("Password or User Type not entered", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Password or User Type not entered", "Could not edit user", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -95,15 +95,15 @@ namespace WindowsFormsApplication1
 
             if (!isEdited)
             {
-                MessageBox.Show("Incorrect Username/Password format", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid Username/Password", "Could not edit user", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            MessageBox.Show("User edited", "Edited", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("User edited successfully", "User edited", MessageBoxButtons.OK, MessageBoxIcon.Information);
             editPasswordTextBox.Clear();
             editUserTypeComboBox.ResetText();
 
-            Program.updateDataGridView(Program.usersConnectionString, usersDataGridView);
+            Program.updateDataGridView(Program.usersConnectionString, usersDataGridView, tableBindingSource);
             Program.updateComboBox(Program.usersConnectionString, editUsernameComboBox, "Username");
         }
 
@@ -111,19 +111,19 @@ namespace WindowsFormsApplication1
         {
             if (editUsernameComboBox.Text.Equals(side_menu.username))
             {
-                MessageBox.Show("Cannot delete self", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Cannot delete self", "Could not delete user", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             Program.editDatabase(Program.usersConnectionString,
                                       "DELETE FROM [Table] WHERE Username = '" + editUsernameComboBox.Text + "'");
 
-            MessageBox.Show("User deleted", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("User deleted successfully", "User deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
             editUsernameComboBox.DataSource = null;
             editPasswordTextBox.Clear();
             editUserTypeComboBox.SelectedIndex = 1;
 
-            Program.updateDataGridView(Program.usersConnectionString, usersDataGridView);
+            Program.updateDataGridView(Program.usersConnectionString, usersDataGridView, tableBindingSource);
             Program.updateComboBox(Program.usersConnectionString, editUsernameComboBox, "Username");
         }
     }

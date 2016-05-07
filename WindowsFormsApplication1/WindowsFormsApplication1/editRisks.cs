@@ -71,7 +71,7 @@ namespace WindowsFormsApplication1
                 return;
             }
 
-            Program.editDatabase(Program.risksConnectionString,
+            bool isEdited = Program.editDatabase(Program.risksConnectionString,
                                         "UPDATE [Table] SET [Date] = '" + dateTimePicker.Value.ToShortDateString() +
                                         "', [Next Revision] = '" + nextRevisionDateTimePicker.Value.ToShortDateString() +
                                         "', [Category] = '" + riskCategoryComboBox.Text +
@@ -88,11 +88,11 @@ namespace WindowsFormsApplication1
                                         "', [Status After] = '" + statusAfterComboBox.Text +
                                         "', [Evaluation After] = '" + evaluationAfterComboBox.Text + "'" +
                                         "WHERE ID = '" + riskIDComboBox.Text + "'");
-               //if(!isEdited)
-               //{
-               //    MessageBox.Show("Failed to edit, wrong format.");
-               //    return;
-               //}
+            //if(!isEdited)
+            //{
+            //   MessageBox.Show("Failed to edit, wrong format.");
+            //    return;
+            //}
 
             MessageBox.Show("Risk edited");
 
@@ -114,12 +114,7 @@ namespace WindowsFormsApplication1
             evaluationAfterComboBox.ResetText();
             riskIDComboBox.ResetText();
 
-            Program.updateDataGridView(Program.risksConnectionString, side_menu.rdgv);
-
+            Program.updateDataGridView(Program.risksConnectionString, side_menu.rdgv, tableBindingSource);
         }
-
-
-
-
     }
 }
