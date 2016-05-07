@@ -38,6 +38,22 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.databaseTabPage = new System.Windows.Forms.TabPage();
             this.risksDataGridView = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NextRevision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Probability = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Consequence = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Evaluation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ControlMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Response = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResponsiblePerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProbabilityAfter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ConsequenceAfter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StatusAfter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EvaluationAfter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.filterMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.columnsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.basicInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,7 +112,7 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.panel16 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
-            this.controlMeasuresTextBox = new System.Windows.Forms.RichTextBox();
+            this.controlMeasureTextBox = new System.Windows.Forms.RichTextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.panel18 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
@@ -131,22 +147,6 @@
             this.label26 = new System.Windows.Forms.Label();
             this.riskCategoryComboBox = new System.Windows.Forms.ComboBox();
             this.tableTableAdapter = new WindowsFormsApplication1.RisksDataSetTableAdapters.TableTableAdapter();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NextRevision = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Probability = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Consequence = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Evaluation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ControlMeasure = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Response = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ResponsiblePerson = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProbabilityAfter = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ConsequenceAfter = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StatusAfter = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EvaluationAfter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -307,6 +307,118 @@
             this.risksDataGridView.TabIndex = 0;
             this.risksDataGridView.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.risksDataGridView_CellMouseDown);
             this.risksDataGridView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.risksDataGridView_KeyDown);
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Date
+            // 
+            this.Date.DataPropertyName = "Date";
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            // 
+            // NextRevision
+            // 
+            this.NextRevision.DataPropertyName = "Next Revision";
+            this.NextRevision.HeaderText = "Next Revision";
+            this.NextRevision.Name = "NextRevision";
+            this.NextRevision.ReadOnly = true;
+            // 
+            // Category
+            // 
+            this.Category.DataPropertyName = "Category";
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
+            // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            // 
+            // Probability
+            // 
+            this.Probability.DataPropertyName = "Probability";
+            this.Probability.HeaderText = "Probability";
+            this.Probability.Name = "Probability";
+            this.Probability.ReadOnly = true;
+            // 
+            // Consequence
+            // 
+            this.Consequence.DataPropertyName = "Consequence";
+            this.Consequence.HeaderText = "Consequence";
+            this.Consequence.Name = "Consequence";
+            this.Consequence.ReadOnly = true;
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            // 
+            // Evaluation
+            // 
+            this.Evaluation.DataPropertyName = "Evaluation";
+            this.Evaluation.HeaderText = "Evaluation";
+            this.Evaluation.Name = "Evaluation";
+            this.Evaluation.ReadOnly = true;
+            // 
+            // ControlMeasure
+            // 
+            this.ControlMeasure.DataPropertyName = "Control Measure";
+            this.ControlMeasure.HeaderText = "Control Measure";
+            this.ControlMeasure.Name = "ControlMeasure";
+            this.ControlMeasure.ReadOnly = true;
+            // 
+            // Response
+            // 
+            this.Response.DataPropertyName = "Response";
+            this.Response.HeaderText = "Response";
+            this.Response.Name = "Response";
+            this.Response.ReadOnly = true;
+            // 
+            // ResponsiblePerson
+            // 
+            this.ResponsiblePerson.DataPropertyName = "Responsible Person";
+            this.ResponsiblePerson.HeaderText = "Responsible Person";
+            this.ResponsiblePerson.Name = "ResponsiblePerson";
+            this.ResponsiblePerson.ReadOnly = true;
+            // 
+            // ProbabilityAfter
+            // 
+            this.ProbabilityAfter.DataPropertyName = "Probability After";
+            this.ProbabilityAfter.HeaderText = "Probability After";
+            this.ProbabilityAfter.Name = "ProbabilityAfter";
+            this.ProbabilityAfter.ReadOnly = true;
+            // 
+            // ConsequenceAfter
+            // 
+            this.ConsequenceAfter.DataPropertyName = "Consequence After";
+            this.ConsequenceAfter.HeaderText = "Consequence After";
+            this.ConsequenceAfter.Name = "ConsequenceAfter";
+            this.ConsequenceAfter.ReadOnly = true;
+            // 
+            // StatusAfter
+            // 
+            this.StatusAfter.DataPropertyName = "Status After";
+            this.StatusAfter.HeaderText = "Status After";
+            this.StatusAfter.Name = "StatusAfter";
+            this.StatusAfter.ReadOnly = true;
+            // 
+            // EvaluationAfter
+            // 
+            this.EvaluationAfter.DataPropertyName = "Evaluation After";
+            this.EvaluationAfter.HeaderText = "Evaluation After";
+            this.EvaluationAfter.Name = "EvaluationAfter";
+            this.EvaluationAfter.ReadOnly = true;
             // 
             // filterMenuStrip
             // 
@@ -839,7 +951,7 @@
             // panel16
             // 
             this.panel16.Controls.Add(this.label14);
-            this.panel16.Controls.Add(this.controlMeasuresTextBox);
+            this.panel16.Controls.Add(this.controlMeasureTextBox);
             this.panel16.Location = new System.Drawing.Point(6, 19);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(550, 49);
@@ -848,19 +960,19 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(10, 18);
+            this.label14.Location = new System.Drawing.Point(11, 18);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(89, 13);
+            this.label14.Size = new System.Drawing.Size(84, 13);
             this.label14.TabIndex = 1;
-            this.label14.Text = "Control Measures";
+            this.label14.Text = "Control Measure";
             // 
-            // controlMeasuresTextBox
+            // controlMeasureTextBox
             // 
-            this.controlMeasuresTextBox.Location = new System.Drawing.Point(105, 3);
-            this.controlMeasuresTextBox.Name = "controlMeasuresTextBox";
-            this.controlMeasuresTextBox.Size = new System.Drawing.Size(441, 42);
-            this.controlMeasuresTextBox.TabIndex = 0;
-            this.controlMeasuresTextBox.Text = "";
+            this.controlMeasureTextBox.Location = new System.Drawing.Point(105, 3);
+            this.controlMeasureTextBox.Name = "controlMeasureTextBox";
+            this.controlMeasureTextBox.Size = new System.Drawing.Size(441, 42);
+            this.controlMeasureTextBox.TabIndex = 0;
+            this.controlMeasureTextBox.Text = "";
             // 
             // groupBox6
             // 
@@ -1214,118 +1326,6 @@
             // 
             this.tableTableAdapter.ClearBeforeFill = true;
             // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // Date
-            // 
-            this.Date.DataPropertyName = "Date";
-            this.Date.HeaderText = "Date";
-            this.Date.Name = "Date";
-            this.Date.ReadOnly = true;
-            // 
-            // NextRevision
-            // 
-            this.NextRevision.DataPropertyName = "Next Revision";
-            this.NextRevision.HeaderText = "Next Revision";
-            this.NextRevision.Name = "NextRevision";
-            this.NextRevision.ReadOnly = true;
-            // 
-            // Category
-            // 
-            this.Category.DataPropertyName = "Category";
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
-            this.Category.ReadOnly = true;
-            // 
-            // Description
-            // 
-            this.Description.DataPropertyName = "Description";
-            this.Description.HeaderText = "Description";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            // 
-            // Probability
-            // 
-            this.Probability.DataPropertyName = "Probability";
-            this.Probability.HeaderText = "Probability";
-            this.Probability.Name = "Probability";
-            this.Probability.ReadOnly = true;
-            // 
-            // Consequence
-            // 
-            this.Consequence.DataPropertyName = "Consequence";
-            this.Consequence.HeaderText = "Consequence";
-            this.Consequence.Name = "Consequence";
-            this.Consequence.ReadOnly = true;
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "Status";
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            // 
-            // Evaluation
-            // 
-            this.Evaluation.DataPropertyName = "Evaluation";
-            this.Evaluation.HeaderText = "Evaluation";
-            this.Evaluation.Name = "Evaluation";
-            this.Evaluation.ReadOnly = true;
-            // 
-            // ControlMeasure
-            // 
-            this.ControlMeasure.DataPropertyName = "Control Measure";
-            this.ControlMeasure.HeaderText = "Control Measure";
-            this.ControlMeasure.Name = "ControlMeasure";
-            this.ControlMeasure.ReadOnly = true;
-            // 
-            // Response
-            // 
-            this.Response.DataPropertyName = "Response";
-            this.Response.HeaderText = "Response";
-            this.Response.Name = "Response";
-            this.Response.ReadOnly = true;
-            // 
-            // ResponsiblePerson
-            // 
-            this.ResponsiblePerson.DataPropertyName = "Responsible Person";
-            this.ResponsiblePerson.HeaderText = "Responsible Person";
-            this.ResponsiblePerson.Name = "ResponsiblePerson";
-            this.ResponsiblePerson.ReadOnly = true;
-            // 
-            // ProbabilityAfter
-            // 
-            this.ProbabilityAfter.DataPropertyName = "Probability After";
-            this.ProbabilityAfter.HeaderText = "Probability After";
-            this.ProbabilityAfter.Name = "ProbabilityAfter";
-            this.ProbabilityAfter.ReadOnly = true;
-            // 
-            // ConsequenceAfter
-            // 
-            this.ConsequenceAfter.DataPropertyName = "Consequence After";
-            this.ConsequenceAfter.HeaderText = "Consequence After";
-            this.ConsequenceAfter.Name = "ConsequenceAfter";
-            this.ConsequenceAfter.ReadOnly = true;
-            // 
-            // StatusAfter
-            // 
-            this.StatusAfter.DataPropertyName = "Status After";
-            this.StatusAfter.HeaderText = "Status After";
-            this.StatusAfter.Name = "StatusAfter";
-            this.StatusAfter.ReadOnly = true;
-            // 
-            // EvaluationAfter
-            // 
-            this.EvaluationAfter.DataPropertyName = "Evaluation After";
-            this.EvaluationAfter.HeaderText = "Evaluation After";
-            this.EvaluationAfter.Name = "EvaluationAfter";
-            this.EvaluationAfter.ReadOnly = true;
-            // 
             // side_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1422,7 +1422,7 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.RichTextBox controlMeasuresTextBox;
+        private System.Windows.Forms.RichTextBox controlMeasureTextBox;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Label label16;
