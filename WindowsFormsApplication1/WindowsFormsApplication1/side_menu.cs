@@ -74,6 +74,7 @@ namespace WindowsFormsApplication1
             // TODO: This line of code loads data into the 'risksDataSet.Table' table. You can move, or remove it, as needed.
             this.tableTableAdapter.Fill(this.risksDataSet.Table);
 
+            splitContainer1.TabStop = false;
             Program.updateDataGridView(Program.risksConnectionString, risksDataGridView, tableBindingSource);
             updateRiskID();
             updateAddComboBoxes();
@@ -280,23 +281,35 @@ namespace WindowsFormsApplication1
                 return;
             }
 
-            if (filterTypeComboBox.Text.Equals("Date") || filterTypeComboBox.Text.Equals("Next Revision"))
-                filters.Add("[" + filterTypeComboBox.Text.Trim(Program.fieldSeparationCharacter) + "] " + filterComparisonComboBox.Text + Convert.ToDateTime(filterValueComboBox.Text));
-            else
-                filters.Add("[" + filterTypeComboBox.Text.Trim(Program.fieldSeparationCharacter) + "] " + filterComparisonComboBox.Text + "'" + filterValueComboBox.Text + "'");
-            
+            try
+            {
+                if (filterTypeComboBox.Text.Equals("Date") || filterTypeComboBox.Text.Equals("Next Revision"))
+                    filters.Add("[" + filterTypeComboBox.Text.Trim(Program.fieldSeparationCharacter) + "] " + filterComparisonComboBox.Text + " '" + Convert.ToDateTime(filterValueComboBox.Text).ToString("dd/MM/yyyy") + "'");
+                else
+                    filters.Add("[" + filterTypeComboBox.Text.Trim(Program.fieldSeparationCharacter) + "] " + filterComparisonComboBox.Text + " '" + filterValueComboBox.Text + "'");
+            }
+            catch(System.FormatException)
+            {
+                MessageBox.Show("Invalid filter value: Dates must be in the following format DD/MM/YYYY", "Could not filter", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             if (Application.OpenForms["filterList"] != null)
             {
                 f.filters.DataSource = null;
                 f.filters.DataSource = filters;
             }
-
+            
             try
             {
                 filterDataGridView();
                 filterValueComboBox.ResetText();
             }
             catch (System.Data.EvaluateException)
+            {
+                filters.RemoveAt(filters.Count - 1);
+                MessageBox.Show("Invalid filter value", "Could not filter", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.SyntaxErrorException)
             {
                 filters.RemoveAt(filters.Count - 1);
                 MessageBox.Show("Invalid filter value", "Could not filter", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -339,7 +352,7 @@ namespace WindowsFormsApplication1
 
         private void filterTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            String filterType = filterTypeComboBox.Text.Trim(',');
+            String filterType = filterTypeComboBox.Text;
             if (filterType.Equals("Category") || filterType.Equals("Description") || filterType.Equals("Status") ||
                 filterType.Equals("Control Measure") || filterType.Equals("Response") || filterType.Equals("Responsible Person") ||
                 filterType.Equals("Status After"))
@@ -347,7 +360,18 @@ namespace WindowsFormsApplication1
             else
                 filterComparisonComboBox.DataSource = dateNumbCompare;
 
-            filterValueComboBox.DisplayMember = filterTypeComboBox.Text.Trim(Program.fieldSeparationCharacter);
+            if (filterTypeComboBox.Text.Equals("Date") || filterTypeComboBox.Text.Equals("Next Revision"))
+            {
+                List<String> formattedDateList = new List<String>();
+                List<String> dateList = Program.queryDatabase(Program.risksConnectionString, "SELECT DISTINCT [" + filterTypeComboBox.Text + "] FROM [Table]");
+                foreach (String date in dateList)
+                    formattedDateList.Add(Convert.ToDateTime(date).ToString("dd/MM/yyyy"));
+                filterValueComboBox.DataSource = formattedDateList;
+            }
+            else
+                filterValueComboBox.DataSource = Program.queryDatabase(Program.risksConnectionString, "SELECT DISTINCT [" + filterTypeComboBox.Text + "] FROM [Table]");
+            
+            //filterValueComboBox.DisplayMember = filterTypeComboBox.Text.Trim(Program.fieldSeparationCharacter);
             filterValueComboBox.ResetText();
         }
 
