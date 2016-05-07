@@ -180,7 +180,7 @@ namespace WindowsFormsApplication1
 
         private bool validateFields()
         {
-            if (riskCategoryComboBox.Text.Equals("") || descriptionTextBox.Text.Equals(""))
+            if (riskCategoryComboBox.Text.Trim().Equals("") || descriptionTextBox.Text.Trim().Equals(""))
                 return false;
 
             return true;
@@ -196,11 +196,11 @@ namespace WindowsFormsApplication1
                 sqlComm += ", [Consequence]";
             if (!probabilityComboBox.Text.Equals("") && !consequenceComboBox.Text.Equals(""))
                 sqlComm += ", [Evaluation]";
-            if (!controlMeasureTextBox.Text.Equals(""))
+            if (!controlMeasureTextBox.Text.Trim().Equals(""))
                 sqlComm += ", [Control Measure]";
-            if (!riskResponseTextBox.Text.Equals(""))
+            if (!riskResponseTextBox.Text.Trim().Equals(""))
                 sqlComm += ", [Response]";
-            if (!responsiblePersonComboBox.Text.Equals(""))
+            if (!responsiblePersonComboBox.Text.Trim().Equals(""))
                 sqlComm += ", [Responsible Person]";
             if (!probabilityAfterComboBox.Text.Equals(""))
                 sqlComm += ", [Probability After]";
@@ -225,11 +225,11 @@ namespace WindowsFormsApplication1
                 sqlComm += "', '" + consequenceComboBox.Text;
             if (!probabilityComboBox.Text.Equals("") && !consequenceComboBox.Text.Equals(""))
                 sqlComm += "', '" + (Convert.ToInt32(probabilityComboBox.Text) * Convert.ToInt32(consequenceComboBox.Text));
-            if (!controlMeasureTextBox.Text.Equals(""))
+            if (!controlMeasureTextBox.Text.Trim().Equals(""))
                 sqlComm += "', '" + controlMeasureTextBox.Text;
-            if (!riskResponseTextBox.Text.Equals(""))
+            if (!riskResponseTextBox.Text.Trim().Equals(""))
                 sqlComm += "', '" + riskResponseTextBox.Text;
-            if (!responsiblePersonComboBox.Text.Equals(""))
+            if (!responsiblePersonComboBox.Text.Trim().Equals(""))
                 sqlComm += "', '" + responsiblePersonComboBox.Text;
             if (!probabilityAfterComboBox.Text.Equals(""))
                 sqlComm += "', '" + probabilityAfterComboBox.Text;
@@ -266,7 +266,7 @@ namespace WindowsFormsApplication1
 
         private void addFilterButton_Click(object sender, EventArgs e)
         {
-            if(filterTypeComboBox.Text.Equals("") || filterValueComboBox.Text.Equals(""))
+            if(filterTypeComboBox.Text.Equals("") || filterValueComboBox.Text.Trim().Equals(""))
             {
                 MessageBox.Show("Filter value not specified", "Could not filter", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

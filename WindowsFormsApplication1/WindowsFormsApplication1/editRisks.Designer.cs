@@ -46,7 +46,7 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.panel16 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
-            this.controlMeasuresTextBox = new System.Windows.Forms.RichTextBox();
+            this.controlMeasureTextBox = new System.Windows.Forms.RichTextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
@@ -61,7 +61,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.probabilityAfterComboBox = new System.Windows.Forms.ComboBox();
             this.panel21 = new System.Windows.Forms.Panel();
-            this.responsiblePersonTextBox = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.panel22 = new System.Windows.Forms.Panel();
             this.label20 = new System.Windows.Forms.Label();
@@ -87,6 +86,7 @@
             this.label26 = new System.Windows.Forms.Label();
             this.riskCategoryComboBox = new System.Windows.Forms.ComboBox();
             this.tableTableAdapter = new WindowsFormsApplication1.RisksDataSetTableAdapters.TableTableAdapter();
+            this.responsiblePersonComboBox = new System.Windows.Forms.ComboBox();
             this.panel15.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -252,7 +252,7 @@
             // panel16
             // 
             this.panel16.Controls.Add(this.label14);
-            this.panel16.Controls.Add(this.controlMeasuresTextBox);
+            this.panel16.Controls.Add(this.controlMeasureTextBox);
             this.panel16.Location = new System.Drawing.Point(6, 19);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(550, 49);
@@ -261,19 +261,19 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(10, 18);
+            this.label14.Location = new System.Drawing.Point(12, 18);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(89, 13);
+            this.label14.Size = new System.Drawing.Size(84, 13);
             this.label14.TabIndex = 1;
-            this.label14.Text = "Control Measures";
+            this.label14.Text = "Control Measure";
             // 
-            // controlMeasuresTextBox
+            // controlMeasureTextBox
             // 
-            this.controlMeasuresTextBox.Location = new System.Drawing.Point(105, 3);
-            this.controlMeasuresTextBox.Name = "controlMeasuresTextBox";
-            this.controlMeasuresTextBox.Size = new System.Drawing.Size(441, 42);
-            this.controlMeasuresTextBox.TabIndex = 0;
-            this.controlMeasuresTextBox.Text = "";
+            this.controlMeasureTextBox.Location = new System.Drawing.Point(105, 3);
+            this.controlMeasureTextBox.Name = "controlMeasureTextBox";
+            this.controlMeasureTextBox.Size = new System.Drawing.Size(441, 42);
+            this.controlMeasureTextBox.TabIndex = 0;
+            this.controlMeasureTextBox.Text = "";
             // 
             // groupBox6
             // 
@@ -394,19 +394,12 @@
             // 
             // panel21
             // 
-            this.panel21.Controls.Add(this.responsiblePersonTextBox);
+            this.panel21.Controls.Add(this.responsiblePersonComboBox);
             this.panel21.Controls.Add(this.label19);
             this.panel21.Location = new System.Drawing.Point(111, 129);
             this.panel21.Name = "panel21";
             this.panel21.Size = new System.Drawing.Size(278, 36);
             this.panel21.TabIndex = 3;
-            // 
-            // responsiblePersonTextBox
-            // 
-            this.responsiblePersonTextBox.Location = new System.Drawing.Point(111, 9);
-            this.responsiblePersonTextBox.Name = "responsiblePersonTextBox";
-            this.responsiblePersonTextBox.Size = new System.Drawing.Size(163, 20);
-            this.responsiblePersonTextBox.TabIndex = 1;
             // 
             // label19
             // 
@@ -627,6 +620,14 @@
             // 
             this.tableTableAdapter.ClearBeforeFill = true;
             // 
+            // responsiblePersonComboBox
+            // 
+            this.responsiblePersonComboBox.FormattingEnabled = true;
+            this.responsiblePersonComboBox.Location = new System.Drawing.Point(110, 8);
+            this.responsiblePersonComboBox.Name = "responsiblePersonComboBox";
+            this.responsiblePersonComboBox.Size = new System.Drawing.Size(165, 21);
+            this.responsiblePersonComboBox.TabIndex = 2;
+            // 
             // editRisks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -696,7 +697,7 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.RichTextBox controlMeasuresTextBox;
+        private System.Windows.Forms.RichTextBox controlMeasureTextBox;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Label label16;
@@ -708,7 +709,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox probabilityAfterComboBox;
         private System.Windows.Forms.Panel panel21;
-        private System.Windows.Forms.TextBox responsiblePersonTextBox;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Panel panel22;
         private System.Windows.Forms.Label label20;
@@ -740,6 +740,7 @@
         private RisksDataSet risksDataSet;
         private System.Windows.Forms.BindingSource tableBindingSource;
         private RisksDataSetTableAdapters.TableTableAdapter tableTableAdapter;
+        private System.Windows.Forms.ComboBox responsiblePersonComboBox;
 
     }
 }

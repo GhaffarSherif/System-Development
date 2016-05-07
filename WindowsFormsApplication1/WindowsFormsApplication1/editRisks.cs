@@ -23,8 +23,22 @@ namespace WindowsFormsApplication1
             this.tableTableAdapter.Fill(this.risksDataSet.Table);
 
             riskIDComboBox.Text = side_menu.rdgv.SelectedRows[0].Cells[0].Value.ToString();
-            
+
+            updateEditComboBoxes();
             fillControls();
+        }
+
+        public void updateEditComboBoxes()
+        {
+            riskCategoryComboBox.DataSource = Program.queryDatabase(Program.risksConnectionString, "SELECT DISTINCT [Category] FROM [Table]");
+            statusComboBox.DataSource = Program.queryDatabase(Program.risksConnectionString, "SELECT DISTINCT [Status] FROM [Table]");
+            responsiblePersonComboBox.DataSource = Program.queryDatabase(Program.risksConnectionString, "SELECT DISTINCT [Responsible Person] FROM [Table]");
+            statusAfterComboBox.DataSource = Program.queryDatabase(Program.risksConnectionString, "SELECT DISTINCT [Status After] FROM [Table]");
+
+            riskCategoryComboBox.SelectedItem = null;
+            statusComboBox.SelectedItem = null;
+            responsiblePersonComboBox.SelectedItem = null;
+            statusAfterComboBox.SelectedItem = null;
         }
 
         private void fillControls()
@@ -39,9 +53,9 @@ namespace WindowsFormsApplication1
             consequenceComboBox.Text = selectedRiskInfo[6];
             statusComboBox.Text = selectedRiskInfo[7];
             evaluationComboBox.Text = selectedRiskInfo[8];
-            controlMeasuresTextBox.Text = selectedRiskInfo[9];
+            controlMeasureTextBox.Text = selectedRiskInfo[9];
             riskResponseTextBox.Text = selectedRiskInfo[10];
-            responsiblePersonTextBox.Text = selectedRiskInfo[11];
+            responsiblePersonComboBox.Text = selectedRiskInfo[11];
             probabilityAfterComboBox.Text = selectedRiskInfo[12];
             consequenceAfterComboBox.Text = selectedRiskInfo[13];
             statusAfterComboBox.Text = selectedRiskInfo[14];
@@ -72,51 +86,83 @@ namespace WindowsFormsApplication1
                 return;
             }
 
-            bool isEdited = Program.editDatabase(Program.risksConnectionString,
-                                        "UPDATE [Table] SET [Date] = '" + dateTimePicker.Value.ToShortDateString() +
-                                        "', [Next Revision] = '" + nextRevisionDateTimePicker.Value.ToShortDateString() +
-                                        "', [Category] = '" + riskCategoryComboBox.Text +
-                                        "', [Description] = '" + descriptionTextBox.Text +
-                                        "', [Probability] = '" + probabilityComboBox.Text +
-                                        "', [Consequence] = '" + consequenceComboBox.Text +
-                                        "', [Status] = '" + statusComboBox.Text +
-                                        "', [Evaluation] = '" + evaluationComboBox.Text +
-                                        "', [Control Measure] = '" + controlMeasuresTextBox.Text +
-                                        "', [Response] = '" + riskResponseTextBox.Text +
-                                        "', [Responsible Person] = '" + responsiblePersonTextBox.Text +
-                                        "', [Probability After] = '" + probabilityAfterComboBox.Text +
-                                        "', [Consequence After] = '" + consequenceAfterComboBox.Text +
-                                        "', [Status After] = '" + statusAfterComboBox.Text +
-                                        "', [Evaluation After] = '" + evaluationAfterComboBox.Text + "'" +
-                                        "WHERE ID = '" + riskIDComboBox.Text + "'");
-            //if(!isEdited)
-            //{
-            //   MessageBox.Show("Failed to edit, wrong format.");
-            //    return;
-            //}
+            bool isEdited = Program.editDatabase(Program.risksConnectionString, createEditCommand());
+
+            if(!isEdited)
+            {
+               MessageBox.Show("Failed to edit, wrong format.");
+                return;
+            }
 
             MessageBox.Show("Risk edited");
 
             descriptionTextBox.Clear();
-            probabilityComboBox.ResetText();
-            consequenceComboBox.ResetText();
-            statusComboBox.ResetText();
-            probabilityComboBox.ResetText();
-            consequenceComboBox.ResetText();
-            evaluationAfterComboBox.ResetText();
-            controlMeasuresTextBox.Clear();
+            probabilityComboBox.SelectedItem = null;
+            consequenceComboBox.SelectedItem = null;
+            evaluationComboBox.SelectedItem = null;
+            controlMeasureTextBox.Clear();
             riskResponseTextBox.Clear();
-            responsiblePersonTextBox.Clear();
-            probabilityAfterComboBox.ResetText();
-            consequenceAfterComboBox.ResetText();
-            statusAfterComboBox.ResetText();
-            probabilityAfterComboBox.ResetText();
-            consequenceAfterComboBox.ResetText();
-            evaluationAfterComboBox.ResetText();
+            probabilityAfterComboBox.SelectedItem = null;
+            consequenceAfterComboBox.SelectedItem = null;
+            evaluationAfterComboBox.SelectedItem = null;
             riskIDComboBox.ResetText();
+            lastModifiedByLabel.Text = null;
 
-            Program.updateDataGridView(Program.risksConnectionString, side_menu.rdgv, tableBindingSource);
+            Program.updateDataGridView(Program.risksConnectionString, side_menu.rdgv, side_menu.tbs);
             side_menu.updateAddComboBoxes();
+            updateEditComboBoxes();
+
+            //this.Close();
+        }
+
+        private String createEditCommand()
+        {
+            //"UPDATE [Table] SET [Date] = '" + dateTimePicker.Value.ToShortDateString() +
+            //                            "', [Next Revision] = '" + nextRevisionDateTimePicker.Value.ToShortDateString() +
+            //                            "', [Category] = '" + riskCategoryComboBox.Text +
+            //                            "', [Description] = '" + descriptionTextBox.Text +
+            //                            "', [Probability] = '" + probabilityComboBox.Text +
+            //                            "', [Consequence] = '" + consequenceComboBox.Text +
+            //                            "', [Status] = '" + statusComboBox.Text +
+            //                            "', [Evaluation] = '" + evaluationComboBox.Text +
+            //                            "', [Control Measure] = '" + controlMeasureTextBox.Text +
+            //                            "', [Response] = '" + riskResponseTextBox.Text +
+            //                            "', [Responsible Person] = '" + responsiblePersonComboBox.Text +
+            //                            "', [Probability After] = '" + probabilityAfterComboBox.Text +
+            //                            "', [Consequence After] = '" + consequenceAfterComboBox.Text +
+            //                            "', [Status After] = '" + statusAfterComboBox.Text +
+            //                            "', [Evaluation After] = '" + evaluationAfterComboBox.Text + "'" +
+            //                            "WHERE ID = '" + riskIDComboBox.Text + "'"
+
+            String sqlComm = "UPDATE [Table] SET [Date] = '" + dateTimePicker.Value.ToShortDateString() + "'" + 
+                                              ", [Next Revision] = '" + nextRevisionDateTimePicker.Value.ToShortDateString() + "'";
+
+            if (!probabilityComboBox.Text.Equals(""))
+                sqlComm += ", [Probability] = '" + probabilityComboBox.Text + "'";
+            if (!consequenceComboBox.Text.Equals(""))
+                sqlComm += ", [Consequence] = '" + consequenceComboBox.Text + "'";
+            if (!probabilityComboBox.Text.Equals("") && !consequenceComboBox.Text.Equals(""))
+                sqlComm += ", [Evaluation] = '" + (Convert.ToInt32(probabilityComboBox.Text) * Convert.ToInt32(consequenceComboBox.Text)) + "'";
+            if (!controlMeasureTextBox.Text.Trim().Equals(""))
+                sqlComm += ", [Control Measure] = '" + controlMeasureTextBox.Text + "'";
+            if (!riskResponseTextBox.Text.Trim().Equals(""))
+                sqlComm += ", [Response] = '" + riskResponseTextBox.Text + "'";
+            if (!responsiblePersonComboBox.Text.Trim().Equals(""))
+                sqlComm += ", [Responsible Person] = '" + responsiblePersonComboBox.Text + "'";
+            if (!probabilityAfterComboBox.Text.Equals(""))
+                sqlComm += ", [Probability After] = '" + probabilityAfterComboBox.Text + "'";
+            if (!consequenceAfterComboBox.Text.Equals(""))
+                sqlComm += ", [Consequence After] = '" + consequenceAfterComboBox.Text + "'";
+            if (!probabilityAfterComboBox.Text.Equals("") && !consequenceAfterComboBox.Text.Equals(""))
+                sqlComm += ", [Evaluation After] = '" + (Convert.ToInt32(probabilityAfterComboBox.Text) * Convert.ToInt32(consequenceAfterComboBox.Text)) + "'";
+            if (!statusAfterComboBox.Text.Equals(""))
+                sqlComm += ", [Status] = '" + statusAfterComboBox.Text + "'";
+
+            sqlComm += ", [Last Modified By] = '" + side_menu.username + "'" + 
+                       ", [Last Modified Date] = '" + DateTime.Now.ToShortDateString() + "'" +
+                       " WHERE ID = '" + riskIDComboBox.Text + "'";
+
+            return sqlComm;
         }
     }
 }
