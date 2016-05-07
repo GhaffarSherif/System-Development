@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.settingsButton = new System.Windows.Forms.Button();
             this.userLabel = new System.Windows.Forms.Label();
@@ -124,7 +124,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.probabilityAfterComboBox = new System.Windows.Forms.ComboBox();
             this.panel21 = new System.Windows.Forms.Panel();
-            this.responsiblePersonTextBox = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.panel22 = new System.Windows.Forms.Panel();
             this.label20 = new System.Windows.Forms.Label();
@@ -147,6 +146,7 @@
             this.label26 = new System.Windows.Forms.Label();
             this.riskCategoryComboBox = new System.Windows.Forms.ComboBox();
             this.tableTableAdapter = new WindowsFormsApplication1.RisksDataSetTableAdapters.TableTableAdapter();
+            this.responsiblePersonComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -273,8 +273,8 @@
             // 
             this.risksDataGridView.AllowDrop = true;
             this.risksDataGridView.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.risksDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.risksDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.risksDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -1092,19 +1092,12 @@
             // 
             // panel21
             // 
-            this.panel21.Controls.Add(this.responsiblePersonTextBox);
+            this.panel21.Controls.Add(this.responsiblePersonComboBox);
             this.panel21.Controls.Add(this.label19);
             this.panel21.Location = new System.Drawing.Point(111, 129);
             this.panel21.Name = "panel21";
             this.panel21.Size = new System.Drawing.Size(278, 36);
             this.panel21.TabIndex = 3;
-            // 
-            // responsiblePersonTextBox
-            // 
-            this.responsiblePersonTextBox.Location = new System.Drawing.Point(111, 9);
-            this.responsiblePersonTextBox.Name = "responsiblePersonTextBox";
-            this.responsiblePersonTextBox.Size = new System.Drawing.Size(163, 20);
-            this.responsiblePersonTextBox.TabIndex = 1;
             // 
             // label19
             // 
@@ -1314,8 +1307,6 @@
             // 
             // riskCategoryComboBox
             // 
-            this.riskCategoryComboBox.DataSource = this.tableBindingSource;
-            this.riskCategoryComboBox.DisplayMember = "Category";
             this.riskCategoryComboBox.FormattingEnabled = true;
             this.riskCategoryComboBox.Location = new System.Drawing.Point(76, 3);
             this.riskCategoryComboBox.Name = "riskCategoryComboBox";
@@ -1325,6 +1316,14 @@
             // tableTableAdapter
             // 
             this.tableTableAdapter.ClearBeforeFill = true;
+            // 
+            // responsiblePersonComboBox
+            // 
+            this.responsiblePersonComboBox.FormattingEnabled = true;
+            this.responsiblePersonComboBox.Location = new System.Drawing.Point(110, 7);
+            this.responsiblePersonComboBox.Name = "responsiblePersonComboBox";
+            this.responsiblePersonComboBox.Size = new System.Drawing.Size(165, 21);
+            this.responsiblePersonComboBox.TabIndex = 1;
             // 
             // side_menu
             // 
@@ -1434,7 +1433,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox probabilityAfterComboBox;
         private System.Windows.Forms.Panel panel21;
-        private System.Windows.Forms.TextBox responsiblePersonTextBox;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Panel panel22;
         private System.Windows.Forms.Label label20;
@@ -1513,5 +1511,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ConsequenceAfter;
         private System.Windows.Forms.DataGridViewTextBoxColumn StatusAfter;
         private System.Windows.Forms.DataGridViewTextBoxColumn EvaluationAfter;
+        private System.Windows.Forms.ComboBox responsiblePersonComboBox;
     }
 }

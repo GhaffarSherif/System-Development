@@ -29,6 +29,11 @@ namespace WindowsFormsApplication1
         List<String> dateNumbCompare;
         List<String> textCompare;
 
+        public static ComboBox category;
+        public static ComboBox status;
+        public static ComboBox statusAfter;
+        public static ComboBox responsiblePerson;
+
         public side_menu()
         {
             InitializeComponent();
@@ -36,6 +41,10 @@ namespace WindowsFormsApplication1
             tbs = tableBindingSource;
             rdgv = risksDataGridView;
             filterValue = filterValueComboBox;
+            category = riskCategoryComboBox;
+            status = statusComboBox;
+            statusAfter = statusAfterComboBox;
+            responsiblePerson = responsiblePersonComboBox;
 
             username = Program.userInfo.Split(Program.fieldSeparationCharacter)[0];
             userType = Program.userInfo.Split(Program.fieldSeparationCharacter)[2];
@@ -67,6 +76,7 @@ namespace WindowsFormsApplication1
 
             Program.updateDataGridView(Program.risksConnectionString, risksDataGridView, tableBindingSource);
             updateRiskID();
+            updateAddComboBoxes();
 
             nextRevisionDateTimePicker.Value = dateTimePicker.Value.AddYears(3);
             filterValueComboBox.ResetText();
@@ -130,6 +140,19 @@ namespace WindowsFormsApplication1
             viewFiltersButton_Click(sender, e);
         }
 
+        public static void updateAddComboBoxes()
+        {
+            side_menu.category.DataSource = Program.queryDatabase(Program.risksConnectionString, "SELECT DISTINCT [Category] FROM [Table]");
+            side_menu.status.DataSource = Program.queryDatabase(Program.risksConnectionString, "SELECT DISTINCT [Status] FROM [Table]");
+            side_menu.responsiblePerson.DataSource = Program.queryDatabase(Program.risksConnectionString, "SELECT DISTINCT [Responsible Person] FROM [Table]");
+            side_menu.statusAfter.DataSource = Program.queryDatabase(Program.risksConnectionString, "SELECT DISTINCT [Status After] FROM [Table]");
+            
+            side_menu.category.SelectedItem = null;
+            side_menu.status.SelectedItem = null;
+            side_menu.responsiblePerson.SelectedItem = null;
+            side_menu.statusAfter.SelectedItem = null;
+        }
+
         private void addRiskButton_Click(object sender, EventArgs e)
         {
             if (!validateFields())
@@ -153,16 +176,14 @@ namespace WindowsFormsApplication1
             descriptionTextBox.Clear();
             probabilityComboBox.SelectedItem = null;
             consequenceComboBox.SelectedItem = null;
-            statusComboBox.ResetText();
             controlMeasureTextBox.Clear();
             riskResponseTextBox.Clear();
-            responsiblePersonTextBox.Clear();
             probabilityAfterComboBox.SelectedItem = null;
             consequenceAfterComboBox.SelectedItem = null;
-            statusAfterComboBox.ResetText();
 
             Program.updateDataGridView(Program.risksConnectionString, risksDataGridView, tableBindingSource);
             updateRiskID();
+            updateAddComboBoxes(); 
         }
 
         private bool validateFields()
@@ -187,7 +208,7 @@ namespace WindowsFormsApplication1
                 sqlComm += ", [Control Measure]";
             if (!riskResponseTextBox.Text.Equals(""))
                 sqlComm += ", [Response]";
-            if (!responsiblePersonTextBox.Text.Equals(""))
+            if (!responsiblePersonComboBox.Text.Equals(""))
                 sqlComm += ", [Responsible Person]";
             if (!probabilityAfterComboBox.Text.Equals(""))
                 sqlComm += ", [Probability After]";
@@ -216,8 +237,8 @@ namespace WindowsFormsApplication1
                 sqlComm += "', '" + controlMeasureTextBox.Text;
             if (!riskResponseTextBox.Text.Equals(""))
                 sqlComm += "', '" + riskResponseTextBox.Text;
-            if (!responsiblePersonTextBox.Text.Equals(""))
-                sqlComm += "', '" + responsiblePersonTextBox.Text;
+            if (!responsiblePersonComboBox.Text.Equals(""))
+                sqlComm += "', '" + responsiblePersonComboBox.Text;
             if (!probabilityAfterComboBox.Text.Equals(""))
                 sqlComm += "', '" + probabilityAfterComboBox.Text;
             if (!consequenceAfterComboBox.Text.Equals(""))
@@ -397,6 +418,7 @@ namespace WindowsFormsApplication1
                                           "DELETE FROM [Table] WHERE ID = '" + rowToDeleteId + "'");
 
                     Program.updateDataGridView(Program.risksConnectionString, risksDataGridView, tableBindingSource);
+                    updateAddComboBoxes();
                     risksDataGridView.ClearSelection();
 
                     return;

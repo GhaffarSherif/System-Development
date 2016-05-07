@@ -60,7 +60,7 @@ namespace WindowsFormsApplication1
                             for (int index = 0; index < reader.FieldCount; index++)
                                 currentRow += "" + reader.GetValue(index) + fieldSeparationCharacter;
 
-                            queryResults.Add(currentRow);
+                            queryResults.Add(currentRow.Trim(fieldSeparationCharacter));
                         }
                     }
                 }

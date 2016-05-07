@@ -115,6 +115,7 @@ namespace WindowsFormsApplication1
             riskIDComboBox.ResetText();
 
             Program.updateDataGridView(Program.risksConnectionString, side_menu.rdgv, tableBindingSource);
+            side_menu.updateAddComboBoxes();
         }
     }
 }
