@@ -172,19 +172,10 @@ namespace WindowsFormsApplication1
 
             MessageBox.Show("Risk added successfully", "Risk added", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            dateTimePicker.ResetText();
-            nextRevisionDateTimePicker.Value = dateTimePicker.Value.AddYears(3);
-            descriptionTextBox.Clear();
-            probabilityComboBox.SelectedItem = null;
-            consequenceComboBox.SelectedItem = null;
-            controlMeasureTextBox.Clear();
-            riskResponseTextBox.Clear();
-            probabilityAfterComboBox.SelectedItem = null;
-            consequenceAfterComboBox.SelectedItem = null;
+            clearFieldsButton_Click(sender, e);
 
             Program.updateDataGridView(Program.risksConnectionString, risksDataGridView, tableBindingSource);
             updateRiskID();
-            updateAddComboBoxes(); 
         }
 
         private bool validateFields()
@@ -371,7 +362,6 @@ namespace WindowsFormsApplication1
             else
                 filterValueComboBox.DataSource = Program.queryDatabase(Program.risksConnectionString, "SELECT DISTINCT [" + filterTypeComboBox.Text + "] FROM [Table]");
             
-            //filterValueComboBox.DisplayMember = filterTypeComboBox.Text.Trim(Program.fieldSeparationCharacter);
             filterValueComboBox.ResetText();
         }
 
@@ -492,6 +482,20 @@ namespace WindowsFormsApplication1
 
                 MessageBox.Show("No entries selected.");
             }
+        }
+
+        private void clearFieldsButton_Click(object sender, EventArgs e)
+        {
+            dateTimePicker.ResetText();
+            nextRevisionDateTimePicker.Value = dateTimePicker.Value.AddYears(3);
+            descriptionTextBox.Clear();
+            probabilityComboBox.SelectedItem = null;
+            consequenceComboBox.SelectedItem = null;
+            controlMeasureTextBox.Clear();
+            riskResponseTextBox.Clear();
+            probabilityAfterComboBox.SelectedItem = null;
+            consequenceAfterComboBox.SelectedItem = null;
+            updateAddComboBoxes(); 
         }
     }
 }

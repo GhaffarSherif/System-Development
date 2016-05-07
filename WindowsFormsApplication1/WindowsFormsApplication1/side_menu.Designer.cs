@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.settingsButton = new System.Windows.Forms.Button();
             this.userLabel = new System.Windows.Forms.Label();
@@ -76,10 +76,6 @@
             this.consequenceAfterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusAfterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.evaluationAfterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.filtersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editRiskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteRiskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -147,6 +143,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.filterValueComboBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.clearFieldsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -277,8 +274,8 @@
             // 
             this.risksDataGridView.AllowDrop = true;
             this.risksDataGridView.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.risksDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.risksDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.risksDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -429,11 +426,10 @@
             // 
             this.filterMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.columnsToolStripMenuItem,
-            this.filtersToolStripMenuItem,
             this.editRiskToolStripMenuItem,
             this.deleteRiskToolStripMenuItem});
             this.filterMenuStrip.Name = "filterMenuStrip";
-            this.filterMenuStrip.Size = new System.Drawing.Size(132, 92);
+            this.filterMenuStrip.Size = new System.Drawing.Size(132, 70);
             // 
             // columnsToolStripMenuItem
             // 
@@ -463,7 +459,7 @@
             this.iDToolStripMenuItem.CheckOnClick = true;
             this.iDToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.iDToolStripMenuItem.Name = "iDToolStripMenuItem";
-            this.iDToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.iDToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.iDToolStripMenuItem.Text = "ID";
             this.iDToolStripMenuItem.Click += new System.EventHandler(this.columnsToolMenuStrip_Click);
             // 
@@ -473,7 +469,7 @@
             this.dateToolStripMenuItem.CheckOnClick = true;
             this.dateToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.dateToolStripMenuItem.Name = "dateToolStripMenuItem";
-            this.dateToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.dateToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.dateToolStripMenuItem.Text = "Date";
             this.dateToolStripMenuItem.Click += new System.EventHandler(this.columnsToolMenuStrip_Click);
             // 
@@ -483,7 +479,7 @@
             this.nextRevisionToolStripMenuItem.CheckOnClick = true;
             this.nextRevisionToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.nextRevisionToolStripMenuItem.Name = "nextRevisionToolStripMenuItem";
-            this.nextRevisionToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.nextRevisionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.nextRevisionToolStripMenuItem.Text = "NextRevision";
             this.nextRevisionToolStripMenuItem.Click += new System.EventHandler(this.columnsToolMenuStrip_Click);
             // 
@@ -493,7 +489,7 @@
             this.categoryToolStripMenuItem.CheckOnClick = true;
             this.categoryToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.categoryToolStripMenuItem.Name = "categoryToolStripMenuItem";
-            this.categoryToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.categoryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.categoryToolStripMenuItem.Text = "Category";
             this.categoryToolStripMenuItem.Click += new System.EventHandler(this.columnsToolMenuStrip_Click);
             // 
@@ -503,7 +499,7 @@
             this.descriptionToolStripMenuItem.CheckOnClick = true;
             this.descriptionToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.descriptionToolStripMenuItem.Name = "descriptionToolStripMenuItem";
-            this.descriptionToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.descriptionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.descriptionToolStripMenuItem.Text = "Description";
             this.descriptionToolStripMenuItem.Click += new System.EventHandler(this.columnsToolMenuStrip_Click);
             // 
@@ -524,7 +520,7 @@
             this.probabilityToolStripMenuItem.CheckOnClick = true;
             this.probabilityToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.probabilityToolStripMenuItem.Name = "probabilityToolStripMenuItem";
-            this.probabilityToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.probabilityToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.probabilityToolStripMenuItem.Text = "Probability";
             this.probabilityToolStripMenuItem.Click += new System.EventHandler(this.columnsToolMenuStrip_Click);
             // 
@@ -534,7 +530,7 @@
             this.consequenceToolStripMenuItem.CheckOnClick = true;
             this.consequenceToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.consequenceToolStripMenuItem.Name = "consequenceToolStripMenuItem";
-            this.consequenceToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.consequenceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.consequenceToolStripMenuItem.Text = "Consequence";
             this.consequenceToolStripMenuItem.Click += new System.EventHandler(this.columnsToolMenuStrip_Click);
             // 
@@ -544,7 +540,7 @@
             this.statusToolStripMenuItem.CheckOnClick = true;
             this.statusToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.statusToolStripMenuItem.Name = "statusToolStripMenuItem";
-            this.statusToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.statusToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.statusToolStripMenuItem.Text = "Status";
             this.statusToolStripMenuItem.Click += new System.EventHandler(this.columnsToolMenuStrip_Click);
             // 
@@ -554,7 +550,7 @@
             this.evaluationToolStripMenuItem.CheckOnClick = true;
             this.evaluationToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.evaluationToolStripMenuItem.Name = "evaluationToolStripMenuItem";
-            this.evaluationToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.evaluationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.evaluationToolStripMenuItem.Text = "Evaluation";
             this.evaluationToolStripMenuItem.Click += new System.EventHandler(this.columnsToolMenuStrip_Click);
             // 
@@ -647,34 +643,6 @@
             this.evaluationAfterToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.evaluationAfterToolStripMenuItem.Text = "EvaluationAfter";
             this.evaluationAfterToolStripMenuItem.Click += new System.EventHandler(this.columnsToolMenuStrip_Click);
-            // 
-            // filtersToolStripMenuItem
-            // 
-            this.filtersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.viewToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.clearToolStripMenuItem});
-            this.filtersToolStripMenuItem.Name = "filtersToolStripMenuItem";
-            this.filtersToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
-            this.filtersToolStripMenuItem.Text = "Filters";
-            // 
-            // viewToolStripMenuItem
-            // 
-            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
-            this.viewToolStripMenuItem.Text = "View";
-            this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(98, 6);
-            // 
-            // clearToolStripMenuItem
-            // 
-            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
-            this.clearToolStripMenuItem.Text = "Clear";
             // 
             // editRiskToolStripMenuItem
             // 
@@ -790,6 +758,7 @@
             // 
             // panel15
             // 
+            this.panel15.Controls.Add(this.clearFieldsButton);
             this.panel15.Controls.Add(this.panel2);
             this.panel15.Controls.Add(this.panel3);
             this.panel15.Controls.Add(this.panel1);
@@ -889,7 +858,7 @@
             this.addRiskButton.Size = new System.Drawing.Size(75, 23);
             this.addRiskButton.TabIndex = 4;
             this.addRiskButton.TabStop = false;
-            this.addRiskButton.Text = "Add Risk";
+            this.addRiskButton.Text = "Add";
             this.addRiskButton.UseVisualStyleBackColor = true;
             this.addRiskButton.Click += new System.EventHandler(this.addRiskButton_Click);
             // 
@@ -1338,6 +1307,17 @@
             this.label6.TabIndex = 2;
             this.label6.Text = "Value";
             // 
+            // clearFieldsButton
+            // 
+            this.clearFieldsButton.Location = new System.Drawing.Point(4, 603);
+            this.clearFieldsButton.Name = "clearFieldsButton";
+            this.clearFieldsButton.Size = new System.Drawing.Size(75, 23);
+            this.clearFieldsButton.TabIndex = 12;
+            this.clearFieldsButton.TabStop = false;
+            this.clearFieldsButton.Text = "Clear";
+            this.clearFieldsButton.UseVisualStyleBackColor = true;
+            this.clearFieldsButton.Click += new System.EventHandler(this.clearFieldsButton_Click);
+            // 
             // side_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1460,9 +1440,6 @@
         private System.Windows.Forms.Button clearFiltersButton;
         private System.Windows.Forms.Button viewFiltersButton;
         private System.Windows.Forms.ContextMenuStrip filterMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem filtersToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editRiskToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem columnsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem basicInformationToolStripMenuItem;
@@ -1484,7 +1461,6 @@
         private System.Windows.Forms.ToolStripMenuItem consequenceAfterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem evaluationAfterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem statusAfterToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem deleteRiskToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
@@ -1525,5 +1501,6 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.ComboBox filterValueComboBox;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button clearFieldsButton;
     }
 }

@@ -101,7 +101,7 @@ namespace WindowsFormsApplication1
 
             MessageBox.Show("User edited successfully", "User edited", MessageBoxButtons.OK, MessageBoxIcon.Information);
             editPasswordTextBox.Clear();
-            editUserTypeComboBox.ResetText();
+            editUserTypeComboBox.SelectedItem = null;
 
             Program.updateDataGridView(Program.usersConnectionString, usersDataGridView, tableBindingSource);
             Program.updateComboBox(Program.usersConnectionString, editUsernameComboBox, "Username");

@@ -32,6 +32,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.usersListTabPage = new System.Windows.Forms.TabPage();
             this.usersDataGridView = new System.Windows.Forms.DataGridView();
+            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.usersDataSet = new WindowsFormsApplication1.UsersDataSet();
             this.createNewUserTabPage = new System.Windows.Forms.TabPage();
@@ -58,8 +60,6 @@
             this.editUsernameComboBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tableTableAdapter = new WindowsFormsApplication1.UsersDataSetTableAdapters.TableTableAdapter();
-            this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.usersListTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.usersDataGridView)).BeginInit();
@@ -114,8 +114,23 @@
             this.usersDataGridView.MultiSelect = false;
             this.usersDataGridView.Name = "usersDataGridView";
             this.usersDataGridView.ReadOnly = true;
+            this.usersDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.usersDataGridView.Size = new System.Drawing.Size(245, 205);
             this.usersDataGridView.TabIndex = 0;
+            // 
+            // usernameDataGridViewTextBoxColumn
+            // 
+            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
+            this.usernameDataGridViewTextBoxColumn.HeaderText = "Username";
+            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
+            this.usernameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // userTypeDataGridViewTextBoxColumn
+            // 
+            this.userTypeDataGridViewTextBoxColumn.DataPropertyName = "User Type";
+            this.userTypeDataGridViewTextBoxColumn.HeaderText = "User Type";
+            this.userTypeDataGridViewTextBoxColumn.Name = "userTypeDataGridViewTextBoxColumn";
+            this.userTypeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // tableBindingSource
             // 
@@ -148,7 +163,7 @@
             this.createUserButton.Size = new System.Drawing.Size(75, 23);
             this.createUserButton.TabIndex = 4;
             this.createUserButton.TabStop = false;
-            this.createUserButton.Text = "Create User";
+            this.createUserButton.Text = "Create";
             this.createUserButton.UseVisualStyleBackColor = true;
             this.createUserButton.Click += new System.EventHandler(this.createUserButton_Click);
             // 
@@ -264,7 +279,7 @@
             this.editUserButton.Size = new System.Drawing.Size(75, 23);
             this.editUserButton.TabIndex = 8;
             this.editUserButton.TabStop = false;
-            this.editUserButton.Text = "Edit User";
+            this.editUserButton.Text = "Apply";
             this.editUserButton.UseVisualStyleBackColor = true;
             this.editUserButton.Click += new System.EventHandler(this.editUserButton_Click);
             // 
@@ -357,20 +372,6 @@
             // tableTableAdapter
             // 
             this.tableTableAdapter.ClearBeforeFill = true;
-            // 
-            // usernameDataGridViewTextBoxColumn
-            // 
-            this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
-            this.usernameDataGridViewTextBoxColumn.HeaderText = "Username";
-            this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
-            this.usernameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // userTypeDataGridViewTextBoxColumn
-            // 
-            this.userTypeDataGridViewTextBoxColumn.DataPropertyName = "User Type";
-            this.userTypeDataGridViewTextBoxColumn.HeaderText = "User Type";
-            this.userTypeDataGridViewTextBoxColumn.Name = "userTypeDataGridViewTextBoxColumn";
-            this.userTypeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // settings
             // 
