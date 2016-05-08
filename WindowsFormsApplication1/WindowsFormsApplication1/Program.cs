@@ -121,7 +121,7 @@ namespace WindowsFormsApplication1
         {
             int index = 0;
 
-            String sqlComm = "SELECT [ID], [Date], [Next Revision] FROM [Table]";
+            String sqlComm = "SELECT [Next Revision] FROM [Table]";
             if (side_menu.tbs.Filter != null)
                 sqlComm += " WHERE " + side_menu.tbs.Filter;
 
@@ -140,7 +140,7 @@ namespace WindowsFormsApplication1
             List<String> toReviseRiskIds = new List<String>();
             foreach (String risk in allRisks)
             {
-                if (Convert.ToDateTime(risk.Split(Program.fieldSeparationCharacter)[2]) <= Convert.ToDateTime(risk.Split(Program.fieldSeparationCharacter)[1]))
+                if (Convert.ToDateTime(risk.Split(Program.fieldSeparationCharacter)[0]) <= Convert.ToDateTime(DateTime.Now))
                 {
                     side_menu.rdgv.Rows[index].ErrorText = "To revise";
                     toReviseRiskIds.Add(risk.Split(Program.fieldSeparationCharacter)[0]);
