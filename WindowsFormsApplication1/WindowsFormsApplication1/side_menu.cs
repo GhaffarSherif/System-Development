@@ -511,5 +511,116 @@ namespace WindowsFormsApplication1
         {
             Program.checkNextRevision();
         }
+
+
+
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            printDocument1.DefaultPageSettings.Landscape = true;
+            
+
+            int rowCounter = 0;
+            int z = 0;
+            StringFormat str = new StringFormat();
+            str.Alignment = StringAlignment.Near;
+            str.LineAlignment = StringAlignment.Center;
+            str.Trimming = StringTrimming.EllipsisCharacter;
+
+            int width = 1150 / (risksDataGridView.Columns.Count - 2);
+            int realwidth = 5;
+            int height = 15;
+
+            int realheight = 60;
+
+            Font newFont = risksDataGridView.Font;
+
+            // Summarry report
+            String message = "Summary Report";
+            Font drawFont = new Font("Arial", 12, FontStyle.Bold);
+            SolidBrush drawBrush = new SolidBrush(Color.Black);
+            PointF drawPoint = new PointF(0F, 10.0F);
+            e.Graphics.DrawString(message, drawFont, drawBrush, drawPoint);
+
+            // Date
+            Font dateFont = new Font("Arial", 10, FontStyle.Bold);
+            e.Graphics.DrawString(DateTime.Today.ToString("D"), dateFont, new SolidBrush(Color.Black), new PointF(5f, 30f));
+
+
+           
+
+
+
+            // Headers
+            for (z = 0; z < risksDataGridView.Columns.Count ; z++)
+            {
+                if (z != 9 && z != 10 && z!= 4)
+                {
+                    e.Graphics.FillRectangle(Brushes.AliceBlue, realwidth, realheight, width, height);
+                    e.Graphics.DrawRectangle(Pens.Black, realwidth, realheight, width, height);
+
+                    if (z == 11)
+                    {
+                        e.Graphics.DrawString("Responsible P.", new Font("Arial", 8, FontStyle.Bold), Brushes.Black, realwidth, realheight + 4);
+
+                    }
+                    else if (z == 12)
+                    {
+                        e.Graphics.DrawString("Prob. After", new Font("Arial", 8, FontStyle.Bold), Brushes.Black, realwidth, realheight + 4);
+
+                    }
+                    else if (z == 13)
+                    {
+                        e.Graphics.DrawString("Concq. After", new Font("Arial", 8, FontStyle.Bold), Brushes.Black, realwidth, realheight + 4);
+
+                    }
+                    else if(z==15){
+                        e.Graphics.DrawString("Eval. After", new Font("Arial", 8, FontStyle.Bold), Brushes.Black, realwidth, realheight + 4);
+
+                    }
+                    else
+                        e.Graphics.DrawString(risksDataGridView.Columns[z].HeaderText, new Font("Arial", 8, FontStyle.Bold), Brushes.Black, realwidth, realheight+4);
+
+                    realwidth = realwidth + width;
+                }
+            }
+
+            z = 0;
+            realheight = realheight + height;
+            while (rowCounter < risksDataGridView.Rows.Count)
+            {
+                realwidth = 5;
+                //Rows
+
+                for (int i = 0; i < 16; i++)
+                {
+                    if (risksDataGridView.Rows[rowCounter].Cells[i].Value == null && i != 9 && i != 10 && i!= 4)
+                    {
+                        risksDataGridView.Rows[rowCounter].Cells[i].Value = "";
+                    }
+                    if (i != 9 && i != 10 && i != 4)
+                    {
+                        e.Graphics.FillRectangle(Brushes.AliceBlue, realwidth, realheight, width, height);
+                        e.Graphics.DrawRectangle(Pens.Black, realwidth, realheight, width, height);
+
+                        e.Graphics.DrawString(risksDataGridView.Rows[rowCounter].Cells[i].Value.ToString(), new Font("Arial", 7), Brushes.Black, realwidth, realheight+5);
+                        realwidth = realwidth + width;
+                    }
+                    
+
+                }
+
+                ++rowCounter;
+                realheight = realheight + height;
+
+            }
+            printDialog1.Document = printDocument1;
+            
+        }
+
+        private void printBtn_Click(object sender, EventArgs e)
+        {
+            this.printPreviewDialog1.ShowDialog();
+        }
     }
 }

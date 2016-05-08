@@ -30,7 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(side_menu));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.printBtn = new System.Windows.Forms.Button();
             this.settingsButton = new System.Windows.Forms.Button();
             this.userLabel = new System.Windows.Forms.Label();
             this.logoutButton = new System.Windows.Forms.Button();
@@ -144,6 +146,9 @@
             this.label26 = new System.Windows.Forms.Label();
             this.riskCategoryComboBox = new System.Windows.Forms.ComboBox();
             this.tableTableAdapter = new WindowsFormsApplication1.RisksDataSetTableAdapters.TableTableAdapter();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -188,6 +193,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.printBtn);
             this.splitContainer1.Panel1.Controls.Add(this.settingsButton);
             this.splitContainer1.Panel1.Controls.Add(this.userLabel);
             this.splitContainer1.Panel1.Controls.Add(this.logoutButton);
@@ -196,9 +202,19 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer1.Size = new System.Drawing.Size(780, 671);
-            this.splitContainer1.SplitterDistance = 161;
+            this.splitContainer1.Size = new System.Drawing.Size(781, 671);
+            this.splitContainer1.SplitterDistance = 183;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // printBtn
+            // 
+            this.printBtn.Location = new System.Drawing.Point(15, 130);
+            this.printBtn.Name = "printBtn";
+            this.printBtn.Size = new System.Drawing.Size(128, 36);
+            this.printBtn.TabIndex = 10;
+            this.printBtn.Text = "Print";
+            this.printBtn.UseVisualStyleBackColor = true;
+            this.printBtn.Click += new System.EventHandler(this.printBtn_Click);
             // 
             // settingsButton
             // 
@@ -304,7 +320,7 @@
             this.risksDataGridView.Name = "risksDataGridView";
             this.risksDataGridView.ReadOnly = true;
             this.risksDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.risksDataGridView.Size = new System.Drawing.Size(557, 468);
+            this.risksDataGridView.Size = new System.Drawing.Size(578, 468);
             this.risksDataGridView.TabIndex = 0;
             this.risksDataGridView.TabStop = false;
             this.risksDataGridView.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.risksDataGridView_CellMouseDown);
@@ -1319,6 +1335,25 @@
             // 
             this.tableTableAdapter.ClearBeforeFill = true;
             // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Document = this.printDocument1;
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
             // side_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1503,5 +1538,9 @@
         private System.Windows.Forms.ComboBox filterValueComboBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button clearFieldsButton;
+        private System.Windows.Forms.Button printBtn;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }
