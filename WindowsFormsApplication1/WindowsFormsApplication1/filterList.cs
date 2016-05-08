@@ -34,6 +34,7 @@ namespace WindowsFormsApplication1
             filters.DataSource = null;
             filters.DataSource = side_menu.filters;
             side_menu.filterValue.ResetText();
+            Program.checkNextRevision();
         }
 
         private void groupFilters(String groupType)

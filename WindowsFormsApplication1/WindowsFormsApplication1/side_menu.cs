@@ -79,8 +79,15 @@ namespace WindowsFormsApplication1
             updateRiskID();
             updateAddComboBoxes();
 
-            nextRevisionDateTimePicker.Value = dateTimePicker.Value.AddYears(3);
-            filterValueComboBox.ResetText();
+            if (userType.Equals("Admin"))
+            {
+                String idsToRevise = Program.checkNextRevision();
+                if (!idsToRevise.Equals(""))
+                    MessageBox.Show("Risks with the following IDs need to be revised\n" + idsToRevise, "Risks to review", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                nextRevisionDateTimePicker.Value = dateTimePicker.Value.AddYears(3);
+                filterValueComboBox.ResetText();
+            }
 
             risksDataGridView.Columns["Probability"].HeaderCell.Style.BackColor = Program.customColors[0];
             risksDataGridView.Columns["Consequence"].HeaderCell.Style.BackColor = Program.customColors[0];
@@ -293,6 +300,7 @@ namespace WindowsFormsApplication1
             try
             {
                 filterDataGridView();
+                Program.checkNextRevision();
                 filterValueComboBox.ResetText();
             }
             catch (System.Data.EvaluateException)
@@ -319,6 +327,7 @@ namespace WindowsFormsApplication1
 
             tableBindingSource.Filter = null;
             risksDataGridView.DataSource = tableBindingSource;
+            Program.checkNextRevision();
             filterValueComboBox.ResetText();
         }
 
@@ -496,6 +505,11 @@ namespace WindowsFormsApplication1
             probabilityAfterComboBox.SelectedItem = null;
             consequenceAfterComboBox.SelectedItem = null;
             updateAddComboBoxes(); 
+        }
+
+        private void risksDataGridView_Sorted(object sender, EventArgs e)
+        {
+            Program.checkNextRevision();
         }
     }
 }

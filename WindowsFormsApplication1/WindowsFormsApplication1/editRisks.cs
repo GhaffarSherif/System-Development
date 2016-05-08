@@ -21,7 +21,7 @@ namespace WindowsFormsApplication1
         {
             // TODO: This line of code loads data into the 'risksDataSet.Table' table. You can move, or remove it, as needed.
             this.tableTableAdapter.Fill(this.risksDataSet.Table);
-
+            
             try
             {
                 riskIDComboBox.Text = side_menu.rdgv.SelectedRows[0].Cells[0].Value.ToString();
@@ -126,23 +126,6 @@ namespace WindowsFormsApplication1
 
         private String createEditCommand()
         {
-            //"UPDATE [Table] SET [Date] = '" + dateTimePicker.Value.ToShortDateString() +
-            //                            "', [Next Revision] = '" + nextRevisionDateTimePicker.Value.ToShortDateString() +
-            //                            "', [Category] = '" + riskCategoryComboBox.Text +
-            //                            "', [Description] = '" + descriptionTextBox.Text +
-            //                            "', [Probability] = '" + probabilityComboBox.Text +
-            //                            "', [Consequence] = '" + consequenceComboBox.Text +
-            //                            "', [Status] = '" + statusComboBox.Text +
-            //                            "', [Evaluation] = '" + evaluationComboBox.Text +
-            //                            "', [Control Measure] = '" + controlMeasureTextBox.Text +
-            //                            "', [Response] = '" + riskResponseTextBox.Text +
-            //                            "', [Responsible Person] = '" + responsiblePersonComboBox.Text +
-            //                            "', [Probability After] = '" + probabilityAfterComboBox.Text +
-            //                            "', [Consequence After] = '" + consequenceAfterComboBox.Text +
-            //                            "', [Status After] = '" + statusAfterComboBox.Text +
-            //                            "', [Evaluation After] = '" + evaluationAfterComboBox.Text + "'" +
-            //                            "WHERE ID = '" + riskIDComboBox.Text + "'"
-
             String sqlComm = "UPDATE [Table] SET [Date] = '" + dateTimePicker.Value.ToShortDateString() + "'" + 
                                               ", [Next Revision] = '" + nextRevisionDateTimePicker.Value.ToShortDateString() + "'";
 

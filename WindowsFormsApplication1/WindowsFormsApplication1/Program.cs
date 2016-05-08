@@ -102,6 +102,9 @@ namespace WindowsFormsApplication1
             dataAdapter.Fill(dataTable);
             bindingSource.DataSource = dataTable;
             dataGridView.DataSource = dataTable;
+
+            if(side_menu.userType.Equals("Admin"))
+                checkNextRevision();
         }
 
         public static void updateComboBox(String connectionString, ComboBox comboBox, String displayMember)
@@ -112,6 +115,46 @@ namespace WindowsFormsApplication1
 
             comboBox.DataSource = dataTable;
             comboBox.DisplayMember = displayMember;
+        }
+
+        public static String checkNextRevision()
+        {
+            int index = 0;
+
+            String sqlComm = "SELECT [ID], [Date], [Next Revision] FROM [Table]";
+            if (side_menu.tbs.Filter != null)
+                sqlComm += " WHERE " + side_menu.tbs.Filter;
+
+            if (side_menu.rdgv.SortedColumn != null)
+            {
+                sqlComm += " ORDER BY [" + side_menu.rdgv.SortedColumn.Name + "] ";
+
+                switch("" + side_menu.rdgv.SortOrder)
+                {
+                    case "Ascending": sqlComm += "Asc"; break;
+                    case "Descending": sqlComm += "Desc";  break;
+                }
+            }
+
+            List<String> allRisks = Program.queryDatabase(Program.risksConnectionString, sqlComm);
+            List<String> toReviseRiskIds = new List<String>();
+            foreach (String risk in allRisks)
+            {
+                if (Convert.ToDateTime(risk.Split(Program.fieldSeparationCharacter)[2]) <= Convert.ToDateTime(risk.Split(Program.fieldSeparationCharacter)[1]))
+                {
+                    side_menu.rdgv.Rows[index].ErrorText = "To revise";
+                    toReviseRiskIds.Add(risk.Split(Program.fieldSeparationCharacter)[0]);
+                }
+
+                index++;
+            }
+
+            String idList = "";
+            foreach(String id in toReviseRiskIds)
+            {
+                idList += id + Program.fieldSeparationCharacter;
+            }
+            return idList.Trim(Program.fieldSeparationCharacter);
         }
     }
 }

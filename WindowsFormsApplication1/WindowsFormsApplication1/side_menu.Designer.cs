@@ -81,6 +81,12 @@
             this.tableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.risksDataSet = new WindowsFormsApplication1.RisksDataSet();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.filterComparisonComboBox = new System.Windows.Forms.ComboBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.filterValueComboBox = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.viewFiltersButton = new System.Windows.Forms.Button();
             this.addFilterButton = new System.Windows.Forms.Button();
             this.clearFiltersButton = new System.Windows.Forms.Button();
@@ -89,6 +95,7 @@
             this.filterTypeComboBox = new System.Windows.Forms.ComboBox();
             this.addRiskTabPage = new System.Windows.Forms.TabPage();
             this.panel15 = new System.Windows.Forms.Panel();
+            this.clearFieldsButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.nextRevisionDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
@@ -100,6 +107,22 @@
             this.label2 = new System.Windows.Forms.Label();
             this.addRiskButton = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.statusAfterComboBox = new System.Windows.Forms.ComboBox();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.consequenceAfterComboBox = new System.Windows.Forms.ComboBox();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.probabilityAfterComboBox = new System.Windows.Forms.ComboBox();
+            this.panel21 = new System.Windows.Forms.Panel();
+            this.responsiblePersonComboBox = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.panel22 = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.riskResponseTextBox = new System.Windows.Forms.RichTextBox();
             this.panel16 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
             this.controlMeasureTextBox = new System.Windows.Forms.RichTextBox();
@@ -121,29 +144,6 @@
             this.label26 = new System.Windows.Forms.Label();
             this.riskCategoryComboBox = new System.Windows.Forms.ComboBox();
             this.tableTableAdapter = new WindowsFormsApplication1.RisksDataSetTableAdapters.TableTableAdapter();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.panel18 = new System.Windows.Forms.Panel();
-            this.label16 = new System.Windows.Forms.Label();
-            this.statusAfterComboBox = new System.Windows.Forms.ComboBox();
-            this.panel19 = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
-            this.consequenceAfterComboBox = new System.Windows.Forms.ComboBox();
-            this.panel20 = new System.Windows.Forms.Panel();
-            this.label18 = new System.Windows.Forms.Label();
-            this.probabilityAfterComboBox = new System.Windows.Forms.ComboBox();
-            this.panel21 = new System.Windows.Forms.Panel();
-            this.responsiblePersonComboBox = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.panel22 = new System.Windows.Forms.Panel();
-            this.label20 = new System.Windows.Forms.Label();
-            this.riskResponseTextBox = new System.Windows.Forms.RichTextBox();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.filterComparisonComboBox = new System.Windows.Forms.ComboBox();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.filterValueComboBox = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.clearFieldsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -155,6 +155,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.risksDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.addRiskTabPage.SuspendLayout();
             this.panel15.SuspendLayout();
@@ -162,6 +164,12 @@
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.panel18.SuspendLayout();
+            this.panel19.SuspendLayout();
+            this.panel20.SuspendLayout();
+            this.panel21.SuspendLayout();
+            this.panel22.SuspendLayout();
             this.panel16.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.panel24.SuspendLayout();
@@ -170,14 +178,6 @@
             this.groupBox8.SuspendLayout();
             this.panel27.SuspendLayout();
             this.panel28.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.panel18.SuspendLayout();
-            this.panel19.SuspendLayout();
-            this.panel20.SuspendLayout();
-            this.panel21.SuspendLayout();
-            this.panel22.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -308,6 +308,7 @@
             this.risksDataGridView.TabIndex = 0;
             this.risksDataGridView.TabStop = false;
             this.risksDataGridView.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.risksDataGridView_CellMouseDown);
+            this.risksDataGridView.Sorted += new System.EventHandler(this.risksDataGridView_Sorted);
             this.risksDataGridView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.risksDataGridView_KeyDown);
             // 
             // ID
@@ -459,7 +460,7 @@
             this.iDToolStripMenuItem.CheckOnClick = true;
             this.iDToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.iDToolStripMenuItem.Name = "iDToolStripMenuItem";
-            this.iDToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.iDToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.iDToolStripMenuItem.Text = "ID";
             this.iDToolStripMenuItem.Click += new System.EventHandler(this.columnsToolMenuStrip_Click);
             // 
@@ -469,7 +470,7 @@
             this.dateToolStripMenuItem.CheckOnClick = true;
             this.dateToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.dateToolStripMenuItem.Name = "dateToolStripMenuItem";
-            this.dateToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dateToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.dateToolStripMenuItem.Text = "Date";
             this.dateToolStripMenuItem.Click += new System.EventHandler(this.columnsToolMenuStrip_Click);
             // 
@@ -479,7 +480,7 @@
             this.nextRevisionToolStripMenuItem.CheckOnClick = true;
             this.nextRevisionToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.nextRevisionToolStripMenuItem.Name = "nextRevisionToolStripMenuItem";
-            this.nextRevisionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nextRevisionToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.nextRevisionToolStripMenuItem.Text = "NextRevision";
             this.nextRevisionToolStripMenuItem.Click += new System.EventHandler(this.columnsToolMenuStrip_Click);
             // 
@@ -489,7 +490,7 @@
             this.categoryToolStripMenuItem.CheckOnClick = true;
             this.categoryToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.categoryToolStripMenuItem.Name = "categoryToolStripMenuItem";
-            this.categoryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.categoryToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.categoryToolStripMenuItem.Text = "Category";
             this.categoryToolStripMenuItem.Click += new System.EventHandler(this.columnsToolMenuStrip_Click);
             // 
@@ -499,7 +500,7 @@
             this.descriptionToolStripMenuItem.CheckOnClick = true;
             this.descriptionToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.descriptionToolStripMenuItem.Name = "descriptionToolStripMenuItem";
-            this.descriptionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.descriptionToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.descriptionToolStripMenuItem.Text = "Description";
             this.descriptionToolStripMenuItem.Click += new System.EventHandler(this.columnsToolMenuStrip_Click);
             // 
@@ -520,7 +521,7 @@
             this.probabilityToolStripMenuItem.CheckOnClick = true;
             this.probabilityToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.probabilityToolStripMenuItem.Name = "probabilityToolStripMenuItem";
-            this.probabilityToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.probabilityToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.probabilityToolStripMenuItem.Text = "Probability";
             this.probabilityToolStripMenuItem.Click += new System.EventHandler(this.columnsToolMenuStrip_Click);
             // 
@@ -530,7 +531,7 @@
             this.consequenceToolStripMenuItem.CheckOnClick = true;
             this.consequenceToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.consequenceToolStripMenuItem.Name = "consequenceToolStripMenuItem";
-            this.consequenceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.consequenceToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.consequenceToolStripMenuItem.Text = "Consequence";
             this.consequenceToolStripMenuItem.Click += new System.EventHandler(this.columnsToolMenuStrip_Click);
             // 
@@ -540,7 +541,7 @@
             this.statusToolStripMenuItem.CheckOnClick = true;
             this.statusToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.statusToolStripMenuItem.Name = "statusToolStripMenuItem";
-            this.statusToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.statusToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.statusToolStripMenuItem.Text = "Status";
             this.statusToolStripMenuItem.Click += new System.EventHandler(this.columnsToolMenuStrip_Click);
             // 
@@ -550,7 +551,7 @@
             this.evaluationToolStripMenuItem.CheckOnClick = true;
             this.evaluationToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.evaluationToolStripMenuItem.Name = "evaluationToolStripMenuItem";
-            this.evaluationToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.evaluationToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.evaluationToolStripMenuItem.Text = "Evaluation";
             this.evaluationToolStripMenuItem.Click += new System.EventHandler(this.columnsToolMenuStrip_Click);
             // 
@@ -683,6 +684,61 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter";
             // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.label1);
+            this.panel6.Controls.Add(this.filterComparisonComboBox);
+            this.panel6.Location = new System.Drawing.Point(150, 21);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(99, 58);
+            this.panel6.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Comparison";
+            // 
+            // filterComparisonComboBox
+            // 
+            this.filterComparisonComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.filterComparisonComboBox.FormattingEnabled = true;
+            this.filterComparisonComboBox.Location = new System.Drawing.Point(3, 25);
+            this.filterComparisonComboBox.Name = "filterComparisonComboBox";
+            this.filterComparisonComboBox.Size = new System.Drawing.Size(93, 21);
+            this.filterComparisonComboBox.TabIndex = 1;
+            this.filterComparisonComboBox.TabStop = false;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.filterValueComboBox);
+            this.panel5.Controls.Add(this.label6);
+            this.panel5.Location = new System.Drawing.Point(252, 21);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(299, 58);
+            this.panel5.TabIndex = 8;
+            // 
+            // filterValueComboBox
+            // 
+            this.filterValueComboBox.DataSource = this.tableBindingSource;
+            this.filterValueComboBox.FormattingEnabled = true;
+            this.filterValueComboBox.Location = new System.Drawing.Point(3, 25);
+            this.filterValueComboBox.Name = "filterValueComboBox";
+            this.filterValueComboBox.Size = new System.Drawing.Size(292, 21);
+            this.filterValueComboBox.TabIndex = 0;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(127, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(34, 13);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Value";
+            // 
             // viewFiltersButton
             // 
             this.viewFiltersButton.Location = new System.Drawing.Point(23, 87);
@@ -770,6 +826,17 @@
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(580, 628);
             this.panel15.TabIndex = 1;
+            // 
+            // clearFieldsButton
+            // 
+            this.clearFieldsButton.Location = new System.Drawing.Point(4, 603);
+            this.clearFieldsButton.Name = "clearFieldsButton";
+            this.clearFieldsButton.Size = new System.Drawing.Size(75, 23);
+            this.clearFieldsButton.TabIndex = 12;
+            this.clearFieldsButton.TabStop = false;
+            this.clearFieldsButton.Text = "Clear";
+            this.clearFieldsButton.UseVisualStyleBackColor = true;
+            this.clearFieldsButton.Click += new System.EventHandler(this.clearFieldsButton_Click);
             // 
             // panel2
             // 
@@ -874,6 +941,174 @@
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Control";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.panel18);
+            this.groupBox6.Controls.Add(this.panel19);
+            this.groupBox6.Controls.Add(this.panel20);
+            this.groupBox6.Location = new System.Drawing.Point(19, 171);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(526, 105);
+            this.groupBox6.TabIndex = 8;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "After Control";
+            // 
+            // panel18
+            // 
+            this.panel18.Controls.Add(this.label16);
+            this.panel18.Controls.Add(this.statusAfterComboBox);
+            this.panel18.Location = new System.Drawing.Point(286, 19);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(200, 31);
+            this.panel18.TabIndex = 5;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(24, 8);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(37, 13);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "Status";
+            // 
+            // statusAfterComboBox
+            // 
+            this.statusAfterComboBox.FormattingEnabled = true;
+            this.statusAfterComboBox.Location = new System.Drawing.Point(76, 3);
+            this.statusAfterComboBox.Name = "statusAfterComboBox";
+            this.statusAfterComboBox.Size = new System.Drawing.Size(121, 21);
+            this.statusAfterComboBox.TabIndex = 0;
+            // 
+            // panel19
+            // 
+            this.panel19.Controls.Add(this.label17);
+            this.panel19.Controls.Add(this.consequenceAfterComboBox);
+            this.panel19.Location = new System.Drawing.Point(23, 63);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(200, 31);
+            this.panel19.TabIndex = 6;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(3, 8);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(73, 13);
+            this.label17.TabIndex = 1;
+            this.label17.Text = "Consequence";
+            // 
+            // consequenceAfterComboBox
+            // 
+            this.consequenceAfterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.consequenceAfterComboBox.FormattingEnabled = true;
+            this.consequenceAfterComboBox.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.consequenceAfterComboBox.Location = new System.Drawing.Point(76, 3);
+            this.consequenceAfterComboBox.Name = "consequenceAfterComboBox";
+            this.consequenceAfterComboBox.Size = new System.Drawing.Size(121, 21);
+            this.consequenceAfterComboBox.TabIndex = 0;
+            // 
+            // panel20
+            // 
+            this.panel20.Controls.Add(this.label18);
+            this.panel20.Controls.Add(this.probabilityAfterComboBox);
+            this.panel20.Location = new System.Drawing.Point(23, 19);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(200, 31);
+            this.panel20.TabIndex = 3;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(14, 8);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(55, 13);
+            this.label18.TabIndex = 1;
+            this.label18.Text = "Probability";
+            // 
+            // probabilityAfterComboBox
+            // 
+            this.probabilityAfterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.probabilityAfterComboBox.FormattingEnabled = true;
+            this.probabilityAfterComboBox.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.probabilityAfterComboBox.Location = new System.Drawing.Point(76, 3);
+            this.probabilityAfterComboBox.Name = "probabilityAfterComboBox";
+            this.probabilityAfterComboBox.Size = new System.Drawing.Size(121, 21);
+            this.probabilityAfterComboBox.TabIndex = 0;
+            // 
+            // panel21
+            // 
+            this.panel21.Controls.Add(this.responsiblePersonComboBox);
+            this.panel21.Controls.Add(this.label19);
+            this.panel21.Location = new System.Drawing.Point(111, 129);
+            this.panel21.Name = "panel21";
+            this.panel21.Size = new System.Drawing.Size(278, 36);
+            this.panel21.TabIndex = 7;
+            // 
+            // responsiblePersonComboBox
+            // 
+            this.responsiblePersonComboBox.FormattingEnabled = true;
+            this.responsiblePersonComboBox.Location = new System.Drawing.Point(110, 7);
+            this.responsiblePersonComboBox.Name = "responsiblePersonComboBox";
+            this.responsiblePersonComboBox.Size = new System.Drawing.Size(165, 21);
+            this.responsiblePersonComboBox.TabIndex = 1;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(5, 13);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(101, 13);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "Responsible Person";
+            // 
+            // panel22
+            // 
+            this.panel22.Controls.Add(this.label20);
+            this.panel22.Controls.Add(this.riskResponseTextBox);
+            this.panel22.Location = new System.Drawing.Point(6, 74);
+            this.panel22.Name = "panel22";
+            this.panel22.Size = new System.Drawing.Size(550, 49);
+            this.panel22.TabIndex = 6;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(14, 19);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(79, 13);
+            this.label20.TabIndex = 1;
+            this.label20.Text = "Risk Response";
+            // 
+            // riskResponseTextBox
+            // 
+            this.riskResponseTextBox.Location = new System.Drawing.Point(105, 3);
+            this.riskResponseTextBox.Name = "riskResponseTextBox";
+            this.riskResponseTextBox.Size = new System.Drawing.Size(441, 42);
+            this.riskResponseTextBox.TabIndex = 0;
+            this.riskResponseTextBox.Text = "";
             // 
             // panel16
             // 
@@ -1084,240 +1319,6 @@
             // 
             this.tableTableAdapter.ClearBeforeFill = true;
             // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.panel18);
-            this.groupBox6.Controls.Add(this.panel19);
-            this.groupBox6.Controls.Add(this.panel20);
-            this.groupBox6.Location = new System.Drawing.Point(19, 171);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(526, 105);
-            this.groupBox6.TabIndex = 8;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "After Control";
-            // 
-            // panel18
-            // 
-            this.panel18.Controls.Add(this.label16);
-            this.panel18.Controls.Add(this.statusAfterComboBox);
-            this.panel18.Location = new System.Drawing.Point(286, 19);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(200, 31);
-            this.panel18.TabIndex = 5;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(24, 8);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(37, 13);
-            this.label16.TabIndex = 1;
-            this.label16.Text = "Status";
-            // 
-            // statusAfterComboBox
-            // 
-            this.statusAfterComboBox.FormattingEnabled = true;
-            this.statusAfterComboBox.Location = new System.Drawing.Point(76, 3);
-            this.statusAfterComboBox.Name = "statusAfterComboBox";
-            this.statusAfterComboBox.Size = new System.Drawing.Size(121, 21);
-            this.statusAfterComboBox.TabIndex = 0;
-            // 
-            // panel19
-            // 
-            this.panel19.Controls.Add(this.label17);
-            this.panel19.Controls.Add(this.consequenceAfterComboBox);
-            this.panel19.Location = new System.Drawing.Point(23, 63);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(200, 31);
-            this.panel19.TabIndex = 6;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(3, 8);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(73, 13);
-            this.label17.TabIndex = 1;
-            this.label17.Text = "Consequence";
-            // 
-            // consequenceAfterComboBox
-            // 
-            this.consequenceAfterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.consequenceAfterComboBox.FormattingEnabled = true;
-            this.consequenceAfterComboBox.Items.AddRange(new object[] {
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
-            this.consequenceAfterComboBox.Location = new System.Drawing.Point(76, 3);
-            this.consequenceAfterComboBox.Name = "consequenceAfterComboBox";
-            this.consequenceAfterComboBox.Size = new System.Drawing.Size(121, 21);
-            this.consequenceAfterComboBox.TabIndex = 0;
-            // 
-            // panel20
-            // 
-            this.panel20.Controls.Add(this.label18);
-            this.panel20.Controls.Add(this.probabilityAfterComboBox);
-            this.panel20.Location = new System.Drawing.Point(23, 19);
-            this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(200, 31);
-            this.panel20.TabIndex = 3;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(14, 8);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(55, 13);
-            this.label18.TabIndex = 1;
-            this.label18.Text = "Probability";
-            // 
-            // probabilityAfterComboBox
-            // 
-            this.probabilityAfterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.probabilityAfterComboBox.FormattingEnabled = true;
-            this.probabilityAfterComboBox.Items.AddRange(new object[] {
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
-            this.probabilityAfterComboBox.Location = new System.Drawing.Point(76, 3);
-            this.probabilityAfterComboBox.Name = "probabilityAfterComboBox";
-            this.probabilityAfterComboBox.Size = new System.Drawing.Size(121, 21);
-            this.probabilityAfterComboBox.TabIndex = 0;
-            // 
-            // panel21
-            // 
-            this.panel21.Controls.Add(this.responsiblePersonComboBox);
-            this.panel21.Controls.Add(this.label19);
-            this.panel21.Location = new System.Drawing.Point(111, 129);
-            this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(278, 36);
-            this.panel21.TabIndex = 7;
-            // 
-            // responsiblePersonComboBox
-            // 
-            this.responsiblePersonComboBox.FormattingEnabled = true;
-            this.responsiblePersonComboBox.Location = new System.Drawing.Point(110, 7);
-            this.responsiblePersonComboBox.Name = "responsiblePersonComboBox";
-            this.responsiblePersonComboBox.Size = new System.Drawing.Size(165, 21);
-            this.responsiblePersonComboBox.TabIndex = 1;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(5, 13);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(101, 13);
-            this.label19.TabIndex = 0;
-            this.label19.Text = "Responsible Person";
-            // 
-            // panel22
-            // 
-            this.panel22.Controls.Add(this.label20);
-            this.panel22.Controls.Add(this.riskResponseTextBox);
-            this.panel22.Location = new System.Drawing.Point(6, 74);
-            this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(550, 49);
-            this.panel22.TabIndex = 6;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(14, 19);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(79, 13);
-            this.label20.TabIndex = 1;
-            this.label20.Text = "Risk Response";
-            // 
-            // riskResponseTextBox
-            // 
-            this.riskResponseTextBox.Location = new System.Drawing.Point(105, 3);
-            this.riskResponseTextBox.Name = "riskResponseTextBox";
-            this.riskResponseTextBox.Size = new System.Drawing.Size(441, 42);
-            this.riskResponseTextBox.TabIndex = 0;
-            this.riskResponseTextBox.Text = "";
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.label1);
-            this.panel6.Controls.Add(this.filterComparisonComboBox);
-            this.panel6.Location = new System.Drawing.Point(150, 21);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(99, 58);
-            this.panel6.TabIndex = 9;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Comparison";
-            // 
-            // filterComparisonComboBox
-            // 
-            this.filterComparisonComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.filterComparisonComboBox.FormattingEnabled = true;
-            this.filterComparisonComboBox.Location = new System.Drawing.Point(3, 25);
-            this.filterComparisonComboBox.Name = "filterComparisonComboBox";
-            this.filterComparisonComboBox.Size = new System.Drawing.Size(93, 21);
-            this.filterComparisonComboBox.TabIndex = 1;
-            this.filterComparisonComboBox.TabStop = false;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.filterValueComboBox);
-            this.panel5.Controls.Add(this.label6);
-            this.panel5.Location = new System.Drawing.Point(252, 21);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(299, 58);
-            this.panel5.TabIndex = 8;
-            // 
-            // filterValueComboBox
-            // 
-            this.filterValueComboBox.DataSource = this.tableBindingSource;
-            this.filterValueComboBox.FormattingEnabled = true;
-            this.filterValueComboBox.Location = new System.Drawing.Point(3, 25);
-            this.filterValueComboBox.Name = "filterValueComboBox";
-            this.filterValueComboBox.Size = new System.Drawing.Size(292, 21);
-            this.filterValueComboBox.TabIndex = 0;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(127, 9);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(34, 13);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Value";
-            // 
-            // clearFieldsButton
-            // 
-            this.clearFieldsButton.Location = new System.Drawing.Point(4, 603);
-            this.clearFieldsButton.Name = "clearFieldsButton";
-            this.clearFieldsButton.Size = new System.Drawing.Size(75, 23);
-            this.clearFieldsButton.TabIndex = 12;
-            this.clearFieldsButton.TabStop = false;
-            this.clearFieldsButton.Text = "Clear";
-            this.clearFieldsButton.UseVisualStyleBackColor = true;
-            this.clearFieldsButton.Click += new System.EventHandler(this.clearFieldsButton_Click);
-            // 
             // side_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1342,6 +1343,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.tableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.risksDataSet)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.addRiskTabPage.ResumeLayout(false);
@@ -1353,6 +1358,17 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox5.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
+            this.panel19.ResumeLayout(false);
+            this.panel19.PerformLayout();
+            this.panel20.ResumeLayout(false);
+            this.panel20.PerformLayout();
+            this.panel21.ResumeLayout(false);
+            this.panel21.PerformLayout();
+            this.panel22.ResumeLayout(false);
+            this.panel22.PerformLayout();
             this.panel16.ResumeLayout(false);
             this.panel16.PerformLayout();
             this.groupBox7.ResumeLayout(false);
@@ -1367,21 +1383,6 @@
             this.panel27.PerformLayout();
             this.panel28.ResumeLayout(false);
             this.panel28.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.panel18.ResumeLayout(false);
-            this.panel18.PerformLayout();
-            this.panel19.ResumeLayout(false);
-            this.panel19.PerformLayout();
-            this.panel20.ResumeLayout(false);
-            this.panel20.PerformLayout();
-            this.panel21.ResumeLayout(false);
-            this.panel21.PerformLayout();
-            this.panel22.ResumeLayout(false);
-            this.panel22.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
