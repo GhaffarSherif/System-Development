@@ -127,7 +127,7 @@ namespace WindowsFormsApplication1
 
             if (side_menu.rdgv.SortedColumn != null)
             {
-                sqlComm += " ORDER BY [" + side_menu.rdgv.SortedColumn.Name + "] ";
+                sqlComm += " ORDER BY [" + getColumnName() + "] ";
 
                 switch("" + side_menu.rdgv.SortOrder)
                 {
@@ -155,6 +155,21 @@ namespace WindowsFormsApplication1
                 idList += id + Program.fieldSeparationCharacter;
             }
             return idList.Trim(Program.fieldSeparationCharacter);
+        }
+
+        private static String getColumnName()
+        {
+            switch (side_menu.rdgv.SortedColumn.Name)
+            {
+                case "NextRevision": return "Next Revision";
+                case "ControlMeasure": return "Control Measure";
+                case "ResponsiblePerson": return "Responsible Person";
+                case "ProbabilityAfter": return "Probability After";
+                case "ConsequenceAfter": return "Consequence After";
+                case "StatusAfter": return "Status After";
+                case "EvaluationAfter": return "Evaluation After";
+                default: return side_menu.rdgv.SortedColumn.Name;
+            }
         }
     }
 }

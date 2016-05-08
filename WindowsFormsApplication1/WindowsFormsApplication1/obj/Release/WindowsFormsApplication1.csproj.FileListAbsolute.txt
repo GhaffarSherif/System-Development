@@ -1,0 +1,17 @@
+C:\Users\Graal\Desktop\Team Project\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Release\WindowsFormsApplication1.exe.config
+C:\Users\Graal\Desktop\Team Project\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Release\Risks.mdf
+C:\Users\Graal\Desktop\Team Project\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Release\Risks_log.ldf
+C:\Users\Graal\Desktop\Team Project\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Release\Users.mdf
+C:\Users\Graal\Desktop\Team Project\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Release\Users_log.ldf
+C:\Users\Graal\Desktop\Team Project\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Release\WindowsFormsApplication1.exe
+C:\Users\Graal\Desktop\Team Project\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Release\WindowsFormsApplication1.pdb
+C:\Users\Graal\Desktop\Team Project\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+C:\Users\Graal\Desktop\Team Project\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.filterList.resources
+C:\Users\Graal\Desktop\Team Project\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.login.resources
+C:\Users\Graal\Desktop\Team Project\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\Graal\Desktop\Team Project\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.settings.resources
+C:\Users\Graal\Desktop\Team Project\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.side_menu.resources
+C:\Users\Graal\Desktop\Team Project\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.editRisks.resources
+C:\Users\Graal\Desktop\Team Project\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.csproj.GenerateResource.Cache
+C:\Users\Graal\Desktop\Team Project\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.exe
+C:\Users\Graal\Desktop\Team Project\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.pdb
