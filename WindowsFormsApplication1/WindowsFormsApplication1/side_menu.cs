@@ -614,13 +614,13 @@ namespace WindowsFormsApplication1
                 realheight = realheight + height;
 
             }
-            
+            printDialog1.Document = printDocument1;
             
         }
 
         private void printBtn_Click(object sender, EventArgs e)
         {
-            printDialog1.Document = printDocument1;
+            this.printPreviewDialog1.ShowDialog();
         }
     }
 }
