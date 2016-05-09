@@ -15,3 +15,6 @@ C:\Users\Graal\Desktop\Team Project\System-Development\WindowsFormsApplication1\
 C:\Users\Graal\Desktop\Team Project\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.csproj.GenerateResource.Cache
 C:\Users\Graal\Desktop\Team Project\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.exe
 C:\Users\Graal\Desktop\Team Project\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.pdb
+C:\Users\sherif\Desktop\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\bin\Release\WindowsFormsApplication1.exe.config
+C:\Users\sherif\Desktop\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.exe
+C:\Users\sherif\Desktop\System-Development\WindowsFormsApplication1\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.pdb
