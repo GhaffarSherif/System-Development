@@ -33,17 +33,8 @@ namespace WindowsFormsApplication1
                 return;
             }
 
-            try
-            {
-                updateEditComboBoxes();
-                fillControls();
-            }
-            catch(System.ArgumentOutOfRangeException)
-            {
-                MessageBox.Show("No entry selected");
-                this.Close();
-                return;
-            }
+            updateEditComboBoxes();
+            fillControls();
         }
 
         public void updateEditComboBoxes()
@@ -109,7 +100,7 @@ namespace WindowsFormsApplication1
             if(!isEdited)
             {
                MessageBox.Show("Failed to edit, wrong format.");
-               return;
+                return;
             }
 
             MessageBox.Show("Risk edited");
@@ -136,9 +127,7 @@ namespace WindowsFormsApplication1
         private String createEditCommand()
         {
             String sqlComm = "UPDATE [Table] SET [Date] = '" + dateTimePicker.Value.ToShortDateString() + "'" + 
-                                              ", [Next Revision] = '" + nextRevisionDateTimePicker.Value.ToShortDateString() + "'" +
-                                              ", [Category] = '" + riskCategoryComboBox.Text + "'" +
-                                              ", [Description] = '" + descriptionTextBox.Text + "'";
+                                              ", [Next Revision] = '" + nextRevisionDateTimePicker.Value.ToShortDateString() + "'";
 
             if (!probabilityComboBox.Text.Equals(""))
                 sqlComm += ", [Probability] = '" + probabilityComboBox.Text + "'";
