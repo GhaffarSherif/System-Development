@@ -25,7 +25,7 @@ namespace WindowsFormsApplication1
         // A list of filters that are applied to the risksDataGridView.
         public static List<String> filters = new List<String>();
 
-        // THe set of Strings used to represent the comparison operators for certain data types.
+        // The set of Strings used to represent the comparison operators for certain data types.
         List<String> dateNumbCompare;
         List<String> textCompare;
 
@@ -51,7 +51,7 @@ namespace WindowsFormsApplication1
             statusAfter = statusAfterComboBox;
             responsiblePerson = responsiblePersonComboBox;
 
-            // Get the current user;s information.
+            // Get the current user's information.
             username = Program.userInfo.Split(Program.fieldSeparationCharacter)[0];
             userType = Program.userInfo.Split(Program.fieldSeparationCharacter)[2];
 
@@ -72,7 +72,7 @@ namespace WindowsFormsApplication1
 
             // The set of comparions operators for Strings.
             textCompare = new List<String> {
-                "=", "LIKE", "NOT LIKE"
+                "LIKE", "NOT LIKE"
             };
 
             filterTypeComboBox.DataSource = Program.queryDatabase(Program.risksConnectionString, "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME  = 'Table'");
@@ -193,7 +193,7 @@ namespace WindowsFormsApplication1
             String filterType = filterTypeComboBox.Text;
             if (filterType.Equals("Category") || filterType.Equals("Description") || filterType.Equals("Status") ||
                 filterType.Equals("Control Measure") || filterType.Equals("Response") || filterType.Equals("Responsible Person") ||
-                filterType.Equals("Status After"))
+                filterType.Equals("Status After") || filterType.Equals("Last Modified By"))
                 filterComparisonComboBox.DataSource = textCompare;
             else
                 filterComparisonComboBox.DataSource = dateNumbCompare;
@@ -227,8 +227,10 @@ namespace WindowsFormsApplication1
                 // Adds the filter to the String List.
                 if (filterTypeComboBox.Text.Equals("Date") || filterTypeComboBox.Text.Equals("Next Revision")) // Formats the dates appropriately. 
                     filters.Add("[" + filterTypeComboBox.Text.Trim(Program.fieldSeparationCharacter) + "] " + filterComparisonComboBox.Text + " '" + Convert.ToDateTime(filterValueComboBox.Text).ToString("dd/MM/yyyy") + "'");
+                else if (filterComparisonComboBox.Text.Equals("LIKE") || filterComparisonComboBox.Text.Equals("NOT LIKE"))
+                    filters.Add("[" + filterTypeComboBox.Text.Trim(Program.fieldSeparationCharacter) + "] " + filterComparisonComboBox.Text + " '%" + filterValueComboBox.Text + "%'");
                 else
-                    filters.Add("[" + filterTypeComboBox.Text.Trim(Program.fieldSeparationCharacter) + "] " + filterComparisonComboBox.Text + " '" + filterValueComboBox.Text + "'");
+                    filters.Add("[" + filterTypeComboBox.Text.Trim(Program.fieldSeparationCharacter) + "] " + filterComparisonComboBox.Text + " " + filterValueComboBox.Text);
             }
             catch (System.FormatException)
             {
