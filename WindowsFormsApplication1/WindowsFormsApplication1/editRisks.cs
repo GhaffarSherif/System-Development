@@ -26,7 +26,7 @@ namespace WindowsFormsApplication1
             {
                 riskIDComboBox.Text = side_menu.rdgv.SelectedRows[0].Cells[0].Value.ToString();
             }
-            catch (System.NullReferenceException)
+            catch (System.NullReferenceException) // Checks if a row was selected when the form was opened.
             {
                 MessageBox.Show("No entry selected");
                 this.Close();
@@ -38,7 +38,7 @@ namespace WindowsFormsApplication1
                 updateEditComboBoxes();
                 fillControls();
             }
-            catch(System.ArgumentOutOfRangeException)
+            catch(System.ArgumentOutOfRangeException) // Checks if a row was selected when the form was opened.
             {
                 MessageBox.Show("No entry selected");
                 this.Close();
@@ -46,6 +46,7 @@ namespace WindowsFormsApplication1
             }
         }
 
+        // Updates the items in the comboBoxes of the edit risk form with distinct column values from the database. 
         public void updateEditComboBoxes()
         {
             riskCategoryComboBox.DataSource = Program.queryDatabase(Program.risksConnectionString, "SELECT DISTINCT [Category] FROM [Table]");
@@ -59,6 +60,7 @@ namespace WindowsFormsApplication1
             statusAfterTextBox.SelectedItem = null;
         }
 
+        // Fills the controls in the form with the data of the selected risk's ID.
         private void fillControls()
         {
             String[] selectedRiskInfo = Program.queryDatabase(Program.risksConnectionString, "SELECT * FROM [Table] WHERE ID = '" + riskIDComboBox.Text + "'")[0].Split(Program.fieldSeparationCharacter);
@@ -90,12 +92,14 @@ namespace WindowsFormsApplication1
         {
             int value;
 
+            // Checks if the required fields are filled.
             if (riskCategoryComboBox.Text.Trim().Equals("") || descriptionTextBox.Text.Trim().Equals(""))
             {
                 MessageBox.Show("You must assign a category and add a description to the risk.");
                 return;
             }
 
+            // Validates int data type for certain fields.
             if (!int.TryParse(probabilityComboBox.Text, out value) || !int.TryParse(consequenceComboBox.Text, out value) ||
                 !int.TryParse(evaluationTextBox.Text, out value) || !int.TryParse(probabilityAfterComboBox.Text, out value) ||
                 !int.TryParse(consequenceAfterComboBox.Text, out value) || !int.TryParse(evaluationAfterTextBox.Text, out value))
@@ -106,12 +110,14 @@ namespace WindowsFormsApplication1
 
             bool isEdited = Program.editDatabase(Program.risksConnectionString, createEditCommand());
 
+            // Checks if an error occured when editing the database.
             if(!isEdited)
             {
                MessageBox.Show("Failed to edit, wrong format.");
                return;
             }
 
+            // Successfully edited the database.
             MessageBox.Show("Risk edited");
 
             descriptionTextBox.Clear();
@@ -133,13 +139,16 @@ namespace WindowsFormsApplication1
             //this.Close();
         }
 
+        // Creates and returns the update SQL command depending on which fields are filled.
         private String createEditCommand()
         {
+            // The default update SQL command for columns of required fields.
             String sqlComm = "UPDATE [Table] SET [Date] = '" + dateTimePicker.Value.ToShortDateString() + "'" + 
                                               ", [Next Revision] = '" + nextRevisionDateTimePicker.Value.ToShortDateString() + "'" +
                                               ", [Category] = '" + riskCategoryComboBox.Text + "'" +
                                               ", [Description] = '" + descriptionTextBox.Text + "'";
 
+            // Add more columns to update if the designated fields are filled.
             if (!probabilityComboBox.Text.Equals(""))
                 sqlComm += ", [Probability] = '" + probabilityComboBox.Text + "'";
             if (!consequenceComboBox.Text.Equals(""))
@@ -161,6 +170,7 @@ namespace WindowsFormsApplication1
             if (!statusAfterTextBox.Text.Equals(""))
                 sqlComm += ", [Status] = '" + statusAfterTextBox.Text + "'";
 
+            // Add the last required fields to update and the condition determining the row to update.
             sqlComm += ", [Last Modified By] = '" + side_menu.username + "'" + 
                        ", [Last Modified Date] = '" + DateTime.Now.ToShortDateString() + "'" +
                        " WHERE ID = '" + riskIDComboBox.Text + "'";
@@ -168,6 +178,7 @@ namespace WindowsFormsApplication1
             return sqlComm;
         }
 
+        // Computes the evaluation and evaluation after fields using the formula consequence * probability.
         private void computeEvaluationFields(object sender, EventArgs e)
         {
             if (!probabilityComboBox.Text.Equals("") && !consequenceComboBox.Text.Equals(""))

@@ -14,6 +14,19 @@ namespace WindowsFormsApplication1
 {
     static class Program
     {
+        // Path to the databases used by this application
+        public static String usersConnectionString;
+        public static String risksConnectionString;
+        
+        // Used to keep track of the current user
+        public static String userInfo;
+
+        // Used to separate each column of a single row of data from a database query.
+        public static char fieldSeparationCharacter = ',';
+
+        // Colors used as backcolor for the risk table header groups.
+        public static Color[] customColors;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -23,6 +36,7 @@ namespace WindowsFormsApplication1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            // References the users/risks databases in the current directory
             usersConnectionString = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=" + Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Users.mdf;Integrated Security=True";
             risksConnectionString = "Data Source=(LocalDB)\\v11.0;AttachDbFilename=" + Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Risks.mdf;Integrated Security=True";
 
@@ -32,14 +46,7 @@ namespace WindowsFormsApplication1
             Application.Run();
         }
 
-        public static String usersConnectionString;
-        public static String risksConnectionString;
-        public static String userInfo;
-
-        public static char fieldSeparationCharacter = ',';
-
-        public static Color[] customColors;
-
+        // Used to query a given database and return the results in a String List, each index defining a row.
         public static List<String> queryDatabase(String connectionString, String sqlComm)
         {
             try
@@ -73,6 +80,7 @@ namespace WindowsFormsApplication1
             }
         }
 
+        // Used to modify a given database. Returns true if the database has been modified.
         public static bool editDatabase(String connectionString, String sqlComm)
         {
             try
@@ -95,6 +103,7 @@ namespace WindowsFormsApplication1
             }
         }
 
+        // Updates the given DataGridView and BindingSource using the given database.
         public static void updateDataGridView(String connectionString, DataGridView dataGridView, BindingSource bindingSource)
         {
             SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM [Table]", connectionString);
@@ -107,6 +116,7 @@ namespace WindowsFormsApplication1
                 checkNextRevision();
         }
 
+        // Updates the given ComboBox using the given database and the given String representing the DisplayMember property.
         public static void updateComboBox(String connectionString, ComboBox comboBox, String displayMember)
         {
             SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM [Table]", connectionString);
@@ -117,18 +127,21 @@ namespace WindowsFormsApplication1
             comboBox.DisplayMember = displayMember;
         }
 
+        // Checks the entire risks database for due revisions.
         public static String checkNextRevision()
         {
             int index = 0;
 
+            // Build the appropriate SQL command to match the data displayed in the risks table.
             String sqlComm = "SELECT [Next Revision] FROM [Table]";
             if (side_menu.tbs.Filter != null)
-                sqlComm += " WHERE " + side_menu.tbs.Filter;
+                sqlComm += " WHERE " + side_menu.tbs.Filter; // Apply the filters.
 
             if (side_menu.rdgv.SortedColumn != null)
             {
-                sqlComm += " ORDER BY [" + getColumnName() + "] ";
+                sqlComm += " ORDER BY [" + getColumnName() + "] "; // Apply the sorting.
 
+                // Convert the Strings to appropriate SQL keywords.
                 switch("" + side_menu.rdgv.SortOrder)
                 {
                     case "Ascending": sqlComm += "Asc"; break;
@@ -136,12 +149,13 @@ namespace WindowsFormsApplication1
                 }
             }
 
-            List<String> allRisks = Program.queryDatabase(Program.risksConnectionString, sqlComm);
-            List<String> toReviseRiskIds = new List<String>();
+            List<String> allRisks = Program.queryDatabase(Program.risksConnectionString, sqlComm); // Get the data.
+            List<String> toReviseRiskIds = new List<String>(); // The data that are to be revised.
             foreach (String risk in allRisks)
             {
                 if (Convert.ToDateTime(risk.Split(Program.fieldSeparationCharacter)[0]) <= Convert.ToDateTime(DateTime.Now))
                 {
+                    // Visual cues highlighting the need to review
                     side_menu.rdgv.Rows[index].ErrorText = "To revise";
                     toReviseRiskIds.Add(risk.Split(Program.fieldSeparationCharacter)[0]);
                 }
@@ -149,6 +163,7 @@ namespace WindowsFormsApplication1
                 index++;
             }
 
+            // Return the IDs of the risks to revise.
             String idList = "";
             foreach(String id in toReviseRiskIds)
             {
@@ -157,6 +172,7 @@ namespace WindowsFormsApplication1
             return idList.Trim(Program.fieldSeparationCharacter);
         }
 
+        // Gets the appropriate column name for the database from the risksDataGridView.
         private static String getColumnName()
         {
             switch (side_menu.rdgv.SortedColumn.Name)

@@ -202,8 +202,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer1.Size = new System.Drawing.Size(781, 671);
-            this.splitContainer1.SplitterDistance = 183;
+            this.splitContainer1.Size = new System.Drawing.Size(780, 671);
+            this.splitContainer1.SplitterDistance = 182;
             this.splitContainer1.TabIndex = 0;
             // 
             // printBtn
@@ -446,7 +446,7 @@
             this.editRiskToolStripMenuItem,
             this.deleteRiskToolStripMenuItem});
             this.filterMenuStrip.Name = "filterMenuStrip";
-            this.filterMenuStrip.Size = new System.Drawing.Size(132, 70);
+            this.filterMenuStrip.Size = new System.Drawing.Size(153, 92);
             // 
             // columnsToolStripMenuItem
             // 
@@ -455,7 +455,7 @@
             this.priorityToolStripMenuItem,
             this.controlToolStripMenuItem});
             this.columnsToolStripMenuItem.Name = "columnsToolStripMenuItem";
-            this.columnsToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.columnsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.columnsToolStripMenuItem.Text = "Columns";
             // 
             // basicInformationToolStripMenuItem
@@ -664,14 +664,14 @@
             // editRiskToolStripMenuItem
             // 
             this.editRiskToolStripMenuItem.Name = "editRiskToolStripMenuItem";
-            this.editRiskToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.editRiskToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.editRiskToolStripMenuItem.Text = "Edit Risk";
             this.editRiskToolStripMenuItem.Click += new System.EventHandler(this.editRiskToolStripMenuItem_Click);
             // 
             // deleteRiskToolStripMenuItem
             // 
             this.deleteRiskToolStripMenuItem.Name = "deleteRiskToolStripMenuItem";
-            this.deleteRiskToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.deleteRiskToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.deleteRiskToolStripMenuItem.Text = "Delete Risk";
             this.deleteRiskToolStripMenuItem.Click += new System.EventHandler(this.deleteRiskToolStripMenuItem_Click);
             // 

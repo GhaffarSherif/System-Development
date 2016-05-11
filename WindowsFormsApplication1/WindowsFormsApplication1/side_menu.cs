@@ -13,22 +13,26 @@ namespace WindowsFormsApplication1
 {
     public partial class side_menu : Form
     {
+        // The forms that could pop-up from this form.
         settings s;
         filterList f;
         editRisks v;
 
+        // The information of the current user.
         public static String username;
         public static String userType;
 
+        // A list of filters that are applied to the risksDataGridView.
         public static List<String> filters = new List<String>();
 
-        public static BindingSource tbs;
-        public static DataGridView rdgv;
-        public static ComboBox filterValue;
-
+        // THe set of Strings used to represent the comparison operators for certain data types.
         List<String> dateNumbCompare;
         List<String> textCompare;
 
+        // Controls that are needed by other forms to either update or to get information.
+        public static BindingSource tbs;
+        public static DataGridView rdgv;
+        public static ComboBox filterValue;
         public static ComboBox category;
         public static ComboBox status;
         public static ComboBox statusAfter;
@@ -38,6 +42,7 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
 
+            // Initialize the controls needed by other forms.
             tbs = tableBindingSource;
             rdgv = risksDataGridView;
             filterValue = filterValueComboBox;
@@ -46,9 +51,11 @@ namespace WindowsFormsApplication1
             statusAfter = statusAfterComboBox;
             responsiblePerson = responsiblePersonComboBox;
 
+            // Get the current user;s information.
             username = Program.userInfo.Split(Program.fieldSeparationCharacter)[0];
             userType = Program.userInfo.Split(Program.fieldSeparationCharacter)[2];
 
+            // Disable some features if current user is not an Admin.
             userLabel.Text = username;
             if (!userType.Equals("Admin"))
             {
@@ -58,10 +65,12 @@ namespace WindowsFormsApplication1
                 settingsButton.Visible = false;
             }
 
+            // The set of comparions operators for dates and numbers.
             dateNumbCompare = new List<String> {
                 "=", ">", ">=", "<", "<="
             };
 
+            // The set of comparions operators for Strings.
             textCompare = new List<String> {
                 "=", "LIKE", "NOT LIKE"
             };
@@ -79,16 +88,19 @@ namespace WindowsFormsApplication1
             updateRiskID();
             updateAddComboBoxes();
 
+            // Inform an Admin user that there are risks to revise.
             if (userType.Equals("Admin"))
             {
                 String idsToRevise = Program.checkNextRevision();
                 if (!idsToRevise.Equals(""))
                     MessageBox.Show("Risks with the following IDs need to be revised\n" + idsToRevise, "Risks to review", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                // Set the next revision date to 3 years from the selected date field.
                 nextRevisionDateTimePicker.Value = dateTimePicker.Value.AddYears(3);
                 filterValueComboBox.ResetText();
             }
 
+            // Set the header color in the risksDataGridView.
             risksDataGridView.Columns["Probability"].HeaderCell.Style.BackColor = Program.customColors[0];
             risksDataGridView.Columns["Consequence"].HeaderCell.Style.BackColor = Program.customColors[0];
             risksDataGridView.Columns["Status"].HeaderCell.Style.BackColor = Program.customColors[0];
@@ -130,12 +142,23 @@ namespace WindowsFormsApplication1
             f.Show();
         }
 
+        private void editRiskToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms["editRisks"] != null)
+                v.Close();
+
+            v = new editRisks();
+            v.Show();
+        }
+
         private void logoutButton_Click(object sender, EventArgs e)
         {
             if (Application.OpenForms["settings"] != null)
                 s.Close();
             if (Application.OpenForms["filterList"] != null)
                 f.Close();
+            if (Application.OpenForms["editRisks"] != null)
+                v.Close();
 
             Dispose(true);
             Close();
@@ -143,11 +166,193 @@ namespace WindowsFormsApplication1
             new login().Show();
         }
 
-        private void viewToolStripMenuItem_Click(object sender, EventArgs e)
+        private void exportButton_Click(object sender, EventArgs e)
         {
-            viewFiltersButton_Click(sender, e);
+            DialogResult result;
+            String fileName;
+
+            using (SaveFileDialog fileChooser = new SaveFileDialog())
+            {
+                fileChooser.CheckFileExists = false;
+                result = fileChooser.ShowDialog();
+                fileName = fileChooser.FileName;
+            }
+
+            if (result == DialogResult.OK)
+            {
+                if (fileName == string.Empty)
+                    MessageBox.Show("Invalid File Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    exportMethods.exportExcel(fileName);
+            }
         }
 
+        private void filterTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Sets the appropriate set of comparions operators as DataSource for the filterComparisonComboBox.
+            String filterType = filterTypeComboBox.Text;
+            if (filterType.Equals("Category") || filterType.Equals("Description") || filterType.Equals("Status") ||
+                filterType.Equals("Control Measure") || filterType.Equals("Response") || filterType.Equals("Responsible Person") ||
+                filterType.Equals("Status After"))
+                filterComparisonComboBox.DataSource = textCompare;
+            else
+                filterComparisonComboBox.DataSource = dateNumbCompare;
+
+            // Fills the filterValueComboBox with distinct values of the selected filterType from the database.
+            if (filterTypeComboBox.Text.Equals("Date") || filterTypeComboBox.Text.Equals("Next Revision")) // Formats the dates appropriately.
+            {
+                List<String> formattedDateList = new List<String>();
+                List<String> dateList = Program.queryDatabase(Program.risksConnectionString, "SELECT DISTINCT [" + filterTypeComboBox.Text + "] FROM [Table]");
+                foreach (String date in dateList)
+                    formattedDateList.Add(Convert.ToDateTime(date).ToString("dd/MM/yyyy"));
+                filterValueComboBox.DataSource = formattedDateList;
+            }
+            else
+                filterValueComboBox.DataSource = Program.queryDatabase(Program.risksConnectionString, "SELECT DISTINCT [" + filterTypeComboBox.Text + "] FROM [Table]");
+
+            filterValueComboBox.ResetText();
+        }
+
+        private void addFilterButton_Click(object sender, EventArgs e)
+        {
+            // Checks of the required fields are filled.
+            if (filterTypeComboBox.Text.Equals("") || filterValueComboBox.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("Filter value not specified", "Could not filter", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                // Adds the filter to the String List.
+                if (filterTypeComboBox.Text.Equals("Date") || filterTypeComboBox.Text.Equals("Next Revision")) // Formats the dates appropriately. 
+                    filters.Add("[" + filterTypeComboBox.Text.Trim(Program.fieldSeparationCharacter) + "] " + filterComparisonComboBox.Text + " '" + Convert.ToDateTime(filterValueComboBox.Text).ToString("dd/MM/yyyy") + "'");
+                else
+                    filters.Add("[" + filterTypeComboBox.Text.Trim(Program.fieldSeparationCharacter) + "] " + filterComparisonComboBox.Text + " '" + filterValueComboBox.Text + "'");
+            }
+            catch (System.FormatException)
+            {
+                MessageBox.Show("Invalid filter value: Dates must be in the following format DD/MM/YYYY", "Could not filter", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            // Updates the filterList form if it open.
+            if (Application.OpenForms["filterList"] != null)
+            {
+                f.filters.DataSource = null;
+                f.filters.DataSource = filters;
+            }
+
+            try
+            {
+                filterDataGridView(); // Apply the filters to the risksDataGriView.
+                Program.checkNextRevision();
+                filterValueComboBox.ResetText();
+            }
+            catch (System.Data.EvaluateException) // If an error occurs while applying the filter.
+            {
+                filters.RemoveAt(filters.Count - 1); // Remove the added filter String from the list.
+                MessageBox.Show("Invalid filter value", "Could not filter", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.SyntaxErrorException)
+            {
+                filters.RemoveAt(filters.Count - 1);
+                MessageBox.Show("Invalid filter value", "Could not filter", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void clearFiltersButton_Click(object sender, EventArgs e)
+        {
+            filters = new List<String>();
+
+            // Update the filterList form if it is open.
+            if (Application.OpenForms["filterList"] != null)
+            {
+                f.filters.DataSource = null;
+                f.filters.DataSource = filters;
+            }
+
+            // Clear the filters applied to the risksDataGridView.
+            tableBindingSource.Filter = null;
+            risksDataGridView.DataSource = tableBindingSource;
+
+            Program.updateDataGridView(Program.risksConnectionString, rdgv, tbs);
+            Program.checkNextRevision();
+            filterValueComboBox.ResetText();
+        }
+
+        private void risksDataGridView_Sorted(object sender, EventArgs e)
+        {
+            Program.checkNextRevision();
+        }
+
+        private void columnsToolMenuStrip_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem tsmi = (ToolStripMenuItem)sender;
+
+            // Hide or show to column that matches the text of the menu strip item.
+            if (risksDataGridView.Columns[tsmi.Text].Visible)
+                risksDataGridView.Columns[tsmi.Text].Visible = false;
+            else
+                risksDataGridView.Columns[tsmi.Text].Visible = true;
+        }
+
+        private void dateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            // Set the next revision date to 3 years from the selected date field.
+            nextRevisionDateTimePicker.Value = dateTimePicker.Value.AddYears(3);
+        }
+
+        private void addRiskButton_Click(object sender, EventArgs e)
+        {
+            // Check if the required fields are filled.
+            if (riskCategoryComboBox.Text.Trim().Equals("") || descriptionTextBox.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("Basic risk information not completed", "Risk could not be added", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            bool isEdited = Program.editDatabase(Program.risksConnectionString, createAddCommand());
+
+            // If an error occured whil editing the database.
+            if (!isEdited)
+            {
+                MessageBox.Show("Invalid input format", "Risk could not be added", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Successfully edited the database.
+            MessageBox.Show("Risk added successfully", "Risk added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            clearFieldsButton_Click(sender, e);
+
+            Program.updateDataGridView(Program.risksConnectionString, risksDataGridView, tableBindingSource);
+            updateRiskID();
+        }
+
+        private void clearFieldsButton_Click(object sender, EventArgs e)
+        {
+            // Reset all the fields in the add risk tab.
+            dateTimePicker.ResetText();
+            nextRevisionDateTimePicker.Value = dateTimePicker.Value.AddYears(3);
+            descriptionTextBox.Clear();
+            probabilityComboBox.SelectedItem = null;
+            consequenceComboBox.SelectedItem = null;
+            controlMeasureTextBox.Clear();
+            riskResponseTextBox.Clear();
+            probabilityAfterComboBox.SelectedItem = null;
+            consequenceAfterComboBox.SelectedItem = null;
+            updateAddComboBoxes();
+        }
+
+        private void side_menu_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && tabControl1.SelectedTab == databaseTabPage)
+                addFilterButton_Click(sender, e);
+            if (e.KeyCode == Keys.Enter && tabControl1.SelectedTab == addRiskTabPage)
+                addRiskButton_Click(sender, e);
+        }
+
+        // Updates the items in the comboBoxes of the add risk tab with distinct column values from the database.
         public static void updateAddComboBoxes()
         {
             side_menu.category.DataSource = Program.queryDatabase(Program.risksConnectionString, "SELECT DISTINCT [Category] FROM [Table]");
@@ -161,42 +366,13 @@ namespace WindowsFormsApplication1
             side_menu.statusAfter.SelectedItem = null;
         }
 
-        private void addRiskButton_Click(object sender, EventArgs e)
-        {
-            if (!validateFields())
-            {
-                MessageBox.Show("Basic risk information not completed", "Risk could not be added", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            bool isEdited = Program.editDatabase(Program.risksConnectionString, createAddCommand());
-
-            if(!isEdited)
-            {
-                MessageBox.Show("Invalid input format", "Risk could not be added", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            MessageBox.Show("Risk added successfully", "Risk added", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            clearFieldsButton_Click(sender, e);
-
-            Program.updateDataGridView(Program.risksConnectionString, risksDataGridView, tableBindingSource);
-            updateRiskID();
-        }
-
-        private bool validateFields()
-        {
-            if (riskCategoryComboBox.Text.Trim().Equals("") || descriptionTextBox.Text.Trim().Equals(""))
-                return false;
-
-            return true;
-        }
-
+        // Creates and returns the add SQL command depending on which fields are filled.
         private String createAddCommand()
         {
+            // The default add SQL command for columns of required fields.
             String sqlComm = "INSERT INTO [Table] ([Date], [Next Revision], [Category], [Description]";
 
+            // Add more columns if the designated fields are filled. 
             if (!probabilityComboBox.Text.Equals(""))
                 sqlComm += ", [Probability]";
             if (!consequenceComboBox.Text.Equals(""))
@@ -218,14 +394,16 @@ namespace WindowsFormsApplication1
             if (!statusAfterComboBox.Text.Equals(""))
                 sqlComm += ", [Status After]";
 
+            // Add the last required fields. 
             sqlComm += ", [Last Modified By], [Last Modified Date]) ";
 
-
+            // Add the values for the required fields.
             sqlComm += "VALUES ('" + dateTimePicker.Value.ToShortDateString() + "', '" 
             + nextRevisionDateTimePicker.Value.ToShortDateString() + "', '" 
             + riskCategoryComboBox.Text + "', '"
             + descriptionTextBox.Text;
 
+            // Add more values if the designated fields are filled. 
             if (!probabilityComboBox.Text.Equals(""))
                 sqlComm += "', '" + probabilityComboBox.Text;
             if (!consequenceComboBox.Text.Equals(""))
@@ -247,170 +425,41 @@ namespace WindowsFormsApplication1
             if (!statusAfterComboBox.Text.Equals(""))
                 sqlComm += "', '" + statusAfterComboBox.Text;
 
+            // Add the values of the last required fields.
             sqlComm += "', '" + username + "', '" + DateTime.Now.ToShortDateString() + "')";
 
             return sqlComm;
         }
 
+        // Update the risk id disabled TextBox to the next incrementation of the riskID field in the database.
         private void updateRiskID()
         {
             riskIDTextBox.Text = "" + (Convert.ToInt32(Program.queryDatabase(Program.risksConnectionString, "SELECT IDENT_CURRENT('Table')")[0].Split(Program.fieldSeparationCharacter)[0]) + 1);
         }
 
-        private void editRiskToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (Application.OpenForms["editRisks"] != null)
-                v.Close();
-
-            v = new editRisks();
-            v.Show();
-        }
-
-        private void dateTimePicker_ValueChanged(object sender, EventArgs e)
-        {
-            nextRevisionDateTimePicker.Value = dateTimePicker.Value.AddYears(3);
-        }
-
-        private void addFilterButton_Click(object sender, EventArgs e)
-        {
-            if(filterTypeComboBox.Text.Equals("") || filterValueComboBox.Text.Trim().Equals(""))
-            {
-                MessageBox.Show("Filter value not specified", "Could not filter", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            try
-            {
-                if (filterTypeComboBox.Text.Equals("Date") || filterTypeComboBox.Text.Equals("Next Revision"))
-                    filters.Add("[" + filterTypeComboBox.Text.Trim(Program.fieldSeparationCharacter) + "] " + filterComparisonComboBox.Text + " '" + Convert.ToDateTime(filterValueComboBox.Text).ToString("dd/MM/yyyy") + "'");
-                else
-                    filters.Add("[" + filterTypeComboBox.Text.Trim(Program.fieldSeparationCharacter) + "] " + filterComparisonComboBox.Text + " '" + filterValueComboBox.Text + "'");
-            }
-            catch(System.FormatException)
-            {
-                MessageBox.Show("Invalid filter value: Dates must be in the following format DD/MM/YYYY", "Could not filter", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            if (Application.OpenForms["filterList"] != null)
-            {
-                f.filters.DataSource = null;
-                f.filters.DataSource = filters;
-            }
-            
-            try
-            {
-                filterDataGridView();
-                Program.checkNextRevision();
-                filterValueComboBox.ResetText();
-            }
-            catch (System.Data.EvaluateException)
-            {
-                filters.RemoveAt(filters.Count - 1);
-                MessageBox.Show("Invalid filter value", "Could not filter", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (System.Data.SyntaxErrorException)
-            {
-                filters.RemoveAt(filters.Count - 1);
-                MessageBox.Show("Invalid filter value", "Could not filter", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void clearFiltersButton_Click(object sender, EventArgs e)
-        {
-            filters = new List<String>();
-          
-            if (Application.OpenForms["filterList"] != null)
-            {
-                f.filters.DataSource = null;
-                f.filters.DataSource = filters;
-            }
-
-            tableBindingSource.Filter = null;
-            risksDataGridView.DataSource = tableBindingSource;
-            Program.checkNextRevision();
-            filterValueComboBox.ResetText();
-        }
-
+        // Applies the filters to the risksDataGriView.
         public static void filterDataGridView()
         {
+            // If filters List is empty then just assign it to null.
             if (side_menu.filters.Count == 0)
             {
                 side_menu.tbs.Filter = null;
             }
             else
             {
+                // Add the first filter.
                 side_menu.tbs.Filter = side_menu.filters[0];
 
+                // Append any other filters using a default AND corelation.
                 for (int index = 1; index < side_menu.filters.Count; index++)
                 {
                     side_menu.tbs.Filter += "AND " + filters[index];
                 }
             }
 
+            // Apply the changes.
+            Program.updateDataGridView(Program.risksConnectionString, rdgv, tbs);
             side_menu.rdgv.DataSource = side_menu.tbs;
-        }
-
-        private void filterTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            String filterType = filterTypeComboBox.Text;
-            if (filterType.Equals("Category") || filterType.Equals("Description") || filterType.Equals("Status") ||
-                filterType.Equals("Control Measure") || filterType.Equals("Response") || filterType.Equals("Responsible Person") ||
-                filterType.Equals("Status After"))
-                filterComparisonComboBox.DataSource = textCompare;
-            else
-                filterComparisonComboBox.DataSource = dateNumbCompare;
-
-            if (filterTypeComboBox.Text.Equals("Date") || filterTypeComboBox.Text.Equals("Next Revision"))
-            {
-                List<String> formattedDateList = new List<String>();
-                List<String> dateList = Program.queryDatabase(Program.risksConnectionString, "SELECT DISTINCT [" + filterTypeComboBox.Text + "] FROM [Table]");
-                foreach (String date in dateList)
-                    formattedDateList.Add(Convert.ToDateTime(date).ToString("dd/MM/yyyy"));
-                filterValueComboBox.DataSource = formattedDateList;
-            }
-            else
-                filterValueComboBox.DataSource = Program.queryDatabase(Program.risksConnectionString, "SELECT DISTINCT [" + filterTypeComboBox.Text + "] FROM [Table]");
-            
-            filterValueComboBox.ResetText();
-        }
-
-        private void side_menu_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter && tabControl1.SelectedTab == databaseTabPage)
-                addFilterButton_Click(sender, e);
-            if (e.KeyCode == Keys.Enter && tabControl1.SelectedTab == addRiskTabPage)
-                addRiskButton_Click(sender, e);
-        }
-
-        private void columnsToolMenuStrip_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem tsmi = (ToolStripMenuItem)sender;
-
-            if (risksDataGridView.Columns[tsmi.Text].Visible)
-                risksDataGridView.Columns[tsmi.Text].Visible = false;
-            else
-                risksDataGridView.Columns[tsmi.Text].Visible = true;
-        }
-
-        private void exportButton_Click(object sender, EventArgs e)
-        {
-            DialogResult result;
-            String fileName;
-
-            using (SaveFileDialog fileChooser = new SaveFileDialog())
-            {
-                fileChooser.CheckFileExists = false;
-                result = fileChooser.ShowDialog();
-                fileName = fileChooser.FileName;
-            } 
-
-            if (result == DialogResult.OK)
-            {
-                if (fileName == string.Empty)
-                    MessageBox.Show("Invalid File Name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                else
-                    exportMethods.exportExcel(fileName);
-            }
         }
 
         private void risksDataGridView_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
@@ -492,28 +541,6 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("No entries selected.");
             }
         }
-
-        private void clearFieldsButton_Click(object sender, EventArgs e)
-        {
-            dateTimePicker.ResetText();
-            nextRevisionDateTimePicker.Value = dateTimePicker.Value.AddYears(3);
-            descriptionTextBox.Clear();
-            probabilityComboBox.SelectedItem = null;
-            consequenceComboBox.SelectedItem = null;
-            controlMeasureTextBox.Clear();
-            riskResponseTextBox.Clear();
-            probabilityAfterComboBox.SelectedItem = null;
-            consequenceAfterComboBox.SelectedItem = null;
-            updateAddComboBoxes(); 
-        }
-
-        private void risksDataGridView_Sorted(object sender, EventArgs e)
-        {
-            Program.checkNextRevision();
-        }
-
-
-
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
