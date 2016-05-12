@@ -199,7 +199,7 @@ namespace WindowsFormsApplication1
                 filterComparisonComboBox.DataSource = dateNumbCompare;
 
             // Fills the filterValueComboBox with distinct values of the selected filterType from the database.
-            if (filterTypeComboBox.Text.Equals("Date") || filterTypeComboBox.Text.Equals("Next Revision")) // Formats the dates appropriately.
+            if (filterTypeComboBox.Text.Equals("Date") || filterTypeComboBox.Text.Equals("Next Revision") || filterTypeComboBox.Text.Equals("Last Modified Date")) // Formats the dates appropriately.
             {
                 List<String> formattedDateList = new List<String>();
                 List<String> dateList = Program.queryDatabase(Program.risksConnectionString, "SELECT DISTINCT [" + filterTypeComboBox.Text + "] FROM [Table]");
@@ -225,7 +225,7 @@ namespace WindowsFormsApplication1
             try
             {
                 // Adds the filter to the String List.
-                if (filterTypeComboBox.Text.Equals("Date") || filterTypeComboBox.Text.Equals("Next Revision")) // Formats the dates appropriately. 
+                if (filterTypeComboBox.Text.Equals("Date") || filterTypeComboBox.Text.Equals("Next Revision") || filterTypeComboBox.Text.Equals("Last Modified Date")) // Formats the dates appropriately. 
                     filters.Add("[" + filterTypeComboBox.Text.Trim(Program.fieldSeparationCharacter) + "] " + filterComparisonComboBox.Text + " '" + Convert.ToDateTime(filterValueComboBox.Text).ToString("dd/MM/yyyy") + "'");
                 else if (filterComparisonComboBox.Text.Equals("LIKE") || filterComparisonComboBox.Text.Equals("NOT LIKE"))
                     filters.Add("[" + filterTypeComboBox.Text.Trim(Program.fieldSeparationCharacter) + "] " + filterComparisonComboBox.Text + " '%" + filterValueComboBox.Text + "%'");
@@ -237,7 +237,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("Invalid filter value: Dates must be in the following format DD/MM/YYYY", "Could not filter", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            // Updates the filterList form if it open.
+            // Updates the filterList form if it is open.
             if (Application.OpenForms["filterList"] != null)
             {
                 f.filters.DataSource = null;
