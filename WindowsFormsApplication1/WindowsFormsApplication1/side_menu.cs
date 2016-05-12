@@ -237,18 +237,12 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("Invalid filter value: Dates must be in the following format DD/MM/YYYY", "Could not filter", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            // Updates the filterList form if it is open.
-            if (Application.OpenForms["filterList"] != null)
-            {
-                f.filters.DataSource = null;
-                f.filters.DataSource = filters;
-            }
+            filterValueComboBox.ResetText();
 
             try
             {
                 filterDataGridView(); // Apply the filters to the risksDataGriView.
                 Program.checkNextRevision();
-                filterValueComboBox.ResetText();
             }
             catch (System.Data.EvaluateException) // If an error occurs while applying the filter.
             {
@@ -259,6 +253,13 @@ namespace WindowsFormsApplication1
             {
                 filters.RemoveAt(filters.Count - 1);
                 MessageBox.Show("Invalid filter value", "Could not filter", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            // Updates the filterList form if it is open.
+            if (Application.OpenForms["filterList"] != null)
+            {
+                f.filters.DataSource = null;
+                f.filters.DataSource = filters;
             }
         }
 
@@ -400,8 +401,8 @@ namespace WindowsFormsApplication1
             sqlComm += ", [Last Modified By], [Last Modified Date]) ";
 
             // Add the values for the required fields.
-            sqlComm += "VALUES ('" + dateTimePicker.Value.ToShortDateString() + "', '" 
-            + nextRevisionDateTimePicker.Value.ToShortDateString() + "', '" 
+            sqlComm += "VALUES ('" + dateTimePicker.Value.ToString("MM/dd/yyyy") + "', '"
+            + nextRevisionDateTimePicker.Value.ToString("MM/dd/yyyy") + "', '" 
             + riskCategoryComboBox.Text + "', '"
             + descriptionTextBox.Text;
 
@@ -428,7 +429,7 @@ namespace WindowsFormsApplication1
                 sqlComm += "', '" + statusAfterComboBox.Text;
 
             // Add the values of the last required fields.
-            sqlComm += "', '" + username + "', '" + DateTime.Now.ToShortDateString() + "')";
+            sqlComm += "', '" + username + "', '" + DateTime.Now.ToString("MM/dd/yyyy") + "')";
 
             return sqlComm;
         }

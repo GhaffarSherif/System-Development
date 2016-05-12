@@ -212,6 +212,7 @@
             this.printBtn.Name = "printBtn";
             this.printBtn.Size = new System.Drawing.Size(128, 36);
             this.printBtn.TabIndex = 10;
+            this.printBtn.TabStop = false;
             this.printBtn.Text = "Print";
             this.printBtn.UseVisualStyleBackColor = true;
             this.printBtn.Click += new System.EventHandler(this.printBtn_Click);

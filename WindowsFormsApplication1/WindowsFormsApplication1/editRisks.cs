@@ -143,8 +143,8 @@ namespace WindowsFormsApplication1
         private String createEditCommand()
         {
             // The default update SQL command for columns of required fields.
-            String sqlComm = "UPDATE [Table] SET [Date] = '" + dateTimePicker.Value.ToShortDateString() + "'" + 
-                                              ", [Next Revision] = '" + nextRevisionDateTimePicker.Value.ToShortDateString() + "'" +
+            String sqlComm = "UPDATE [Table] SET [Date] = '" + dateTimePicker.Value.ToString("MM/dd/yyyy") + "'" +
+                                              ", [Next Revision] = '" + nextRevisionDateTimePicker.Value.ToString("MM/dd/yyyy") + "'" +
                                               ", [Category] = '" + riskCategoryComboBox.Text + "'" +
                                               ", [Description] = '" + descriptionTextBox.Text + "'";
 
@@ -171,8 +171,8 @@ namespace WindowsFormsApplication1
                 sqlComm += ", [Status] = '" + statusAfterTextBox.Text + "'";
 
             // Add the last required fields to update and the condition determining the row to update.
-            sqlComm += ", [Last Modified By] = '" + side_menu.username + "'" + 
-                       ", [Last Modified Date] = '" + DateTime.Now.ToShortDateString() + "'" +
+            sqlComm += ", [Last Modified By] = '" + side_menu.username + "'" +
+                       ", [Last Modified Date] = '" + DateTime.Now.ToString("MM/dd/yyyy") + "'" +
                        " WHERE ID = '" + riskIDComboBox.Text + "'";
 
             return sqlComm;
