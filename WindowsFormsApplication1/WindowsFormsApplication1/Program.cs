@@ -133,7 +133,7 @@ namespace WindowsFormsApplication1
             int index = 0;
 
             // Build the appropriate SQL command to match the data displayed in the risks table.
-            String sqlComm = "SELECT [Next Revision] FROM [Table]";
+            String sqlComm = "SELECT [ID], [Next Revision] FROM [Table]";
             if (side_menu.tbs.Filter != null)
                 sqlComm += " WHERE " + side_menu.tbs.Filter; // Apply the filters.
 
@@ -153,7 +153,7 @@ namespace WindowsFormsApplication1
             List<String> toReviseRiskIds = new List<String>(); // The data that are to be revised.
             foreach (String risk in allRisks)
             {
-                if (Convert.ToDateTime(risk.Split(Program.fieldSeparationCharacter)[0]) <= Convert.ToDateTime(DateTime.Now))
+                if (Convert.ToDateTime(risk.Split(Program.fieldSeparationCharacter)[1]) <= Convert.ToDateTime(DateTime.Now))
                 {
                     // Visual cues highlighting the need to review
                     side_menu.rdgv.Rows[index].ErrorText = "To revise";
